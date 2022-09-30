@@ -11,6 +11,10 @@ module.exports = {
       bandId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Bands',
+          key: 'id',
+        },
       },
       demoFile: {
         type: Sequelize.TEXT,
