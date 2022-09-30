@@ -11,7 +11,7 @@ function Registration() {
           <button type="submit">Sign Up</button>
         </form>
       </div>
-      <p>Already registered?</p>
+      <p>Already have an account?</p>
       <a href="/auth/log">Sign In</a>
     </div>
   );
