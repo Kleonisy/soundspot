@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    craeterId: {
+    createrId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {

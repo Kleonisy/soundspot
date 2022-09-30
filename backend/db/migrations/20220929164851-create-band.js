@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      craeterId: {
+      createrId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
