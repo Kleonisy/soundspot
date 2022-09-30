@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
 
 // logout
 
-router.delete('/logout', (req, res) => {
+router.delete('/signout', (req, res) => {
   req.session.destroy((error) => {
     if (error) {
       res.json({ error: 'Failed to logout' });
@@ -53,6 +53,7 @@ router.delete('/logout', (req, res) => {
 
 router.post(('/reg'), async (req, res) => {
   try {
+    
     const userWithEmail = await User.findOne({ where: { email: req.body.email } });
     const userWithLogin = await User.findOne({ where: { login: req.body.login } });
 
@@ -62,14 +63,14 @@ router.post(('/reg'), async (req, res) => {
       res.json({ status: 'User with this email already exists' });
     } else if (userWithLogin) {
       res.json({ status: 'User with this login already exists' });
-    } else if (req.body.regLogin.length === 0) {
+    } else if (req.body.login.length === 0) {
       res.json({ status: 'Login cannot be zero length' });
-    } else if (!regEx.test(req.body.regEmail)) {
+    } else if (!regEx.test(req.body.email)) {
       res.json({ status: 'Wrong email format' });
-    } else if (req.body.regPassword.length < 6) {
+    } else if (req.body.password.length < 6) {
       res.json({ status: 'Change your password! Length less than 6 characters' });
     } else {
-      const hash = await bcrypt.hash(req.body.regPassword, 10);
+      const hash = await bcrypt.hash(req.body.password, 10);
       const newUser = await User.create(
         {
           login: req.body.login,
