@@ -2,21 +2,33 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 
+// router.get('/', (req, res) => {
+//   const { user } = req.session;
+//   if (user) {
+//     res.json({ isUser: true, user });
+//   } else {
+//     res.json({ isUser: false });
+//   }
+// });
+
 // authorization
 
-router.post('/log', async (req, res) => {
+router.post('/login', async (req, res) => {
+  if (req.body.email.length < 1 || req.body.password.length < 1) {
+    return res.json({ message: 'Fill in all required fields' });
+  }
   try {
     const findUser = await User.findOne({ where: { email: req.body.email } });
     if (findUser) {
       const isSame = await bcrypt.compare(req.body.password, findUser.password);
       if (isSame) {
         req.session.userId = findUser.id;
-        res.json(findUser);
+        res.json({ user: findUser });
       } else {
-        res.json({ status: 'Failed' });
+        res.json({ message: 'Invalid email or password' });
       }
     } else {
-      res.json({ status: 'Failed' });
+      res.json({ message: 'Invalid email or password' });
     }
   } catch (error) {
     res.status(500).send(error.message);
@@ -25,14 +37,14 @@ router.post('/log', async (req, res) => {
 
 // logout
 
-router.get('/logout', (req, res) => {
+router.delete('/logout', (req, res) => {
   req.session.destroy((error) => {
     if (error) {
       res.json({ error: 'Failed to logout' });
       return;
     }
     res.clearCookie('user_sid');
-    res.redirect('/');
+    res.json({ message: 'success' });
   });
 });
 
@@ -62,10 +74,15 @@ router.post(('/reg'), async (req, res) => {
           login: req.body.nameReg,
           email: req.body.mailReg,
           password: hash,
+          about: null,
+          latitude: 0,
+          longitude: 0,
+          contact: null,
+          photo: null,
         },
       );
       req.session.userId = newUser.id;
-      res.json(newUser);
+      res.json({ user: newUser });
     }
   } catch (error) {
     res.status(500).send(error.message);
