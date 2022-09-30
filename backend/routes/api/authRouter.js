@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
       res.json({ message: 'Invalid email or password' });
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    res.json({ error: error.message });
   }
 });
 
@@ -85,7 +85,7 @@ router.post(('/reg'), async (req, res) => {
       res.json({ user: newUser });
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    res.json({ error: error.message });
   }
 });
 

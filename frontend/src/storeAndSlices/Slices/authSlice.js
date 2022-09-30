@@ -144,6 +144,5 @@ export const { disableHelpMessage } = authSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
-  // loadUser,
-  loginUser, logoutUser, regUser
+  loadUser, loginUser, logoutUser, regUser
 };
