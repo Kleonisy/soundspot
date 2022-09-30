@@ -95,7 +95,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loadUser.rejected, (state, action) => {
+      .addCase(loadUser.rejected, (state) => {
         state.hasUser = false;
       })
       .addCase(loadUser.fulfilled, (state, action) => {

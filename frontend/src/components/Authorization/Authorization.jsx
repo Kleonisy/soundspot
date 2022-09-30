@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginUser, disableHelpMessage } from '../../storeAndSlices/Slices/authSlice';
+import { loginUser, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
+import './Authorization.css';
 
 function Authorization() {
   const dispatch = useDispatch();
-  const hasUser = useSelector((state) => state.user.hasUser);
-  const helpMessage = useSelector((state) => state.user.helpMessage);
+  const hasUser = useSelector((state) => state.authState.hasUser);
+  const helpMessage = useSelector((state) => state.authState.helpMessage);
   const navigate = useNavigate();
 
   // удаление helpMessage при размонтировании компонента
@@ -30,13 +31,19 @@ function Authorization() {
   }, [hasUser, navigate]);
 
   return (
-    <div>
-      <form onSubmit={loginSubmit}>
-        <input type="email" name="logEmail" placeholder="email" />
-        <input type="password" name="logPassword" placeholder="password" />
-        {helpMessage && <div className="helpText">{helpMessage}</div>}
-        <button type="submit">Sign In</button>
-      </form>
+    <div className="log-reg-div">
+      <div>
+        <form className="log-reg-form" onSubmit={loginSubmit}>
+          <div className="input-flex">
+            <input className="log-reg-input" type="email" name="logEmail" placeholder="email" autoComplete="off" />
+            <input className="log-reg-input" type="password" name="logPassword" placeholder="password" autoComplete="off" />
+          </div>
+          <div className="reg-message">
+            {helpMessage && <div className="helpText">{helpMessage}</div>}
+          </div>
+          <button className="log-reg-button" type="submit">Sign In</button>
+        </form>
+      </div>
     </div>
   );
 }
