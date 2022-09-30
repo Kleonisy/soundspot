@@ -10,7 +10,7 @@ export const loadAsyncSpots = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
-      return data.spots;
+      return data.spotsWithPhoto;
     }
   }
 );

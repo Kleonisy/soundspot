@@ -6,6 +6,9 @@ const { sequelize } = require('./db/models');
 const config = require('./config/config');
 
 const exampleRouter = require('./routes/api/exampleRouter');
+const usersRouter = require('./routes/api/usersRouter');
+const bandsRouter = require('./routes/api/bandsRouter');
+const spotsRouter = require('./routes/api/spotsRouter');
 
 const app = express();
 config(app);
@@ -13,6 +16,9 @@ config(app);
 const PORT = process.env.PORT ?? 4000;
 
 app.use('/', exampleRouter);
+app.use('/users', usersRouter);
+app.use('/bands', bandsRouter);
+app.use('/spots', spotsRouter);
 
 app.listen(PORT, async () => {
   try {
