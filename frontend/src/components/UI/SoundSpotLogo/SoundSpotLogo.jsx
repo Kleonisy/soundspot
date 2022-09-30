@@ -3,7 +3,7 @@ import mySoundSpotLogo from './Logo.svg';
 
 function SoundSpotLogo() {
   return (
-    <img style={{ width: '405px', heigth: '54px' }} src={mySoundSpotLogo} alt="SoundSpotLogo" />
+    <img style={{ width: '360px', heigth: '54px' }} src={mySoundSpotLogo} alt="SoundSpotLogo" />
   );
 }
 

@@ -1,0 +1,47 @@
+.soundSpot__rootPage {
+  height: 78vh;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.soundSpot__rootPage_left {
+  font-size: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 3;
+}
+
+.soundSpot__begining {
+  display: flex;
+}
+.soundSpot__begining-slogan {
+  margin: 0px 0px 20px 30px;
+  display: flex;
+  flex: 6;
+}
+.soundSpot__begining-gap {
+  display: flex;
+  flex: 3;
+}
+
+.soundSpot__ending {
+  display: flex;
+}
+.soundSpot__ending-gap {
+  display: flex;
+  flex: 5;
+}
+.soundSpot__ending-slogan {
+  display: flex;
+  flex: 5;
+}
+
+.soundSpot__rootPage_right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
