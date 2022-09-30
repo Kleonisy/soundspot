@@ -12,7 +12,7 @@ const initialState = {
     contact: null,
     photo: null,
   },
-  isUser: null,
+  hasUser: false,
   helpMessage: null,
   error: null,
 };
@@ -22,8 +22,8 @@ const loadUser = createAsyncThunk(
   () => fetch('/auth')
     .then((response) => response.json())
     .then((body) => {
-      if (!body.isUser) {
-        throw new Error(body.isUser);
+      if (!body.hasUser) {
+        throw new Error(body.hasUser);
       }
       return body.user;
     }),
@@ -96,24 +96,24 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadUser.rejected, (state, action) => {
-        state.isUser = false;
+        state.hasUser = false;
       })
       .addCase(loadUser.fulfilled, (state, action) => {
-        state.isUser = true;
+        state.hasUser = true;
         state.data = action.payload;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.helpMessage = action.error.message;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.isUser = true;
+        state.hasUser = true;
         state.data = action.payload;
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(logoutUser.fulfilled, (state) => {
-        state.isUser = false;
+        state.hasUser = false;
         state.data = {
           id: null,
           email: null,
@@ -130,7 +130,7 @@ const authSlice = createSlice({
         state.helpMessage = action.error.message;
       })
       .addCase(regUser.fulfilled, (state, action) => {
-        state.isUser = true;
+        state.hasUser = true;
         state.data = action.payload;
       });
   },

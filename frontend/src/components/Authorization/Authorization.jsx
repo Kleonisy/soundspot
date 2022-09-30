@@ -5,18 +5,14 @@ import { loginUser, disableHelpMessage } from '../../storeAndSlices/Slices/authS
 
 function Authorization() {
   const dispatch = useDispatch();
-  const isUser = useSelector((state) => state.user.isUser);
+  const hasUser = useSelector((state) => state.user.hasUser);
   const helpMessage = useSelector((state) => state.user.helpMessage);
   const navigate = useNavigate();
 
-  // Удаление helpMessage при размонтировании компонента
-
-  useEffect(
-    () => () => {
-      dispatch(disableHelpMessage());
-    },
-    [dispatch],
-  );
+  // удаление helpMessage при размонтировании компонента
+  useEffect(() => () => {
+    dispatch(disableHelpMessage());
+  }, [dispatch]);
 
   function loginSubmit(event) {
     event.preventDefault();
@@ -28,10 +24,10 @@ function Authorization() {
   }
 
   useEffect(() => {
-    if (isUser) {
+    if (hasUser) {
       navigate('/');
     }
-  }, [isUser, navigate]);
+  }, [hasUser, navigate]);
 
   return (
     <div>

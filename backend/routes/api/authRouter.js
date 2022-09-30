@@ -5,9 +5,9 @@ const { User } = require('../../db/models');
 router.get('/', (req, res) => {
   const { user } = req.session;
   if (user) {
-    res.json({ isUser: true, user });
+    res.json({ hasUser: true, user });
   } else {
-    res.json({ isUser: false });
+    res.json({ hasUser: false });
   }
 });
 
@@ -44,7 +44,7 @@ router.delete('/logout', (req, res) => {
       return;
     }
     res.clearCookie('user_sid');
-    res.json({ message: 'success' });
+    res.json({ success: true });
   });
 });
 
@@ -71,8 +71,8 @@ router.post(('/reg'), async (req, res) => {
       const hash = await bcrypt.hash(req.body.regPassword, 10);
       const newUser = await User.create(
         {
-          login: req.body.nameReg,
-          email: req.body.mailReg,
+          login: req.body.login,
+          email: req.body.email,
           password: hash,
           about: null,
           latitude: 0,

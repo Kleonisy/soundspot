@@ -5,7 +5,7 @@ import { regUser, disableHelpMessage } from '../../storeAndSlices/Slices/authSli
 
 function Registration() {
   const dispatch = useDispatch();
-  const isUser = useSelector((state) => state.user.isUser);
+  const hasUser = useSelector((state) => state.user.hasUser);
   const helpMessage = useSelector((state) => state.user.helpMessage);
   const navigate = useNavigate();
 
@@ -25,10 +25,10 @@ function Registration() {
   }
 
   useEffect(() => {
-    if (isUser) {
+    if (hasUser) {
       navigate('/');
     }
-  }, [isUser, navigate]);
+  }, [hasUser, navigate]);
 
   return (
     <div>
