@@ -6,6 +6,7 @@ const { sequelize } = require('./db/models');
 const config = require('./config/config');
 
 const exampleRouter = require('./routes/api/exampleRouter');
+const authRouter = require('./routes/api/authRouter');
 
 const app = express();
 config(app);
@@ -13,6 +14,7 @@ config(app);
 const PORT = process.env.PORT ?? 4000;
 
 app.use('/', exampleRouter);
+app.use('/auth', authRouter);
 
 app.listen(PORT, async () => {
   try {

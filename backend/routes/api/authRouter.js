@@ -2,14 +2,14 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 
-// router.get('/', (req, res) => {
-//   const { user } = req.session;
-//   if (user) {
-//     res.json({ isUser: true, user });
-//   } else {
-//     res.json({ isUser: false });
-//   }
-// });
+router.get('/', (req, res) => {
+  const { user } = req.session;
+  if (user) {
+    res.json({ isUser: true, user });
+  } else {
+    res.json({ isUser: false });
+  }
+});
 
 // authorization
 
