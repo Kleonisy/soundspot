@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       User.Band = User.hasMany(Band, {
-        foreignKey: 'craeterId',
+        foreignKey: 'createrId',
       });
 
       User.Genre = User.hasMany(UserGenre, {
