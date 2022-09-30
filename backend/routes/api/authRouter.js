@@ -2,9 +2,10 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 
-router.get('/', (req, res) => {
-  const { user } = req.session;
-  if (user) {
+router.get('/', async (req, res) => {
+  const { userId } = req.session;
+  if (userId) {
+    const user = await User.findOne({ where: { id: userId } });
     res.json({ hasUser: true, user });
   } else {
     res.json({ hasUser: false });
