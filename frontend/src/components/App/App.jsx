@@ -5,6 +5,8 @@ import Layout from '../Layout';
 import { loadAsyncUsers } from '../../storeAndSlices/Slices/usersReducer';
 import { loadAsyncBands } from '../../storeAndSlices/Slices/bandsReducer';
 import { loadAsyncSpots } from '../../storeAndSlices/Slices/spotsReducer';
+import Registration from '../Registration/Registration';
+import Authorization from '../Authorization/Authorization';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +22,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* <Route path="/home" element={<HomePage />} /> */}
+          <Route path="signup" element={<Registration />} />
+          <Route path="signin" element={<Authorization />} />
         </Route>
       </Routes>
     </div>

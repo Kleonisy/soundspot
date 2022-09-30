@@ -42,7 +42,7 @@ function Registration() {
         </form>
       </div>
       <p>Already have an account?</p>
-      <a href="/auth/log">Sign In</a>
+      <a href="/signin">Sign In</a>
     </div>
   );
 }
