@@ -5,6 +5,7 @@ import Layout from '../Layout';
 import { loadAsyncUsers } from '../../storeAndSlices/Slices/usersReducer';
 import { loadAsyncBands } from '../../storeAndSlices/Slices/bandsReducer';
 import { loadAsyncSpots } from '../../storeAndSlices/Slices/spotsReducer';
+import RootPage from '../RootPage/RootPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,7 +20,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route path="/home" element={<HomePage />} /> */}
+          {/* <Route path="/main" element={<MainPage />} /> */}
+          <Route path="/" element={<RootPage />} />
         </Route>
       </Routes>
     </div>
