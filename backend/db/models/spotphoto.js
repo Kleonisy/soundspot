@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class SpotPhoto extends Model {
     static associate({ Spot }) {
-      SpotPhoto.Spot = SpotPhoto.belongTo(Spot, {
+      SpotPhoto.Spot = SpotPhoto.belongsTo(Spot, {
         foreignKey: 'spotId',
       });
     }

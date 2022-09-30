@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'createrId',
       });
 
-      Band.Demo = Band.belongsTo(BandDemo, {
+      Band.Demo = Band.hasMany(BandDemo, {
         foreignKey: 'bandId',
       });
 

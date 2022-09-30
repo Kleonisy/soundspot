@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     bandId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'Bands',
+        key: 'id',
+      },
     },
     demoFile: {
       type: DataTypes.TEXT,
