@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { regUser, disableHelpMessage } from '../../storeAndSlices/Slices/authSlice';
+import { regUser, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
 import './Registration.css';
 
 function Registration() {
   const dispatch = useDispatch();
-  const hasUser = useSelector((state) => state.user.hasUser);
-  const helpMessage = useSelector((state) => state.user.helpMessage);
+  const hasUser = useSelector((state) => state.authState.hasUser);
+  const helpMessage = useSelector((state) => state.authState.helpMessage);
   const navigate = useNavigate();
 
   // удаление helpMessage при размонтировании компонента

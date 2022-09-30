@@ -6,7 +6,8 @@ import MainPage from '../MainPage/MainPage';
 import { loadAsyncUsers } from '../../storeAndSlices/Slices/usersReducer';
 import { loadAsyncBands } from '../../storeAndSlices/Slices/bandsReducer';
 import { loadAsyncSpots } from '../../storeAndSlices/Slices/spotsReducer';
-import Registration from '../Registration/Registration';
+import UserPage from '../UserPage/UserPage';
+import Registraion from '../Registration/Registration';
 import Authorization from '../Authorization/Authorization';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="signup" element={<Registration />} />
           <Route path="signin" element={<Authorization />} />
           <Route path="/home" element={<MainPage />} />
+          <Route path="/profile" element={<UserPage />} />
         </Route>
       </Routes>
     </div>
