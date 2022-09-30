@@ -40,7 +40,9 @@ function Registration() {
             <input className="log-reg-input" type="email" name="regEmail" placeholder="email" autoComplete="off" />
             <input className="log-reg-input" type="password" name="regPassword" placeholder="password" autoComplete="off" />
           </div>
-          {helpMessage && <div className="helpText">{helpMessage}</div>}
+          <div className="reg-message">
+            {helpMessage && <div className="helpText">{helpMessage}</div>}
+          </div>
           <button className="log-reg-button" type="submit">Sign Up</button>
         </form>
       </div>

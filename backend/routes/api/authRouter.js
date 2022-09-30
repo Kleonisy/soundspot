@@ -52,6 +52,7 @@ router.delete('/signout', (req, res) => {
 
 router.post(('/reg'), async (req, res) => {
   try {
+    
     const userWithEmail = await User.findOne({ where: { email: req.body.email } });
     const userWithLogin = await User.findOne({ where: { login: req.body.login } });
 
