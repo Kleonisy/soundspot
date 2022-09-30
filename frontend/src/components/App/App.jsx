@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Layout from '../Layout';
+import { loadAsyncUsers } from '../../storeAndSlices/Slices/usersReducer';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadAsyncUsers());
+  }, []);
+
   return (
     // <div className="App">
     <Routes>
