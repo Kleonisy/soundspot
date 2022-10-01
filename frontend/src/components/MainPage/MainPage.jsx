@@ -12,29 +12,31 @@ function MainPage() {
   const { spots } = useSelector((store) => store.spotsState);
 
   return (
-    <div className="mainPageContainer">
-      <pre>
-        These
-        {' '}
-        <span>ARTISTS</span>
-        ,
-        {' '}
-        <span>BANDS</span>
-        {' '}
-        and
-        {' '}
-        <span>SPOTS</span>
-        {' '}
-        are on SoundSpot right now.
-      </pre>
-      <pre>Register or login in to check them out and explore</pre>
-      <pre>more!</pre>
+    <div className="mainPageContainer soundSpot__mainpage_container">
+      <div className="soundSpot__mainpage_subheader-text">
+        <p>
+          These
+          {' '}
+          <span>ARTISTS</span>
+          ,
+          {' '}
+          <span>BANDS</span>
+          {' '}
+          and
+          {' '}
+          <span>SPOTS</span>
+          {' '}
+          are on SoundSpot right now.
+        </p>
+        <p>Register or login in to check them out and explore</p>
+        <p>more!</p>
+      </div>
       <div className="carouselContainer">
         <Carousel>
           {users
             ? users.map((user) => (
               <Carousel.Item key={user.id}>
-                <Image className="d-block w-100" src={user.photo} alt={user.email} width={350} height={400} />
+                <Image className="d-block w-100" src={user.photo} alt={user.email} />
                 <Carousel.Caption>
                   <h3>{user.login}</h3>
                 </Carousel.Caption>
