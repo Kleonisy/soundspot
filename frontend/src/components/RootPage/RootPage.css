@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex: 3;
+  flex: 4;
 }
 
 .soundSpot__begining {
@@ -23,7 +23,7 @@
 }
 .soundSpot__begining-gap {
   display: flex;
-  flex: 3;
+  flex: 2;
 }
 
 .soundSpot__ending {
@@ -31,7 +31,7 @@
 }
 .soundSpot__ending-gap {
   display: flex;
-  flex: 5;
+  flex: 4;
 }
 .soundSpot__ending-slogan {
   display: flex;
@@ -39,7 +39,7 @@
 }
 
 .soundSpot__rootPage_right {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
