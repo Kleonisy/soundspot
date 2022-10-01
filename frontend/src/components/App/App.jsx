@@ -24,9 +24,9 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<RootPage />} />
-          <Route path="signup" element={<RootPage><Registration /></RootPage>} />
-          <Route path="signin" element={<RootPage><Authorization /></RootPage>} />
+          <Route path="/" element={<RootPage><Registration /></RootPage>} />
+          <Route path="/signup" element={<RootPage><Registration /></RootPage>} />
+          <Route path="/signin" element={<RootPage><Authorization /></RootPage>} />
           <Route path="/home" element={<MainPage />} />
           <Route path="/profile" element={<UserPage />} />
         </Route>

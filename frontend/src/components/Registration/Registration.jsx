@@ -47,8 +47,11 @@ function Registration() {
         </form>
       </div>
       <div className="sign-in-div">
-        <p>Already have an account?</p>
-        <a href="/signin">Sign In</a>
+        <p>
+          Already have an account?
+          {' '}
+          <a href="/signin">Sign In</a>
+        </p>
       </div>
 
     </div>
