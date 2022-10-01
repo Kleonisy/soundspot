@@ -1,0 +1,14 @@
+.searchImage {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.stringOnSearchPage {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: row;
+}

@@ -8,8 +8,9 @@ import { loadAsyncBands } from '../../storeAndSlices/Slices/bandsReducer';
 import { loadAsyncSpots } from '../../storeAndSlices/Slices/spotsReducer';
 import RootPage from '../RootPage/RootPage';
 import UserPage from '../UserPage/UserPage';
-import Registraion from '../Registration/Registration';
+import Registration from '../Registration/Registration';
 import Authorization from '../Authorization/Authorization';
+import ArtistPageSearch from '../ArtistPageSearch/ArtistPageSearch';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<RootPage />} />
           <Route path="/home" element={<MainPage />} />
+          <Route path="/artists" element={<ArtistPageSearch />} />
           <Route path="signup" element={<Registration />} />
           <Route path="signin" element={<Authorization />} />
           <Route path="/profile" element={<UserPage />} />
