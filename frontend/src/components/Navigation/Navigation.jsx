@@ -46,14 +46,18 @@ function Navigation() {
               </>
             )
             : (
-              <div className="navigation__menu-container navigation__container">
-                <li><NavLink className={check} to="/home">Home</NavLink></li>
-                <li><NavLink className={check} to="/bands">Bands</NavLink></li>
-                <li><NavLink className={check} to="/artists">Artists</NavLink></li>
-                <li><NavLink className={check} to="/spots">Spots</NavLink></li>
-                <li><NavLink className={check} to="/signup">Sign Up</NavLink></li>
-                <li><NavLink className={check} to="/signin">Sign In</NavLink></li>
-              </div>
+              <>
+                <div className="navigation__menu-container navigation__container">
+                  <li><NavLink className={check} to="/home">Home</NavLink></li>
+                  <li><NavLink className={check} to="/bands">Bands</NavLink></li>
+                  <li><NavLink className={check} to="/artists">Artists</NavLink></li>
+                  <li><NavLink className={check} to="/spots">Spots</NavLink></li>
+                </div>
+                <div className="navigation__sign-container navigation__container">
+                  <li><NavLink className={check} to="/signup">Sign Up</NavLink></li>
+                  <li><NavLink className={check} to="/signin">Sign In</NavLink></li>
+                </div>
+              </>
             )
         }
       </ul>

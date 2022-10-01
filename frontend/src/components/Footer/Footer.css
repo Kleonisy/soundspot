@@ -19,3 +19,10 @@
   justify-content: end;
   flex: 1;
 }
+
+.soundSpot__footer .soundSpot__footer_ul {
+  height: 100%;
+}
+.soundSpot__footer .soundSpot__footer_li {
+  height: 100%;
+}
