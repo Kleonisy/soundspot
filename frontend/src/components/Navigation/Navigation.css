@@ -40,6 +40,11 @@
   margin: 0px 50px 0px 0px;
   flex: 1;
 }
+.navigation__sign-container {
+  margin: 0px 40px 0px 0px;
+  flex: 2;
+  justify-content: space-around;
+}
 
 .navigation__item {
   color: #ffffff;
