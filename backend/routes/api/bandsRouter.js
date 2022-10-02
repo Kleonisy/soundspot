@@ -8,4 +8,10 @@ bandsRouter.get('/', async (req, res) => {
   res.json({ bands });
 });
 
+bandsRouter.get('/:name', async (req, res) => {
+  const { name } = req.params;
+  const band = await Band.findOne({ where: { name } });
+  res.json({ band });
+});
+
 module.exports = bandsRouter;
