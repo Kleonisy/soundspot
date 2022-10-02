@@ -12,6 +12,7 @@ import Registration from '../Registration/Registration';
 import Authorization from '../Authorization/Authorization';
 import ArtistPageSearch from '../ArtistPageSearch/ArtistPageSearch';
 import { loadUser } from '../../storeAndSlices/Slices/authReducer';
+import UserDemo from '../UserDemo/UserDemo';
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
           <Route path="/home" element={<MainPage />} />
           <Route path="/artists" element={<ArtistPageSearch />} />
           <Route path="/profile" element={<UserPage />} />
+          <Route path="/users/:id/demos" element={<UserDemo />} />
         </Route>
       </Routes>
     </div>

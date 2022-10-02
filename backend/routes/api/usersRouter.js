@@ -3,23 +3,58 @@ const express = require('express');
 
 const usersRouter = express.Router();
 const {
-  User, Instrument, UserInstrument, Raiting,
+  User, Instrument, UserInstrument, UserGenre, UserBand, Raiting,
 } = require('../../db/models');
 
 usersRouter.get('/', async (req, res) => {
-  const users = await User.findAll({ raw: true });
-  const instruments = await Instrument.findAll({ raw: true });
-  const usersWithExtraStuff = await Promise.all(users.map(async (user) => {
-    let hisInstruments = await UserInstrument.findAll({ where: { userId: user.id } }, { raw: true });
-    hisInstruments = await Promise.all(hisInstruments.map(async (instrument) => {
-      const instr = await Instrument.findOne({ where: { id: instrument.dataValues.instrumentId } }, { raw: true });
-      return instr.dataValues.instrument;
+  try {
+    const users = await User.findAll({ raw: true });
+    const instruments = await Instrument.findAll({ raw: true });
+    const usersWithExtraStuff = await Promise.all(users.map(async (user) => {
+      let hisInstruments = await UserInstrument.findAll({ where: { userId: user.id } }, { raw: true });
+      hisInstruments = await Promise.all(hisInstruments.map(async (instrument) => {
+        const instr = await Instrument.findOne({ where: { id: instrument.dataValues.instrumentId } }, { raw: true });
+        return instr.dataValues.instrument;
+      }));
+      const rating = await Raiting.findAll({ where: { userTargetId: user.id } }, { raw: true });
+      const averageRating = rating.reduce((acc, el) => acc + el.dataValues.raiting, 0) / rating.length;
+      return { ...user, extraStuff: { hisInstruments, averageRating, numberOfVoters: rating.length } };
     }));
-    const rating = await Raiting.findAll({ where: { userTargetId: user.id } }, { raw: true });
-    const averageRating = rating.reduce((acc, el) => acc + el.dataValues.raiting, 0) / rating.length;
-    return { ...user, extraStuff: { hisInstruments, averageRating, numberOfVoters: rating.length } };
-  }));
-  res.json({ usersWithExtraStuff, instruments });
+    
+    const usersData = await User.findAll({
+      attributes: [
+        'id',
+        'login',
+        'email',
+        'about',
+        'latitude',
+        'longitude',
+        'contact',
+        'photo',
+      ],
+      include: [
+        User.Demo, User.Band,
+        {
+          model: UserInstrument,
+          include: UserInstrument.Instrument,
+        },
+        {
+          model: UserGenre,
+          include: UserGenre.Genre,
+        },
+        {
+          model: UserBand,
+          include: UserBand.Band,
+        },
+        {
+          model: Raiting,
+        },
+      ],
+    });
+    res.json({ usersWithExtraStuff, usersData, instruments });
+  } catch(error) {
+    res.json(error.message);
+  }
 });
 
 usersRouter.post('/search', async (req, res) => {
