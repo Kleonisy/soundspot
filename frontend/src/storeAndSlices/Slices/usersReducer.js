@@ -16,6 +16,7 @@ export const loadAsyncUsers = createAsyncThunk(
 );
 
 const initialState = {
+  user: null,
   users: [],
   error: null,
 };
@@ -24,7 +25,9 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-
+    findUser: (state, action) => {
+      state.user = state.users.find((user) => user.id === Number(action.payload));
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -37,4 +40,5 @@ const usersSlice = createSlice({
   }
 });
 
+export const { findUser } = usersSlice.actions;
 export default usersSlice.reducer;
