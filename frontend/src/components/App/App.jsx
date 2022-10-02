@@ -7,13 +7,15 @@ import { loadAsyncUsers } from '../../storeAndSlices/Slices/usersReducer';
 import { loadAsyncBands } from '../../storeAndSlices/Slices/bandsReducer';
 import { loadAsyncSpots } from '../../storeAndSlices/Slices/spotsReducer';
 import UserPage from '../UserPage/UserPage';
-import Registraion from '../Registration/Registration';
+import Registration from '../Registration/Registration';
 import Authorization from '../Authorization/Authorization';
+import { loadUser } from '../../storeAndSlices/Slices/authReducer';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(loadUser());
     dispatch(loadAsyncUsers());
     dispatch(loadAsyncBands());
     dispatch(loadAsyncSpots());
