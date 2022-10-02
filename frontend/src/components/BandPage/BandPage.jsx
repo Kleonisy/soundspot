@@ -17,21 +17,21 @@ function BandPage() {
   return (
     <div className="band-page-gallery">
       <div className="band-page-left">
-        <div className="band-name">{band && band.name}</div>
-        <div className="band-photo"><img src={band && band.photo} alt={band && band.name} /></div>
+        <div className="band-name"><h2>{band && band.name}</h2></div>
+        <div className="band-photo"><img className="band-photo-img" src={band && band.photo} alt={band && band.name} /></div>
         <div className="band-about">{band && band.about}</div>
       </div>
       <div className="band-page-right">
         <div className="band-members">
-          Members:
-          { band && band.UserBands.map((el) => <h3 key={el.id}>{el.User.login}</h3>)}
+          <h3>Members:</h3>
+          { band && band.UserBands.map((el) => <p className="users-band" key={el.id}>{el.User.login}</p>)}
         </div>
         <div className="band-checkout-demos">
           Checkout our demos
           {' '}
-          <Link to="/bands/:id/music">here</Link>
+          <Link to="/bands/:id/music" className="band-checkout-demos-link">here</Link>
         </div>
-        <button type="button" onClick={() => navigate('/bands')}>Move Back</button>
+        <Link to="/bands" className="button-move-back" onClick={() => navigate('/bands')}>Move Back</Link>
       </div>
     </div>
   );
