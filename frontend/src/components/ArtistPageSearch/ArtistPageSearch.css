@@ -1,0 +1,31 @@
+.searchImage {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.stringOnSearchPage {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    justify-content: space-between;
+}
+
+.yellowBack {
+    background-color: yellow;
+}
+
+.instrumentsTags {
+    margin-top: 70px;
+    width: 400px;
+    height: 300px;
+}
+
+.artistsList {
+   overflow: auto;
+   width: 600px;
+} 
