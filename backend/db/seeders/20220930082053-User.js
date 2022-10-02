@@ -25,7 +25,7 @@ module.exports = {
         photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3DiD-5X3OOut1P4kH9OOEIzUM9owgSIjNWw&usqp=CAU',
       },
       {
-        login: ' Ringo Starr',
+        login: 'Ringo Starr',
         email: 'starr@gmail.com',
         password: await bcrypt.hash('starr@gmail.com', 10),
         about: 'A musician, singer, songwriter and actor who achieved international fame as the drummer for the Beatles',
@@ -132,7 +132,7 @@ module.exports = {
         latitude: 59.92095,
         longitude: 30.28997,
         contact: 'pritchard@gmail.com',
-        photo: 'https://www.discogs.com/ru/artist/593935-Luke-Pritchard#images/39898527',
+        photo: 'https://i0.wp.com/fault-magazine.com/wp-content/uploads/2018/09/Luke-Pritchard-The-Kooks-Robert-K-Baggs-Acufocal-interview-4-800x533.jpg?resize=800%2C533',
       },
       {
         login: 'Hugh Harris',
