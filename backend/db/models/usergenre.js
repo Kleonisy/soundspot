@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class UserGenre extends Model {
     static associate({ User, Genre }) {
       UserGenre.User = UserGenre.belongsTo(User, {
-        foreignKey: 'usertId',
+        foreignKey: 'userId',
       });
 
       UserGenre.Genre = UserGenre.belongsTo(Genre, {
