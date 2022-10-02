@@ -6,8 +6,7 @@ import './Registration.css';
 
 function Registration() {
   const dispatch = useDispatch();
-  const hasUser = useSelector((state) => state.authState.hasUser);
-  const helpMessage = useSelector((state) => state.authState.helpMessage);
+  const { hasUser, helpMessage } = useSelector((state) => state.authState);
   const navigate = useNavigate();
 
   // удаление helpMessage при размонтировании компонента
@@ -27,7 +26,7 @@ function Registration() {
 
   useEffect(() => {
     if (hasUser) {
-      navigate('/');
+      navigate('/home');
     }
   }, [hasUser, navigate]);
 
@@ -41,14 +40,17 @@ function Registration() {
             <input className="log-reg-input" type="password" name="regPassword" placeholder="password" autoComplete="off" />
           </div>
           <div className="reg-message">
-            {helpMessage && <div className="helpText">{helpMessage}</div>}
+            {helpMessage && <div className="help-text">{helpMessage}</div>}
           </div>
           <button className="log-reg-button" type="submit">Sign Up</button>
         </form>
       </div>
       <div className="sign-in-div">
-        <p>Already have an account?</p>
-        <a href="/signin">Sign In</a>
+        <p>
+          Already have an account?
+          {' '}
+          <a href="/signin">Sign In</a>
+        </p>
       </div>
 
     </div>

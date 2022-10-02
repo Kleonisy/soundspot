@@ -9,11 +9,10 @@ import { loadUser, logoutUser } from '../../storeAndSlices/Slices/authReducer';
 function Navigation() {
   const dispatch = useDispatch();
   const check = ({ isActive }) => isActive ? 'active-class' : 'navigation__item';
-  const user = useSelector((state) => state.authState.data);
-  const hasUser = useSelector((state) => state.authState.hasUser);
+  const { hasUser } = useSelector((state) => state.authState);
 
   useEffect(() => {
-    dispatch(loadUser(user));
+    dispatch(loadUser());
   }, []);
 
   const handleClick = (e) => {
@@ -46,14 +45,18 @@ function Navigation() {
               </>
             )
             : (
-              <div className="navigation__menu-container navigation__container">
-                <li><NavLink className={check} to="/home">Home</NavLink></li>
-                <li><NavLink className={check} to="/bands">Bands</NavLink></li>
-                <li><NavLink className={check} to="/artists">Artists</NavLink></li>
-                <li><NavLink className={check} to="/spots">Spots</NavLink></li>
-                <li><NavLink className={check} to="/signup">Sign Up</NavLink></li>
-                <li><NavLink className={check} to="/signin">Sign In</NavLink></li>
-              </div>
+              <>
+                <div className="navigation__menu-container navigation__container">
+                  <li><NavLink className={check} to="/home">Home</NavLink></li>
+                  <li><NavLink className={check} to="/bands">Bands</NavLink></li>
+                  <li><NavLink className={check} to="/artists">Artists</NavLink></li>
+                  <li><NavLink className={check} to="/spots">Spots</NavLink></li>
+                </div>
+                <div className="navigation__sign-container navigation__container">
+                  <li><NavLink className={check} to="/signup">Sign Up</NavLink></li>
+                  <li><NavLink className={check} to="/signin">Sign In</NavLink></li>
+                </div>
+              </>
             )
         }
       </ul>

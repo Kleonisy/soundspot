@@ -1,30 +1,50 @@
+.soundSpot__mainpage_container {
+  min-height: 78vh;
+}
+
 .carousel {
-    width:350px;
-    height:400px;
-    margin-left: 20px;
-    margin-right: 20px;
-    /* margin: auto; */
-  }
+  width: 320px;
+  height: 450px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
 
 .carouselContainer {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    margin-left: 20px;
-    margin-right: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.d-block {
+  width: 350px;
+  height: 450px;
+  border-radius: 15px;
+  object-fit: cover;
 }
 
 .mainPageContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.mainPageContainer pre {
-   font-size: 20px;
-   font-weight: bold;
+.soundSpot__mainpage_subheader-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+}
+
+p {
+  margin: 0px;
+}
+
+.mainPageContainer p {
+  color: #000000;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .mainPageContainer span {
-    color:red;
+  color: #BE1111;
 }

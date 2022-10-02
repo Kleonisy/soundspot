@@ -1,7 +1,7 @@
 
-.log-reg-div{
+.log-reg-div {
     font-size: 25px;
-    width: 350px;
+    width: 400px;
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -31,15 +31,28 @@
     height: 50px;
     width: 100%
 }
+.log-reg-button:hover{
+  background-color: #BE1111;
+  color: #000000;
+}
 
 .sign-in-div{
-    margin-top:20px;
+    font-size: 18px;
 
 }
 
-p{
-    color:white;
+p{ 
+  margin: 10px 0px 0px 0px;
+  color:white;
 }
+
+p a {
+  color: #ffffff;
+}
+p a:hover {
+  color: #BE1111;
+}
+
 .reg-message{
     height: 80px;
 }

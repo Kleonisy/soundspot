@@ -1,7 +1,7 @@
 import React from 'react';
 import './RootPage.css';
 
-function RootPage() {
+function RootPage({ children }) {
   return (
     <div className="soundSpot__rootPage">
       <div className="soundSpot__rootPage_left">
@@ -15,7 +15,7 @@ function RootPage() {
         </div>
       </div>
       <div className="soundSpot__rootPage_right">
-        Place for login/reg
+        {children}
       </div>
     </div>
   );

@@ -11,11 +11,13 @@ import UserPage from '../UserPage/UserPage';
 import Registration from '../Registration/Registration';
 import Authorization from '../Authorization/Authorization';
 import ArtistPageSearch from '../ArtistPageSearch/ArtistPageSearch';
+import { loadUser } from '../../storeAndSlices/Slices/authReducer';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(loadUser());
     dispatch(loadAsyncUsers());
     dispatch(loadAsyncBands());
     dispatch(loadAsyncSpots());
@@ -25,11 +27,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<RootPage />} />
+          <Route path="/" element={<RootPage><Registration /></RootPage>} />
+          <Route path="/signup" element={<RootPage><Registration /></RootPage>} />
+          <Route path="/signin" element={<RootPage><Authorization /></RootPage>} />
           <Route path="/home" element={<MainPage />} />
           <Route path="/artists" element={<ArtistPageSearch />} />
-          <Route path="signup" element={<Registration />} />
-          <Route path="signin" element={<Authorization />} />
           <Route path="/profile" element={<UserPage />} />
         </Route>
       </Routes>

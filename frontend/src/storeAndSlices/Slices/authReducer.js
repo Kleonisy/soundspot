@@ -5,7 +5,6 @@ const initialState = {
     id: null,
     email: null,
     login: null,
-    password: null,
     about: null,
     latitude: null,
     longitude: null,
@@ -22,8 +21,8 @@ const loadUser = createAsyncThunk(
   () => fetch('/auth')
     .then((response) => response.json())
     .then((body) => {
-      if (!body.hasUser) {
-        throw new Error(body.hasUser);
+      if (body.error) {
+        throw new Error(body.error);
       }
       return body.user;
     }),
@@ -43,16 +42,13 @@ const loginUser = createAsyncThunk(
       if (body.error) {
         throw new Error(body.error);
       }
-      if (body.message) {
-        throw new Error(body.message);
-      }
       return body.user;
     }),
 );
 
 const logoutUser = createAsyncThunk(
   'user/logoutUser',
-  () => fetch('/auth/logout', {
+  () => fetch('/auth/signout', {
     method: 'delete',
   })
     .then((response) => response.json())
@@ -60,7 +56,7 @@ const logoutUser = createAsyncThunk(
       if (body.error) {
         throw new Error(body.error);
       }
-      return body.message;
+      return body.error;
     }),
 );
 
@@ -78,9 +74,6 @@ const regUser = createAsyncThunk(
       if (body.error) {
         throw new Error(body.error);
       }
-      if (body.message) {
-        throw new Error(body.message);
-      }
       return body.user;
     }),
 );
@@ -95,7 +88,8 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loadUser.rejected, (state) => {
+      .addCase(loadUser.rejected, (state, action) => {
+        state.error = action.error.message;
         state.hasUser = false;
       })
       .addCase(loadUser.fulfilled, (state, action) => {
@@ -118,7 +112,6 @@ const authSlice = createSlice({
           id: null,
           email: null,
           login: null,
-          password: null,
           about: null,
           latitude: null,
           longitude: null,
