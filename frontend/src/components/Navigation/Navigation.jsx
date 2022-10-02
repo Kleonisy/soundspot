@@ -9,11 +9,10 @@ import { loadUser, logoutUser } from '../../storeAndSlices/Slices/authReducer';
 function Navigation() {
   const dispatch = useDispatch();
   const check = ({ isActive }) => isActive ? 'active-class' : 'navigation__item';
-  const user = useSelector((state) => state.authState.data);
-  const hasUser = useSelector((state) => state.authState.hasUser);
+  const { hasUser } = useSelector((state) => state.authState);
 
   useEffect(() => {
-    dispatch(loadUser(user));
+    dispatch(loadUser());
   }, []);
 
   const handleClick = (e) => {
