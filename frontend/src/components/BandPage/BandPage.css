@@ -1,0 +1,69 @@
+.band-page-gallery{
+    min-height: 78vh;
+    display: flex;
+    flex-direction: row;
+    margin: 0 2vh 0 2vh
+}
+
+.band-page-left{
+    padding-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    min-width: 60%;
+}
+
+.band-photo-img{
+    max-width: 80%;
+}
+
+.band-about{
+    max-width: 80%;
+    font-size: 18px;
+}
+
+.band-page-right{
+    padding-top: 25vh;
+    display: flex;
+    flex-direction: column;
+    min-width: 40%;
+}
+
+.users-band{
+    font-size: 16px;
+}
+
+.band-checkout-demos{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.band-checkout-demos-link{
+    color: red;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.band-checkout-demos-link:hover{
+    color: red;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.button-move-back{
+    color: red;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: left;
+    margin-top: 40px;
+}
+
+.button-move-back:hover{
+    color: red;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: left;
+    margin-top: 40px;
+}
+
+

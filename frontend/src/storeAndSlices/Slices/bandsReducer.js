@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable default-param-last */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -15,9 +16,24 @@ export const loadAsyncBands = createAsyncThunk(
   }
 );
 
+export const loadAsyncBand = createAsyncThunk(
+  'band/loadBand',
+  async (id) => {
+    const response = await fetch(`/bands/${id}`);
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data.band;
+    }
+  }
+);
+
 const initialState = {
   bands: [],
   error: null,
+  band: null,
 };
 
 const bandsSlice = createSlice({
@@ -33,6 +49,12 @@ const bandsSlice = createSlice({
       })
       .addCase(loadAsyncBands.fulfilled, (state, action) => {
         state.bands = action.payload;
+      })
+      .addCase(loadAsyncBand.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadAsyncBand.fulfilled, (state, action) => {
+        state.band = action.payload;
       });
   }
 });
