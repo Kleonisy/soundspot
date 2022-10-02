@@ -14,11 +14,12 @@ bandsRouter.get('/', async (req, res) => {
 
 bandsRouter.get('/:id', async (req, res) => {
   try {
-    const { name } = req.params;
+    const { id } = req.params;
     const band = await Band.findOne({
-      where: { name },
+      where: { id },
       include: [
-        Band.Demo, Band.User,
+        Band.Demo,
+        Band.Creater,
         {
           model: BandGenre,
           include: BandGenre.Genre,
@@ -29,6 +30,7 @@ bandsRouter.get('/:id', async (req, res) => {
         },
       ],
     });
+    console.log('!!!!!!!!', band);
     res.json({ band });
   } catch (error) {
     res.json(error.message);
