@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadUser } from '../../storeAndSlices/Slices/authReducer';
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import './UserPage.css';
 
 function UserPage() {
   const { data: user, hasUser } = useSelector((state) => state.authState);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loadUser());
-  }, [hasUser]);
+  // const userRaiting = (currUser) => {
+  //   const total = currUser.Raitings.map((el) => el.raiting);
+  //   return total.reduce((curr, prev) => (curr + prev)) / total.length;
+  // };
+
+  // const raiting = useMemo(() => userRaiting(user), []);
 
   return (
     <div className="user-container">
@@ -47,13 +49,17 @@ function UserPage() {
             </p>
           </div>
         </div>
-        <div className="lower-inf-cont">
+        <div className="lower-inf-container">
           <div>
             <h5>About</h5>
             <p className="user-inf">{hasUser && user.about}</p>
           </div>
           <div>
-            <h5>Check out my demos here</h5>
+            <h5>
+              Check out my demos
+              {' '}
+              <NavLink to={hasUser && `/users/${user.id}/demos`}>here</NavLink>
+            </h5>
           </div>
         </div>
       </div>
