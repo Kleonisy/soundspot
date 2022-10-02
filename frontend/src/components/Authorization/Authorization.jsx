@@ -6,8 +6,7 @@ import './Authorization.css';
 
 function Authorization() {
   const dispatch = useDispatch();
-  const hasUser = useSelector((state) => state.authState.hasUser);
-  const helpMessage = useSelector((state) => state.authState.helpMessage);
+  const { hasUser, helpMessage } = useSelector((state) => state.authState);
   const navigate = useNavigate();
 
   // удаление helpMessage при размонтировании компонента
@@ -26,7 +25,7 @@ function Authorization() {
 
   useEffect(() => {
     if (hasUser) {
-      navigate('/');
+      navigate('/home');
     }
   }, [hasUser, navigate]);
 

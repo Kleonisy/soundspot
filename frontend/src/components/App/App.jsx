@@ -10,11 +10,13 @@ import RootPage from '../RootPage/RootPage';
 import UserPage from '../UserPage/UserPage';
 import Registration from '../Registration/Registration';
 import Authorization from '../Authorization/Authorization';
+import { loadUser } from '../../storeAndSlices/Slices/authReducer';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(loadUser());
     dispatch(loadAsyncUsers());
     dispatch(loadAsyncBands());
     dispatch(loadAsyncSpots());

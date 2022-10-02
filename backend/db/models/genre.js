@@ -5,11 +5,11 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Genre extends Model {
     static associate({ UserGenre, BandGenre }) {
-      Genre.UserGenre = Genre.belongsTo(UserGenre, {
+      Genre.UserGenre = Genre.hasMany(UserGenre, {
         foreignKey: 'genreId',
       });
 
-      Genre.BandGenre = Genre.belongsTo(BandGenre, {
+      Genre.BandGenre = Genre.hasMany(BandGenre, {
         foreignKey: 'genreId',
       });
     }
