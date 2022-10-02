@@ -30,7 +30,6 @@ bandsRouter.get('/:id', async (req, res) => {
         },
       ],
     });
-    console.log('!!!!!!!!', band);
     res.json({ band });
   } catch (error) {
     res.json(error.message);

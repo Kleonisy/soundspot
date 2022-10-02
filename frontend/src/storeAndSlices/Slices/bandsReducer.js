@@ -19,7 +19,6 @@ export const loadAsyncBands = createAsyncThunk(
 export const loadAsyncBand = createAsyncThunk(
   'band/loadBand',
   async (id) => {
-    console.log(id);
     const response = await fetch(`/bands/${id}`);
     if (response.status >= 400) {
       const { error } = await response.json();

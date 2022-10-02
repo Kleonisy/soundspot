@@ -1,0 +1,18 @@
+.band-page-gallery{
+    min-height: 78vh;
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.band-page-left{
+    display: flex;
+    flex-direction: column;
+    min-width: 60%
+}
+
+.band-page-right{
+    display: flex;
+    flex-direction: column;
+    min-width: 40%
+}
