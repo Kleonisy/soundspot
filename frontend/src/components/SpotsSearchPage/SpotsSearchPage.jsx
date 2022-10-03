@@ -4,6 +4,9 @@ import './SpotsSearchPage.css';
 
 function SpotsSearchPage() {
   const { spots } = useSelector((store) => store.spotsState);
+  const user = useSelector((store) => store.authState.data);
+  console.log(user, 'user');
+  console.log(spots, 'spots');
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const options = [
     {
@@ -12,18 +15,39 @@ function SpotsSearchPage() {
     },
     {
       name: 'By distance',
-      value: ['latitude', 'longitude'],
+      value: 'distance',
     },
   ];
 
+  const sortedPosts = useMemo(() => {
+    if (filter.sort && filter.sort === 'name') {
+      return [...spots]
+        .sort((a, b) => a.dataValues[filter.sort].localeCompare(b.dataValues[filter.sort]));
+      // eslint-disable-next-line no-else-return
+    } else if (filter.sort && filter.sort === 'distance') {
+      const spotsWithCoords = [...spots].map((spot) => (
+        { ...spot,
+          distance: (() =>
+            Math.sqrt((user.latitude - spot.dataValues.latitude) ** 2
+            + (user.longitude - spot.dataValues.longitude) ** 2))(),
+        }
+      ));
+      console.log(spotsWithCoords, 'spots with coords');
+      console.log(filter.sort, 'filter sort');
+      return [...spotsWithCoords]
+        .sort((a, b) => a[filter.sort] - b[filter.sort]);
+    }
+    return spots;
+  }, [filter.sort, spots]);
+
   const sortedAndSearchedPosts = useMemo(() =>
-    spots.filter((spot) =>
-      spot.name.toLowerCase().includes(filter.query.toLowerCase())), [filter.query, spots]);
+    sortedPosts.filter((spot) =>
+      spot.name.toLowerCase().includes(filter.query.toLowerCase())), [filter.query, sortedPosts]);
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
     let myMap;
-    if (spots.length && sortedAndSearchedPosts.length) {
+    if (sortedPosts.length && sortedAndSearchedPosts.length) {
       // eslint-disable-next-line no-undef
       ymaps.ready(() => {
         // eslint-disable-next-line no-undef
@@ -71,20 +95,18 @@ function SpotsSearchPage() {
         myMap.destroy();
       };
     }
-  }, [spots, sortedAndSearchedPosts]);
+  }, [sortedPosts, sortedAndSearchedPosts]);
 
   return (
     <div className="soundSpot__spotsSearch-container">
       <input value={filter.query} onChange={(event) => setFilter({ ...filter, query: event.target.value })} placeholder="Search..." />
       <select
-        value={filter.query}
+        value={filter.sort}
         onChange={(event) => setFilter({ ...filter, sort: event.target.value })}
       >
         <option
           disabled
-          value={filter.sort}
-          onChange={((selectedSort) =>
-            setFilter({ ...filter, sort: selectedSort }))}
+          value=""
         >
           Sort
         </option>
