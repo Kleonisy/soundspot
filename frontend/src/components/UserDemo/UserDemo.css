@@ -40,3 +40,12 @@
 .back-button:hover {
   color: red;
 }
+
+.player {
+  position: absolute;
+  top: 110px;
+  width: 310px !important;
+  height: 90px;
+  bottom: 900px;
+  left: 40px
+}

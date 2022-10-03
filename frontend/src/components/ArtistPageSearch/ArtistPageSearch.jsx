@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-return-assign */
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -16,6 +18,7 @@ import { loadAsyncUsers, updateAsyncUsersList } from '../../storeAndSlices/Slice
 function ArtistPageSearch() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const { users, instruments, genres } = useSelector((store) => store.usersState);
   const [filters, setFilters] = useState([]);
   const [filtersGenre, setFiltersGenre] = useState([]);

@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { findUser } from '../../storeAndSlices/Slices/usersReducer';
-import Player from '../Player/Player';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Demo from '../Demo/Demo';
-import './UserDemo.css';
+import Player from '../Player/Player';
+import '../UserDemo/UserDemo.css';
 
-function UserDemo() {
-  const [value, setValue] = useState('');
+function Music() {
   const [player, setPlayer] = useState(false);
-  const { id } = useParams();
-  const dispatch = useDispatch();
+  const [value, setValue] = useState('');
   const navigate = useNavigate();
-  const { user, users } = useSelector((state) => state.usersState);
+  const { data: user, } = useSelector((state) => state.authState);
   const demos = [{ id: 1, songName: 'nnn' }, { id: 2, songName: 'nnn' }, { id: 3, songName: 'nnn' }, { id: 4, songName: 'nmd' }, { id: 5, songName: 'nmmd' },
     { id: 6, songName: 'nnn' }, { id: 7, songName: 'nnn' }, { id: 8, songName: 'nnn' }, { id: 9, songName: 'nmd' }, { id: 10, songName: 'nmmd' }];
-
-  useEffect(() => {
-    dispatch(findUser(id));
-  }, [users]);
 
   return (
     <div className="user-demo-cont">
@@ -37,4 +30,4 @@ function UserDemo() {
   );
 }
 
-export default UserDemo;
+export default Music;

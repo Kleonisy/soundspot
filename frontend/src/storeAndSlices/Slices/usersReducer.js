@@ -38,6 +38,7 @@ export const updateAsyncUsersList = createAsyncThunk(
 const initialState = {
   user: null,
   users: [],
+  usersData: [],
   instruments: [],
   genres: [],
   error: null,
@@ -48,7 +49,7 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     findUser: (state, action) => {
-      state.user = state.users.find((user) => user.id === Number(action.payload));
+      state.user = state.usersData.find((user) => user.id === Number(action.payload));
     },
   },
   extraReducers: (builder) => {
@@ -58,6 +59,7 @@ const usersSlice = createSlice({
       })
       .addCase(loadAsyncUsers.fulfilled, (state, action) => {
         state.users = action.payload.usersWithExtraStuff;
+        state.usersData = action.payload.usersData;
         state.instruments = action.payload.instruments;
         state.genres = action.payload.genres;
       })
