@@ -17,13 +17,13 @@ export const loadAsyncUsers = createAsyncThunk(
 
 export const updateAsyncUsersList = createAsyncThunk(
   'users/searchUsers',
-  async ({ filters, orderByRating, orderByName, inputText }) => {
+  async ({ filters, filtersGenre, orderByRating, orderByName, inputText }) => {
     const response = await fetch('/users/search', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify({ filters, orderByRating, orderByName, inputText })
+      body: JSON.stringify({ filters, filtersGenre, orderByRating, orderByName, inputText })
     });
     if (response.status >= 400) {
       const { error } = await response.json();
@@ -40,6 +40,7 @@ const initialState = {
   users: [],
   usersData: [],
   instruments: [],
+  genres: [],
   error: null,
 };
 
@@ -60,6 +61,7 @@ const usersSlice = createSlice({
         state.users = action.payload.usersWithExtraStuff;
         state.usersData = action.payload.usersData;
         state.instruments = action.payload.instruments;
+        state.genres = action.payload.genres;
       })
       .addCase(updateAsyncUsersList.rejected, (state, action) => {
         state.error = action.error.message;
