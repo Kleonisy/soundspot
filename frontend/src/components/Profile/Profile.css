@@ -1,42 +1,37 @@
-.user-container{
+.profile-container{
   padding: 40px;
   display: grid;
   grid-template-columns: 2fr 1fr;
   height: 80vh;
 }
 
-.left-container{
+.left-prof-box{
   display: grid;
   grid-template-rows: 1fr 3fr 3fr;
   /* background-color: antiquewhite; */
 }
 
-.upper-inf-container{
+.upper-inf-box{
   display: flex;
   justify-content: space-between;
 }
 
-.lower-inf-container{
+.lower-inf-box{
   display: flex;
   justify-content: space-between;
 }
 
-.right-container {
+.right-box {
   display: flex;
   justify-content: center;
 }
 
-.user-inf {
+.profile-inf {
   color: black;
 }
 
-.inf-box {
-
-}
-.user-img-container{
-  /* background-color:aqua; */
+.profile-img-bo{
   border-radius: 50px;
-  /* background */
 }
 .user-img {
   width: 200px;
@@ -44,7 +39,7 @@
   border-radius: 150px;
 }
 
-.rating-box {
+.name-rating-box{
   display: flex;
   justify-content: space-between;
 }
