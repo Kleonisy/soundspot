@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Rating from '../UI/Rating/Rating';
 import './Profile.css';
 
 function Profile() {
   const { data: user, hasUser } = useSelector((state) => state.authState);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!hasUser) {
+      navigate('/home');
+    }
+  }, [hasUser]);
 
   return (
     <div className="profile-container">

@@ -3,7 +3,7 @@ const express = require('express');
 
 const usersRouter = express.Router();
 const {
-  User, Instrument, UserInstrument, UserGenre, UserBand, Raiting, Genre,
+  User, Instrument, UserInstrument, UserGenre, UserBand, Rating, Genre,
 } = require('../../db/models');
 
 usersRouter.get('/', async (req, res) => {
@@ -22,8 +22,8 @@ usersRouter.get('/', async (req, res) => {
         const genr = await Genre.findOne({ where: { id: genre.dataValues.genreId } }, { raw: true });
         return genr.dataValues.genre;
       }));
-      const rating = await Raiting.findAll({ where: { userTargetId: user.id } }, { raw: true });
-      const averageRating = rating.reduce((acc, el) => acc + el.dataValues.raiting, 0) / rating.length;
+      const rating = await Rating.findAll({ where: { userTargetId: user.id } }, { raw: true });
+      const averageRating = rating.reduce((acc, el) => acc + el.dataValues.rating, 0) / rating.length;
       return {
         ...user,
         extraStuff: {
@@ -58,7 +58,7 @@ usersRouter.get('/', async (req, res) => {
           include: UserBand.Band,
         },
         {
-          model: Raiting,
+          model: Rating,
         },
       ],
     });
@@ -88,8 +88,8 @@ usersRouter.post('/search', async (req, res) => {
       const genr = await Genre.findOne({ where: { id: genre.dataValues.genreId } }, { raw: true });
       return genr.dataValues.genre;
     }));
-    const rating = await Raiting.findAll({ where: { userTargetId: user.id } }, { raw: true });
-    const averageRating = rating.reduce((acc, el) => acc + el.dataValues.raiting, 0) / rating.length;
+    const rating = await Rating.findAll({ where: { userTargetId: user.id } }, { raw: true });
+    const averageRating = rating.reduce((acc, el) => acc + el.dataValues.rating, 0) / rating.length;
     return {
       ...user,
       extraStuff: {

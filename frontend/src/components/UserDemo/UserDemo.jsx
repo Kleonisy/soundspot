@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { findUser } from '../../storeAndSlices/Slices/usersReducer';
-import Player from '../Player/Player';
+import { loadUser } from '../../storeAndSlices/Slices/userReducer';
 import Demo from '../Demo/Demo';
+import Player from '../Player/Player';
 import './UserDemo.css';
 
 function UserDemo() {
@@ -12,18 +12,18 @@ function UserDemo() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, users } = useSelector((state) => state.usersState);
+  const { user } = useSelector((state) => state.userState);
   const demos = [{ id: 1, songName: 'nnn' }, { id: 2, songName: 'nnn' }, { id: 3, songName: 'nnn' }, { id: 4, songName: 'nmd' }, { id: 5, songName: 'nmmd' },
     { id: 6, songName: 'nnn' }, { id: 7, songName: 'nnn' }, { id: 8, songName: 'nnn' }, { id: 9, songName: 'nmd' }, { id: 10, songName: 'nmmd' }];
 
   useEffect(() => {
-    dispatch(findUser(id));
-  }, [users]);
+    dispatch(loadUser(id));
+  }, []);
 
   return (
     <div className="user-demo-cont">
       <button type="button" onClick={() => navigate(-1)} className="back-button">Move Back</button>
-      {player && <Player className="palyer" src="http://localhost:3000/example.mp3" onEndPlay={() => setPlayer(false)} />}
+      {player && <Player className="player" src="http://localhost:3000/example.mp3" onEndPlay={() => setPlayer(false)} />}
       <div className="demo-container">
         <input className="search-input" type="text" placeholder="Search..." onChange={(e) => setValue(e.target.value)} />
         <div className="demos-box">

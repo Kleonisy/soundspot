@@ -3,13 +3,13 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Raiting extends Model {
+  class Rating extends Model {
     static associate({ User }) {
-      Raiting.UserSource = Raiting.belongsTo(User, {
+      Rating.UserSource = Rating.belongsTo(User, {
         foreignKey: 'userSourceId',
       });
 
-      Raiting.UserTarget = Raiting.belongsTo(User, {
+      Rating.UserTarget = Rating.belongsTo(User, {
         foreignKey: 'userTargetId',
       });
     }
@@ -38,8 +38,8 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       },
     },
-    raiting: {
-      type: DataTypes.INTEGER,
+    rating: {
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     createdAt: {
@@ -52,10 +52,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   };
 
-  Raiting.init(attributes, {
+  Rating.init(attributes, {
     sequelize,
-    modelName: 'Raiting',
-    tableName: 'Raitings',
+    modelName: 'Rating',
+    tableName: 'Ratings',
   });
-  return Raiting;
+  return Rating;
 };

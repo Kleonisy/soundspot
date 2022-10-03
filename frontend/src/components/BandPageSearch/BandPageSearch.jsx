@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-return-assign */
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -16,6 +18,7 @@ import { loadAsyncBands, updateAsyncBandsList } from '../../storeAndSlices/Slice
 function BandPageSearch() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const { bands, genres } = useSelector((store) => store.bandsState);
   const [filtersGenre, setFiltersGenre] = useState([]);
   const [orderByName, setOrderByName] = useState(false);
@@ -85,7 +88,7 @@ function BandPageSearch() {
           {bands
             ? bands.map((band) => (
               <>
-                <div key={band.id} className="stringOnSearchPage">
+                <div key={band.id} className="stringOnSearchPage" onClick={() => navigate(`/bands/${band.id}`)}>
                   <Image roundedCircle className="d-block w-100 searchImage" src={band.photo} alt={band.name} />
                   <div className="bandinfoOnSearchPage">
                     <div className="bandinfoTop">

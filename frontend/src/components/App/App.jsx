@@ -12,7 +12,7 @@ import Registration from '../Registration/Registration';
 import Authorization from '../Authorization/Authorization';
 import ArtistPageSearch from '../ArtistPageSearch/ArtistPageSearch';
 import BandPageSearch from '../BandPageSearch/BandPageSearch';
-import { loadUser } from '../../storeAndSlices/Slices/authReducer';
+import { loadSessionUser } from '../../storeAndSlices/Slices/authReducer';
 import SpotsSearchPage from '../SpotsSearchPage/SpotsSearchPage';
 import BandPage from '../BandPage/BandPage';
 import UserDemo from '../UserDemo/UserDemo';
@@ -25,7 +25,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadUser());
+    dispatch(loadSessionUser());
     dispatch(loadAsyncUsers());
     dispatch(loadAsyncBands());
     dispatch(loadAsyncSpots());
@@ -45,11 +45,10 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/profilesettings" element={<ProfileSettings />} />
           <Route path="/bands/:id/" element={<BandPage />} />
-          <Route path="/users/:id/" element={<UserPage />} />
-          <Route path="/users/:id/music" element={<UserDemo />} />
+          <Route path="/artists/:id/" element={<UserPage />} />
+          <Route path="/artists/:id/music" element={<UserDemo />} />
           <Route path="/music" element={<Music />} />
           <Route path="/spots/:id/" element={<SpotPage />} />
-          <Route path="/users/:id/demos" element={<UserDemo />} />
         </Route>
       </Routes>
     </div>
