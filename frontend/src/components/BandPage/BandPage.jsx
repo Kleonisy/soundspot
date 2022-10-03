@@ -19,6 +19,7 @@ function BandPage() {
       <div className="band-page-left">
         <div className="band-name"><h2>{band && band.name}</h2></div>
         <div className="band-photo"><img className="band-photo-img" src={band && band.photo} alt={band && band.name} /></div>
+        <div className="biography"><h4>Biography</h4></div>
         <div className="band-about">{band && band.about}</div>
       </div>
       <div className="band-page-right">
