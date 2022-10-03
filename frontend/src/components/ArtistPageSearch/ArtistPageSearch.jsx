@@ -106,7 +106,7 @@ function ArtistPageSearch() {
           {users
             ? users.map((user) => (
               <>
-                <div key={user.id} className="stringOnSearchPage">
+                <div key={user.id} className="stringOnSearchPage" onClick={() => navigate(`/users/${user.id}`)}>
                   <Image roundedCircle className="d-block w-100 searchImage" src={user.photo} alt={user.email} />
                   <div className="userinfoOnSearchPage">
                     <div className="userinfoTop">
