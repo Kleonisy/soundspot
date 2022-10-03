@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import Carousel from 'react-bootstrap/Carousel';
+import Spinner from 'react-bootstrap/Spinner';
+import Image from 'react-bootstrap/Image';
 import { loadAsyncSpot } from '../../storeAndSlices/Slices/spotsReducer';
-// import './SpotPage.css';
+import './SpotPage.css';
 
 function SpotPage() {
   const { spot } = useSelector((state) => state.spotsState);
-  console.log(spot);
   const dispatch = useDispatch();
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
@@ -24,18 +26,29 @@ function SpotPage() {
         <Link to="/spots" className="button-move-back-spots" onClick={() => navigate('/spots')}>Move Back</Link>
       </div>
       <div className="spot-page-right">
-        {/* <div className="band-photo"><img className="band-photo-img" src={band && band.photo} alt={band && band.name} /></div>
-         */}
-        {/* <div className="band-members">
-          <h3>Members:</h3>
-          { band && band.UserBands.map((el) => <p className="users-band" key={el.id}>{el.User.login}</p>)}
+        <div className="spot-carousel-div">
+          <Carousel className="spot-carousel">
+            {spot
+              ? spot.SpotPhotos.map((spott) => (
+                <Carousel.Item key={spott.id}>
+                  <Image className="carousel-spot-img" src={spott.photo} alt={spott.name} />
+                  <Carousel.Caption>
+                    <h3>{spot.name}</h3>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              ))
+              : (
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              )}
+          </Carousel>
         </div>
-        <div className="band-checkout-demos">
-          Checkout our demos
+        <div className="spot-checkout-contact">
+          Contact
           {' '}
-          <Link to={`/bands/${band && band.id}/music`} className="band-checkout-demos-link">here</Link>
+          <a href={`https://${spot && spot.contact}`} className="spot-checkout-contact-link">{spot && spot.contact}</a>
         </div>
-         */}
       </div>
     </div>
   );

@@ -1,0 +1,55 @@
+.spot-page-gallery{
+    min-height: 78vh;
+    display: flex;
+    flex-direction: row;
+    margin: 0 2vh 0 2vh
+}
+
+.spot-page-left{
+    padding-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    min-width: 40%;
+}
+
+.spot-page-right{
+    padding-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    min-width: 60%;
+}
+
+.spot-carousel-div{
+    width: 100%;
+}
+
+.spot-carousel{
+    width: 90%;
+    height: 600px;
+}
+
+.carousel-spot-img{
+    width: 90%;
+    height: 600px;
+}
+
+.spot-checkout-contact{
+    font-size: 20px;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.spot-checkout-contact-link{
+    color: red;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.spot-checkout-contact-link:hover{
+    color: red;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
