@@ -47,7 +47,7 @@ function SpotPage() {
         <div className="spot-checkout-contact">
           Contact
           {' '}
-          <a href={`https://${spot && spot.contact}`} className="spot-checkout-contact-link">{spot && spot.contact}</a>
+          <a href={`https://${spot && spot.contact}`} target="_blank" rel="noreferrer" className="spot-checkout-contact-link">{spot && spot.contact}</a>
         </div>
       </div>
     </div>
