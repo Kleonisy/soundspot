@@ -29,7 +29,7 @@ function BandPage() {
         <div className="band-checkout-demos">
           Checkout our demos
           {' '}
-          <Link to="/bands/:id/music" className="band-checkout-demos-link">here</Link>
+          <Link to={`/bands/${band && band.id}/music`} className="band-checkout-demos-link">here</Link>
         </div>
         <Link to="/bands" className="button-move-back" onClick={() => navigate('/bands')}>Move Back</Link>
       </div>
