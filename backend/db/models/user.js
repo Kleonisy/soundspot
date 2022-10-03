@@ -5,13 +5,13 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate({
-      Band, Raiting, UserBand, UserDemo, UserInstrument, UserGenre,
+      Band, Rating, UserBand, UserDemo, UserInstrument, UserGenre,
     }) {
-      User.SourceUser = User.hasMany(Raiting, {
+      User.SourceUser = User.hasMany(Rating, {
         foreignKey: 'userSourceId',
       });
 
-      User.TargetUser = User.hasMany(Raiting, {
+      User.TargetUser = User.hasMany(Rating, {
         foreignKey: 'userTargetId',
       });
 

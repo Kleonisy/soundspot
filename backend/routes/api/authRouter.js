@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const {
-  User, UserGenre, UserInstrument, UserBand, Raiting,
+  User, UserGenre, UserInstrument, UserBand, Rating,
 } = require('../../db/models');
 
 router.get('/', async (req, res) => {
@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
             include: UserBand.Band,
           },
           {
-            model: Raiting,
+            model: Rating,
           },
         ],
       });
@@ -90,7 +90,7 @@ router.post('/login', async (req, res) => {
               include: UserBand.Band,
             },
             {
-              model: Raiting,
+              model: Rating,
               where: { userTargetId: findUser.id },
             },
           ],
@@ -179,7 +179,7 @@ router.post(('/reg'), async (req, res) => {
             model: UserBand,
             include: UserBand.Band,
           }, {
-            model: Raiting,
+            model: Rating,
             // where: { userTargetId: newUser.id },
           },
         ],
