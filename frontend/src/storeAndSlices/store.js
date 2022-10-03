@@ -4,6 +4,7 @@ import usersReducer from './Slices/usersReducer';
 import bandsReducer from './Slices/bandsReducer';
 import spotsReducer from './Slices/spotsReducer';
 import authReducer from './Slices/authReducer';
+import userReducer from './Slices/userReducer';
 
 // формирование контейнера состояний (store)
 export default configureStore({
@@ -13,5 +14,6 @@ export default configureStore({
     bandsState: bandsReducer,
     spotsState: spotsReducer,
     authState: authReducer,
+    userState: userReducer,
   }
 });
