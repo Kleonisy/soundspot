@@ -17,6 +17,7 @@ import SpotsSearchPage from '../SpotsSearchPage/SpotsSearchPage';
 import BandPage from '../BandPage/BandPage';
 import UserDemo from '../UserDemo/UserDemo';
 import Profile from '../Profile/Profile';
+import ProfileSettings from '../ProfileSettings/ProfileSettings';
 import Music from '../Music/Music';
 import SpotPage from '../SpotPage/SpotPage';
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/artists" element={<ArtistPageSearch />} />
           <Route path="/bands" element={<BandPageSearch />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profilesettings" element={<ProfileSettings />} />
           <Route path="/bands/:id/" element={<BandPage />} />
           <Route path="/users/:id/" element={<UserPage />} />
           <Route path="/users/:id/music" element={<UserDemo />} />
