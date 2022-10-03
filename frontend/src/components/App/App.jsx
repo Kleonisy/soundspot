@@ -17,6 +17,7 @@ import SpotsSearchPage from '../SpotsSearchPage/SpotsSearchPage';
 import BandPage from '../BandPage/BandPage';
 import UserDemo from '../UserDemo/UserDemo';
 import Profile from '../Profile/Profile';
+import SpotPage from '../SpotPage/SpotPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/bands/:id/" element={<BandPage />} />
           <Route path="/users/:id/" element={<UserPage />} />
+          <Route path="/spots/:id/" element={<SpotPage />} />
           <Route path="/users/:id/demos" element={<UserDemo />} />
         </Route>
       </Routes>
