@@ -29,3 +29,11 @@
    overflow: auto;
    width: 600px;
 } 
+
+.player {
+    position:absolute;
+    right: 1px;
+    bottom: 200px;
+    width: 400px !important;
+    border-radius: 6px !important;
+}
