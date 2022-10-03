@@ -1,22 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import './UserPage.css';
+import Rating from '../UI/Rating/Rating';
+import '../UserPage/UserPage.css';
 
-function UserPage() {
+function Profile() {
   const { data: user, hasUser } = useSelector((state) => state.authState);
-
-  // const userRaiting = (currUser) => {
-  //   const total = currUser.Raitings.map((el) => el.raiting);
-  //   return total.reduce((curr, prev) => (curr + prev)) / total.length;
-  // };
-
-  // const raiting = useMemo(() => userRaiting(user), []);
 
   return (
     <div className="user-container">
       <div className="left-container">
-        <h2>{hasUser && user.login}</h2>
+        <div className="name-rating">
+          <h2>{hasUser && user.login}</h2>
+          <Rating />
+        </div>
         <div className="upper-inf-container">
           <div className="inf-box">
             <h5>My genres</h5>
@@ -70,4 +67,4 @@ function UserPage() {
   );
 }
 
-export default UserPage;
+export default Profile;

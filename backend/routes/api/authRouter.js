@@ -36,7 +36,6 @@ router.get('/', async (req, res) => {
           },
           {
             model: Raiting,
-            where: { userTargetId: userId },
           },
         ],
       });
