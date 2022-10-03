@@ -12,6 +12,7 @@ import Registration from '../Registration/Registration';
 import Authorization from '../Authorization/Authorization';
 import ArtistPageSearch from '../ArtistPageSearch/ArtistPageSearch';
 import { loadUser } from '../../storeAndSlices/Slices/authReducer';
+import SpotsSearchPage from '../SpotsSearchPage/SpotsSearchPage';
 import BandPage from '../BandPage/BandPage';
 import UserDemo from '../UserDemo/UserDemo';
 import Profile from '../Profile/Profile';
@@ -34,6 +35,8 @@ function App() {
           <Route path="/signup" element={<RootPage><Registration /></RootPage>} />
           <Route path="/signin" element={<RootPage><Authorization /></RootPage>} />
           <Route path="/home" element={<MainPage />} />
+          <Route path="/profile" element={<UserPage />} />
+          <Route path="/spots" element={<SpotsSearchPage />} />
           <Route path="/artists" element={<ArtistPageSearch />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/bands/:id/" element={<BandPage />} />
