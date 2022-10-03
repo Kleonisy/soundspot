@@ -16,6 +16,7 @@ import SpotsSearchPage from '../SpotsSearchPage/SpotsSearchPage';
 import BandPage from '../BandPage/BandPage';
 import UserDemo from '../UserDemo/UserDemo';
 import Profile from '../Profile/Profile';
+import Music from '../Music/Music';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,13 +36,13 @@ function App() {
           <Route path="/signup" element={<RootPage><Registration /></RootPage>} />
           <Route path="/signin" element={<RootPage><Authorization /></RootPage>} />
           <Route path="/home" element={<MainPage />} />
-          <Route path="/profile" element={<UserPage />} />
           <Route path="/spots" element={<SpotsSearchPage />} />
           <Route path="/artists" element={<ArtistPageSearch />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/bands/:id/" element={<BandPage />} />
           <Route path="/users/:id/" element={<UserPage />} />
-          <Route path="/users/:id/demos" element={<UserDemo />} />
+          <Route path="/users/:id/music" element={<UserDemo />} />
+          <Route path="/music" element={<Music />} />
         </Route>
       </Routes>
     </div>
