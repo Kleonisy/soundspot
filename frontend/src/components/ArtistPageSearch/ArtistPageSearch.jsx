@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-return-assign */
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -18,13 +20,12 @@ import { loadAsyncUsers, updateAsyncUsersList } from '../../storeAndSlices/Slice
 function ArtistPageSearch() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const { users, instruments } = useSelector((store) => store.usersState);
   const [filters, setFilters] = useState([]);
   const [orderByRating, setOrderByRating] = useState(false);
   const [orderByName, setOrderByName] = useState(false);
   const [inputText, setInputText] = useState('');
-
-  // const [player, setPlayer] = useState(false);
 
   const handleInstrumentFilter = (e) => {
     const copy = [...filters];
@@ -96,7 +97,7 @@ function ArtistPageSearch() {
         <div className="artistsList">
           {users
             ? users.map((user) => (
-              <div key={user.id} className="stringOnSearchPage">
+              <div key={user.id} className="stringOnSearchPage" onClick={() => navigate(`/users/${user.id}`)}>
                 <Image roundedCircle className="d-block w-100 searchImage" src={user.photo} alt={user.email} />
                 {inputText
                 && (
@@ -140,7 +141,6 @@ function ArtistPageSearch() {
           </div>
         </div>
       </div>
-      {/* {player && <Player src="example.mp3" onEndPlay={() => setPlayer(false)} />} */}
     </div>
   );
 }
