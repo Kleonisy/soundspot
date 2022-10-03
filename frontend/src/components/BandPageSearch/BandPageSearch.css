@@ -19,19 +19,13 @@
     background-color: yellow;
 }
 
-.instrumentsTags {
-    /* margin-top: 70px; */
-    width: 400px;
-    height: 300px;
-}
-
 .genresTags {
-    /* margin-top: 70px; */
     width: 400px;
     height: 300px;
 }
 
 .tagsContainer {
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
 }
@@ -39,21 +33,13 @@
 .artistsList {
    overflow: auto;
    width: 600px;
-} 
-
-.player {
-    position:absolute;
-    right: 1px;
-    bottom: 200px;
-    width: 400px !important;
-    border-radius: 6px !important;
 }
 
-.userinfoOnSearchPage {
+.bandinfoOnSearchPage {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
-.userinfoTop {
-    width: 300px;
+.bandinfoTop {
+    width: 200px;
 }

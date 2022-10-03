@@ -10,24 +10,16 @@ import Form from 'react-bootstrap/Form';
 import Spinner from 'react-bootstrap/Spinner';
 import Image from 'react-bootstrap/Image';
 import InputGroup from 'react-bootstrap/InputGroup';
-import './ArtistPageSearch.css';
-import { loadAsyncUsers, updateAsyncUsersList } from '../../storeAndSlices/Slices/usersReducer';
+import './BandPageSearch.css';
+import { loadAsyncBands, updateAsyncBandsList } from '../../storeAndSlices/Slices/bandsReducer';
 
-function ArtistPageSearch() {
+function BandPageSearch() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const { users, instruments, genres } = useSelector((store) => store.usersState);
-  const [filters, setFilters] = useState([]);
+  const { bands, genres } = useSelector((store) => store.bandsState);
   const [filtersGenre, setFiltersGenre] = useState([]);
-  const [orderByRating, setOrderByRating] = useState(false);
   const [orderByName, setOrderByName] = useState(false);
   const [inputText, setInputText] = useState('');
-
-  const handleInstrumentFilter = (e) => {
-    const copy = [...filters];
-    copy[(+e.target.id) - 1] = !copy[(+e.target.id) - 1];
-    setFilters(copy);
-  };
 
   const handleGenreFilter = (e) => {
     const copy = [...filtersGenre];
@@ -40,14 +32,8 @@ function ArtistPageSearch() {
     setInputText(input);
   };
 
-  const handleOrderByRating = () => {
-    setOrderByRating((prev) => !prev);
-    setOrderByName(false);
-  };
-
   const handleOrderByName = () => {
     setOrderByName((prev) => !prev);
-    setOrderByRating(false);
   };
 
   const highLight = (search, string) => {
@@ -72,16 +58,13 @@ function ArtistPageSearch() {
   };
 
   useEffect(() => {
-    document.querySelectorAll('.instrumentFilter').forEach((btn, i) => filters[i]
-      ? btn.className = 'btn btn-secondary instrumentFilter'
-      : btn.className = 'btn btn-outline-secondary instrumentFilter');
     document.querySelectorAll('.genreFilter').forEach((btn, i) => filtersGenre[i]
       ? btn.className = 'btn btn-danger genreFilter'
       : btn.className = 'btn btn-outline-danger genreFilter');
-    dispatch(updateAsyncUsersList({ filters, filtersGenre, orderByRating, orderByName, inputText }));
-  }, [filters, filtersGenre, orderByRating, orderByName, inputText]);
+    dispatch(updateAsyncBandsList({ filtersGenre, orderByName, inputText }));
+  }, [filtersGenre, orderByName, inputText]);
 
-  useEffect(() => () => dispatch(loadAsyncUsers()), [location]);
+  useEffect(() => () => dispatch(loadAsyncBands()), [location]);
 
   return (
     <div>
@@ -94,54 +77,39 @@ function ArtistPageSearch() {
           id="input-group-dropdown-2"
           align="end"
         >
-          <Dropdown.Item as="button" onClick={handleOrderByRating}>{orderByRating ? '+ Rating' : '- Rating'}</Dropdown.Item>
           <Dropdown.Item as="button" onClick={handleOrderByName}>{orderByName ? '+ Name' : '- Name'}</Dropdown.Item>
         </DropdownButton>
       </InputGroup>
       <div className="searchContainer">
         <div className="artistsList">
-          {users
-            ? users.map((user) => (
+          {bands
+            ? bands.map((band) => (
               <>
-                <div key={user.id} className="stringOnSearchPage">
-                  <Image roundedCircle className="d-block w-100 searchImage" src={user.photo} alt={user.email} />
-                  <div className="userinfoOnSearchPage">
-                    <div className="userinfoTop">
+                <div key={band.id} className="stringOnSearchPage">
+                  <Image roundedCircle className="d-block w-100 searchImage" src={band.photo} alt={band.name} />
+                  <div className="bandinfoOnSearchPage">
+                    <div className="bandinfoTop">
                       {inputText
                     && (
                     <pre>
                       {' '}
-                      {highLight(inputText, user.login)}
+                      {highLight(inputText, band.name)}
                     </pre>
                     )}
                       {!inputText && (
                       <pre>
                         {' '}
-                        {user.login}
-                      </pre>
-                      )}
-                      {user.extraStuff.hisInstruments.length && (
-                      <pre>
-                        {' ('}
-                        {user.extraStuff.hisInstruments.join(', ')}
-                        {') '}
+                        {band.name}
                       </pre>
                       )}
                     </div>
-                    <div className="userinfoBottom">
-                      {user.extraStuff.hisGenres.length ? (
+                    <div className="bandinfoBottom">
+                      {band.extraStuff.hisGenres.length ? (
                         <pre>
-                          {user.extraStuff.hisGenres.join(', ')}
+                          {' '}
+                          {band.extraStuff.hisGenres.join(', ')}
                         </pre>
                       ) : ' '}
-                      {user.extraStuff.averageRating && (
-                      <pre>
-                        {'rating: '}
-                        {+(user.extraStuff.averageRating).toFixed(2)}
-                        {' / '}
-                        {user.extraStuff.numberOfVoters}
-                      </pre>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -155,12 +123,6 @@ function ArtistPageSearch() {
             )}
         </div>
         <div className="tagsContainer">
-          <div className="instrumentsTags">
-            {instruments
-              ? instruments.map((instrument) =>
-                <button id={instrument.id} type="button" key={instrument.id} onClick={handleInstrumentFilter} className="btn btn-outline-secondary instrumentFilter">{instrument.instrument}</button>)
-              : null}
-          </div>
           <div className="genresTags">
             {genres
               ? genres.map((genre) =>
@@ -173,4 +135,4 @@ function ArtistPageSearch() {
   );
 }
 
-export default ArtistPageSearch;
+export default BandPageSearch;
