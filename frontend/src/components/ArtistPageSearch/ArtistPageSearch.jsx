@@ -13,6 +13,8 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import './ArtistPageSearch.css';
 import { loadAsyncUsers, updateAsyncUsersList } from '../../storeAndSlices/Slices/usersReducer';
 
+// import Player from '../Player';
+
 function ArtistPageSearch() {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -21,6 +23,8 @@ function ArtistPageSearch() {
   const [orderByRating, setOrderByRating] = useState(false);
   const [orderByName, setOrderByName] = useState(false);
   const [inputText, setInputText] = useState('');
+
+  // const [player, setPlayer] = useState(false);
 
   const handleInstrumentFilter = (e) => {
     const copy = [...filters];
@@ -136,6 +140,7 @@ function ArtistPageSearch() {
           </div>
         </div>
       </div>
+      {/* {player && <Player src="example.mp3" onEndPlay={() => setPlayer(false)} />} */}
     </div>
   );
 }

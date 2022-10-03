@@ -20,7 +20,7 @@ usersRouter.get('/', async (req, res) => {
       const averageRating = rating.reduce((acc, el) => acc + el.dataValues.raiting, 0) / rating.length;
       return { ...user, extraStuff: { hisInstruments, averageRating, numberOfVoters: rating.length } };
     }));
-    
+
     const usersData = await User.findAll({
       attributes: [
         'id',
@@ -52,7 +52,7 @@ usersRouter.get('/', async (req, res) => {
       ],
     });
     res.json({ usersWithExtraStuff, usersData, instruments });
-  } catch(error) {
+  } catch (error) {
     res.json(error.message);
   }
 });
