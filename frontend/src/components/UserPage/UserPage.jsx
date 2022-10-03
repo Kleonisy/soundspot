@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
-import { findUser } from '../../storeAndSlices/Slices/usersReducer';
+import { loadUser } from '../../storeAndSlices/Slices/userReducer';
 import Rating from '../UI/Rating/Rating';
 import './UserPage.css';
 
 function UserPage() {
-  const { user, usersData } = useSelector((state) => state.usersState);
+  const { user } = useSelector((state) => state.userState);
+
   const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
-    if (usersData.length) {
-      dispatch(findUser(Number(id)));
+    if (id) {
+      dispatch(loadUser(Number(id)));
     }
-  }, [id, usersData]);
+  }, [id]);
 
   return (
     <div className="user-container">
@@ -28,7 +29,7 @@ function UserPage() {
             <h5>My genres</h5>
             <p className="user-inf">
               {user
-          && user.UserGenres.length > 0
+          && user.UserGenres
           && user.UserGenres.map((data) => <p className="user-inf" key={data.id}>{data.Genre.genre}</p>)}
             </p>
           </div>
@@ -36,7 +37,7 @@ function UserPage() {
             <h5>My Instruments</h5>
             <p className="user-inf">
               {user
-            && user.UserInstruments.length > 0
+            && user.UserInstruments
             && user.UserInstruments.map((data) => <p className="user-inf" key={data.id}>{data.Instrument.instrument}</p>)}
             </p>
           </div>
@@ -44,7 +45,7 @@ function UserPage() {
             <h5>My Bands</h5>
             <p className="user-inf">
               {user
-            && user.UserBands.length > 0
+            && user.UserBands
             && user.UserBands.map((data) => <p className="user-inf" key={data.id}>{data.Band.name}</p>)}
             </p>
           </div>
@@ -64,7 +65,7 @@ function UserPage() {
             <h5>
               Check out my demos
               {' '}
-              <NavLink to={user && `/users/${user.id}/music`}>here</NavLink>
+              <NavLink to={user && `/artists/${user.id}/music`}>here</NavLink>
             </h5>
           </div>
         </div>
