@@ -62,7 +62,7 @@ userRouter.put('/:id', async (req, res) => {
       res.json({ error: 'Change your password! Length less than 6 characters' });
     } else {
       const hash = await bcrypt.hash(password, 10);
-      await changeUser.update({ login, email, hash });
+      await changeUser.update({ login, email, password: hash });
       res.json(changeUser);
     }
   } catch (error) {

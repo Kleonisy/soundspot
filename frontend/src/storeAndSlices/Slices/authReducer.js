@@ -149,6 +149,7 @@ const authSlice = createSlice({
       })
       .addCase(changeProfile.fulfilled, (state, action) => {
         state.data = action.payload;
+        state.helpMessage = null;
       });
   },
 });
@@ -161,5 +162,5 @@ export const { disableHelpMessage } = authSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadSessionUser, loginUser, logoutUser, regUser
+  loadSessionUser, loginUser, logoutUser, regUser, changeProfile
 };

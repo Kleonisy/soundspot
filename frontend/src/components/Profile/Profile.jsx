@@ -9,6 +9,7 @@ import './Profile.css';
 
 function Profile() {
   const { data: user, hasUser } = useSelector((state) => state.authState);
+  console.log(user);
   const [modalShow, setModalShow] = useState(false);
   const navigate = useNavigate();
 

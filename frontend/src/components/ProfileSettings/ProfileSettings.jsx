@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import './ProfileSettings.css';
+import { changeProfile, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
 
 function ProfileSettings() {
-  const { data: user, helpMessage} = useSelector((state) => state.authState);
-
+  const { data: user, helpMessage, hasUser } = useSelector((state) => state.authState);
 
   const [form, setForm] = useState(false);
+  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
+
   const dispatch = useDispatch();
   // const navigate = useNavigate();
 
@@ -19,9 +22,16 @@ function ProfileSettings() {
       email: event.target.changeEmail.value,
       password: event.target.changePassword.value,
     };
-   dispatch(changeProfile(changeData));
+    dispatch(changeProfile(changeData));
   }
+  useEffect(() => () => dispatch(disableHelpMessage()), [dispatch]);
 
+  useEffect(() => {
+    if (user) {
+      setLogin(user.login);
+      setEmail(user.email);
+    }
+  }, [hasUser]);
   //   useEffect(() => {
   //     if (!hasUser) {
   //       navigate('/home');
@@ -33,8 +43,8 @@ function ProfileSettings() {
       <div className="profile-settings">
         <form onSubmit={changeSubmit}>
           <div className="prof-set-inputs">
-            <input className="prof-settings-input" type="text" name="changeLogin" placeholder="login" autoComplete="off" value={user.login} />
-            <input className="prof-settings-input" type="email" name="changeEmail" placeholder="email" autoComplete="off" value={user.email} />
+            <input className="prof-settings-input" type="text" name="changeLogin" placeholder="login" autoComplete="off" value={login} onChange={(e) => setLogin(e.target.value)} />
+            <input className="prof-settings-input" type="email" name="changeEmail" placeholder="email" autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input className="prof-settings-input" type="password" name="changePassword" placeholder="change password" autoComplete="off" />
           </div>
           <button className="prof-settings-button" type="submit">Edit profile</button>
@@ -49,18 +59,18 @@ function ProfileSettings() {
       </div>
       <div className="editphoto">
         {user && (
-        <div className="user-img-container">
-          <img className="user-img" src={user.photo} alt={user.login} />
-        </div>
+          <div className="user-img-container">
+            <img className="user-img" src={user.photo} alt={user.login} />
+          </div>
         )}
         <button className="edit-photo-button" type="button" onClick={() => setForm(!form)}>Edit photo</button>
         {form && (
-        <div>
-          <form className="update-photo-form">
-            <input type="text" name="updatephoto" className="upd-photo-input" placeholder="add photo here" autoComplete="off" />
-            <button type="submit">Update photo</button>
-          </form>
-        </div>
+          <div>
+            <form className="update-photo-form">
+              <input type="text" name="updatephoto" className="upd-photo-input" placeholder="add photo here" autoComplete="off" />
+              <button type="submit">Update photo</button>
+            </form>
+          </div>
         )}
       </div>
     </div>

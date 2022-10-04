@@ -61,5 +61,5 @@ const userSlice = createSlice({
 export default userSlice.reducer;
 
 export {
-  addRating, loadUser, changeProfile
+  addRating, loadUser,
 };
