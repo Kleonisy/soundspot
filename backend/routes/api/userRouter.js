@@ -4,9 +4,28 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs').promises;
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, 'mediastorage/');
+  },
+
+  filename(req, file, cb) {
+    cb(
+      null,
+      `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`,
+    );
+  },
+});
+
+const upload = multer({ storage }).fields([{ name: 'song' }]);
+
 const userRouter = express.Router();
 const {
-  User, UserInstrument, UserGenre, UserBand, Rating, Instrument, Genre,
+  User, UserInstrument, UserGenre, UserBand, Rating, Instrument, Genre, UserDemo,
 } = require('../../db/models');
 
 userRouter.get('/:id', async (req, res) => {
@@ -140,9 +159,13 @@ userRouter.put('/:id/rating', async (req, res) => {
   }
 });
 
-userRouter.post('/:id/music', async (req, res) => {
-  //для музыки
-}
+userRouter.post('/:id/music', upload, async (req, res) => {
+  if (req.files) {
+    const { filename } = req.files.song[0];
+    await UserDemo.create({ userId: req.session.userId, demoFile: filename });
+  }
+  res.redirect('/music');
+});
 
 userRouter.put('/:userid/userprofile', async (req, res) => {
   const { userid } = req.params;
