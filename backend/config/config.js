@@ -9,7 +9,7 @@ const sessionConfig = require('./sessionConfig');
 
 module.exports = function config(app) {
   app.disable('x-powered-by');
-  app.use(express.static('music'));
+  app.use(express.static('mediastorage'));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(morgan('dev'));
