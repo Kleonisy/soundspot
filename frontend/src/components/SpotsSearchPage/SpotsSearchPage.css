@@ -40,9 +40,21 @@
   flex-direction: column;
   flex: 2;
 }
+.soundSpot__spotRow {
+  border-bottom: 1px solid #000000;
+  cursor: pointer;
+  margin: 0px 20px 10px 0px;
+}
+.soundSpot__spotRow-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+.soundSpot__spotRow-description {
+  font-size: 20px;
+}
 
 .soundSpot__spotsSearch_yandex-container {
-  height: 350px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   flex: 1;

@@ -5,8 +5,6 @@ import './SpotsSearchPage.css';
 function SpotsSearchPage() {
   const { spots } = useSelector((store) => store.spotsState);
   const user = useSelector((store) => store.authState.data);
-  console.log(user, 'user');
-  console.log(spots, 'spots');
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const options = [
     {
@@ -33,8 +31,6 @@ function SpotsSearchPage() {
               + (user.longitude - spot.dataValues.longitude) ** 2))(),
         }
       ));
-      console.log(spotsWithCoords, 'spots with coords');
-      console.log(filter.sort, 'filter sort');
       return [...spotsWithCoords]
         .sort((a, b) => a[filter.sort] - b[filter.sort]);
     }
