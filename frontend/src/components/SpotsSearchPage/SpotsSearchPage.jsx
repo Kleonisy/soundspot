@@ -1,10 +1,14 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import './SpotsSearchPage.css';
 
 function SpotsSearchPage() {
   const { spots } = useSelector((store) => store.spotsState);
   const user = useSelector((store) => store.authState.data);
+  const navigate = useNavigate();
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const options = [
     {
@@ -122,8 +126,8 @@ function SpotsSearchPage() {
         <div className="soundSpot__spotsSearch_results-container">
           {
             sortedAndSearchedPosts.map((spot) => (
-              <div className="soundSpot__spotRow">
-                <div className="soundSpot__spotRow-title" key={spot.id}>{spot.name}</div>
+              <div key={spot.id} onClick={() => navigate(`/spots/${spot.dataValues.id}`)} className="soundSpot__spotRow">
+                <div className="soundSpot__spotRow-title">{spot.name}</div>
                 <div className="soundSpot__spotRow-description">
                   {spot.dataValues.address}
                 </div>
