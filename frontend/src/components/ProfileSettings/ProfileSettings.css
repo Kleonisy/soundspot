@@ -53,7 +53,16 @@
 }
 
 .user-img-change{
-    width: 200px;
-    height:200px;
-    border-radius: 150px;
-  }
+    width: 400px;
+    height: 400px;
+    border-radius: 200px;
+}
+
+.prof-settings-message{
+    height: 80px;
+    padding: 20px;
+}
+
+.setting-help-text{
+    font-size: 18px;
+}

@@ -51,7 +51,7 @@ function MainPage() {
         <Carousel>
           {bands
             ? bands.map((band) => (
-              <Carousel.Item key={band.id}>
+              <Carousel.Item key={`B${band.id}`}>
                 <Image className="d-block w-100" src={band.photo} alt={band.name} width={350} height={400} />
                 <Carousel.Caption>
                   <h3>{band.name}</h3>
@@ -67,7 +67,7 @@ function MainPage() {
         <Carousel>
           {spots
             ? spots.map((spot) => (
-              <Carousel.Item key={spot.id}>
+              <Carousel.Item key={spot.dataValues.id}>
                 <Image className="d-block w-100" src={spot.photo} alt={spot.name} width={350} height={400} />
                 <Carousel.Caption>
                   <h3>{spot.name}</h3>

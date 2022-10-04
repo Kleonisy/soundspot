@@ -11,7 +11,7 @@ module.exports = {
         about: 'A singer, songwriter, musician and peace activist who achieved worldwide fame as the founder, co-songwriter, co-lead vocalist and rhythm guitarist of the Beatles.',
         latitude: 59.93815,
         longitude: 30.37099,
-        contact: 'john@gmail.com',
+        contact: 't.me/johnLenon',
         photo: 'https://upload.wikimedia.org/wikipedia/commons/8/85/John_Lennon_1969_%28cropped%29.jpg',
       },
       {
@@ -21,7 +21,7 @@ module.exports = {
         about: 'A singer, songwriter and musician who gained worldwide fame with the Beatles, for whom he played bass guitar and shared primary songwriting and lead vocal duties with John Lennon.',
         latitude: 59.90115,
         longitude: 30.32945,
-        contact: 'paul@gmail.com',
+        contact: 't.me/paulMC',
         photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3DiD-5X3OOut1P4kH9OOEIzUM9owgSIjNWw&usqp=CAU',
       },
       {
@@ -31,7 +31,7 @@ module.exports = {
         about: 'A musician, singer, songwriter and actor who achieved international fame as the drummer for the Beatles',
         latitude: 59.91957,
         longitude: 30.37065,
-        contact: 'starr@gmail.com',
+        contact: 't.me/starr',
         photo: 'https://wallpaperaccess.com/full/4636658.jpg',
       },
       {
@@ -41,7 +41,7 @@ module.exports = {
         about: 'A musician and singer-songwriter who achieved international fame as the lead guitarist of the Beatles.',
         latitude: 59.92576,
         longitude: 30.29718,
-        contact: 'harrison@gmail.com',
+        contact: 't.me/harrisonG',
         photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/George_Harrison_1974.jpg/440px-George_Harrison_1974.jpg',
       },
       {
@@ -51,7 +51,7 @@ module.exports = {
         about: 'A rapper and record producer',
         latitude: 59.95672,
         longitude: 30.22783,
-        contact: 'eminem@gmail.com',
+        contact: 't.me/eminem',
         photo: 'https://thesource.com/wp-content/uploads/2016/10/photo.jpg',
       },
       {
@@ -71,7 +71,7 @@ module.exports = {
         about: 'Irish singer and songwriter',
         latitude: 59.85997,
         longitude: 30.27278,
-        contact: 'horan@gmail.com',
+        contact: 't.me/Niallhoran',
         photo: 'https://lastfm.freetls.fastly.net/i/u/ar0/095db5bfcde146d4aac5d270686cacf1',
       },
       {
@@ -81,7 +81,7 @@ module.exports = {
         about: 'English singer and a member of the boy band One Direction',
         latitude: 60.01784,
         longitude: 30.30368,
-        contact: 'payne@mail.com',
+        contact: 't.me/payne-com',
         photo: 'https://akamai.sscdn.co/uploadfile/letras/fotos/d/a/2/1/da2193fa7b4d151226ed0ce996377193.jpg',
       },
       {
@@ -91,7 +91,7 @@ module.exports = {
         about: 'English singer, songwriter, and actor. A member of the boy band One Direction',
         latitude: 59.95224,
         longitude: 30.42315,
-        contact: 'styles@gmail.com',
+        contact: 't.me/harryST',
         photo: 'https://avatars.yandex.net/get-music-content/2399641/104894a9.p.631842/m1000x1000',
       },
       {
@@ -101,7 +101,7 @@ module.exports = {
         about: 'English singer and songwriter.  A member of the boy band One Direction',
         latitude: 59.98076,
         longitude: 30.36273,
-        contact: 'tomlinson@gmail.com',
+        contact: 't.me/tomlinson',
         photo: 'https://i.pinimg.com/originals/91/89/5c/91895cba6aba423fb2599157824b8911.jpg',
       },
       {
@@ -111,7 +111,7 @@ module.exports = {
         about: 'British singer. Born and raised in Bradford, a member of the boy band One Direction',
         latitude: 59.95533,
         longitude: 30.32633,
-        contact: 'malil@gmail.com',
+        contact: 't.me/malilZ',
         photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvfgKv_hA3dX7txcUve1jf08Hbk3TDoOykiOrioRnYYNMV98nrDCMEI-eteg6L0-jRpGU&usqp=CAU',
       },
       {
@@ -121,7 +121,7 @@ module.exports = {
         about: 'American rapper, singer, songwriter and record producer.',
         latitude: 59.90683,
         longitude: 30.417,
-        contact: 'nf@gmail.com',
+        contact: 't.me/nfgm',
         photo: 'https://studio21.ru/wp-content/uploads/2019/08/NF.jpg',
       },
       {
@@ -131,7 +131,7 @@ module.exports = {
         about: 'British guitarist and singer, born 2 March 1985 in Worthing, Sussex, England, UK.',
         latitude: 59.92095,
         longitude: 30.28997,
-        contact: 'pritchard@gmail.com',
+        contact: 't.me/pritchard',
         photo: 'https://i0.wp.com/fault-magazine.com/wp-content/uploads/2018/09/Luke-Pritchard-The-Kooks-Robert-K-Baggs-Acufocal-interview-4-800x533.jpg?resize=800%2C533',
       },
       {
@@ -141,7 +141,7 @@ module.exports = {
         about: 'English musician, most known for song "Rhythm of Life',
         latitude: 59.89098,
         longitude: 30.28445,
-        contact: 'harris@gmail.com',
+        contact: 't.me/harrisHu',
         photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6qYRfXjyRun6-is50-pkkv3VAXrOy1UaxCg&usqp=CAU',
       },
       {
@@ -151,7 +151,7 @@ module.exports = {
         about: 'Drummer and percussionist from London, England, UK and member of Hejira.',
         latitude: 59.93986,
         longitude: 30.47053,
-        contact: 'alexis@gmail.com',
+        contact: 't.me/alexisNun',
         photo: 'https://www.porteranddavies.co.uk/wp-content/uploads/2016/08/alexis-nunez.jpg',
       },
       {
@@ -161,7 +161,7 @@ module.exports = {
         about: 'A musician best known as the drummer and co-founder of American heavy metal band Metallica.',
         latitude: 59.9316,
         longitude: 30.25836,
-        contact: 'ulrich@gmail.com',
+        contact: 't.me/ulrichLars',
         photo: 'https://lastfm.freetls.fastly.net/i/u/770x0/925d1618e55d49d68ebf1bc644af64e5.jpg',
       },
       {
@@ -171,7 +171,7 @@ module.exports = {
         about: 'A singer and music personality associated with the band, ‘The Band Perry’. ',
         latitude: 59.89408,
         longitude: 30.27072,
-        contact: 'perry@gmail.com',
+        contact: 't.me/perryKim',
         photo: 'https://www.soundslikenashville.com/wp-content/uploads/2018/03/Kimberly-Perry-The-Band-Perry-1521826749.png',
       },
     ];
