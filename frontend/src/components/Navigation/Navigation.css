@@ -17,6 +17,10 @@
   margin: 0px 0px 0px 20px;
   flex: 1;
 }
+.navigation__logo-container img {
+  width: 250px;
+  height: 54px;
+}
 
 .navigation__container {
   min-height: 100%;
@@ -64,7 +68,7 @@
 }
 
 li {
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 400;
   text-decoration: none;
 }

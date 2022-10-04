@@ -34,15 +34,21 @@
   align-items: center;
   margin: 20px 0px 20px 0px;
 }
+.soundSpot__mainpage_subheader-text p {
+  font-size: 26px;
+}
 
 p {
   margin: 0px;
 }
 
+.carousel-caption h3 {
+  font-size: 30px;
+}
+
 .mainPageContainer p {
   color: #000000;
   font-weight: 500;
-  font-size: 20px;
 }
 
 .mainPageContainer span {
