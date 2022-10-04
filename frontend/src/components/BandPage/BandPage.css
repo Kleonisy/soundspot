@@ -1,71 +1,90 @@
 .band-page-gallery{
     min-height: 78vh;
     display: flex;
-    flex-direction: row;
-    margin: 0 2vh 0 2vh
+    flex-direction: column;
+    margin: 0 50px;
 }
 
 .band-page-left{
-    padding-top: 5vh;
+    /* padding-top: 5vh; */
+    margin: 20px 0px 30px 0px;
     display: flex;
     flex-direction: column;
     gap: 3vh;
     min-width: 60%;
 }
+.band-page-left p {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.biography p {
+  font-size: 28px;
+  font-weight: 500;
+}
+.band-about{
+    font-size: 22px;
+}
 
 .band-photo-img{
     max-width: 80%;
+    max-height: 250px;
+    object-fit: scale-down;
+    object-position: center;
 }
 
-.band-about{
-    max-width: 80%;
-    font-size: 18px;
+.aboutBand__container {
+  flex: 2;
 }
+
+.band-members p {
+  font-size: 28px;
+  font-weight: 500;
+}
+.band-members p.users-band {
+    font-size: 22px;
+    font-weight: 400;
+}
+
 
 .band-page-right{
-    padding-top: 25vh;
+    /* padding-top: 25vh; */
     display: flex;
-    flex-direction: column;
-    min-width: 40%;
+    flex-direction: row;
 }
 
-.users-band{
-    font-size: 16px;
+.additionalBandInfo_container {
+  flex: 1;
 }
+
 
 .band-checkout-demos{
-    font-size: 20px;
+    font-size: 22px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
-
-/* .biography{
-    font-size: 20px;
-} */
 
 .band-checkout-demos-link{
     color: red;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .band-checkout-demos-link:hover{
     color: red;
     text-decoration: none;
-    font-size: 20px;
 }
 
 .button-move-back{
     color: red;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 22px;
     text-align: left;
-    margin-top: 40px;
 }
 
 .button-move-back:hover{
     color: red;
     text-decoration: none;
-    font-size: 20px;
     text-align: left;
     margin-top: 40px;
 }
