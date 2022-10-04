@@ -58,7 +58,10 @@ userRouter.put('/:id', async (req, res) => {
       res.json({ error: 'Login cannot be zero length' });
     } else if (!regEx.test(email)) {
       res.json({ error: 'Wrong email format' });
-    } else if (password.length < 6) {
+    } else if (password.length === 0) {
+      await changeUser.update({ login, email });
+      res.json(changeUser);
+    } else if (password.length < 6 && password.length > 0) {
       res.json({ error: 'Change your password! Length less than 6 characters' });
     } else {
       const hash = await bcrypt.hash(password, 10);

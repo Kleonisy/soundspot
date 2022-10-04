@@ -47,11 +47,12 @@ function ProfileSettings() {
             <input className="prof-settings-input" type="email" name="changeEmail" placeholder="email" autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input className="prof-settings-input" type="password" name="changePassword" placeholder="change password" autoComplete="off" />
           </div>
+          <div className="prof-settings-message">
+            {helpMessage && <div className="setting-help-text">{helpMessage}</div>}
+          </div>
           <button className="prof-settings-button" type="submit">Edit profile</button>
         </form>
-        <div className="reg-message">
-          {helpMessage && <div className="help-text">{helpMessage}</div>}
-        </div>
+
       </div>
 
       <div className="change-location">
@@ -60,7 +61,7 @@ function ProfileSettings() {
       <div className="editphoto">
         {user && (
           <div className="user-img-container">
-            <img className="user-img" src={user.photo} alt={user.login} />
+            <img className="user-img-change" src={user.photo} alt={user.login} />
           </div>
         )}
         <button className="edit-photo-button" type="button" onClick={() => setForm(!form)}>Edit photo</button>
