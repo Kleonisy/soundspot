@@ -1,10 +1,14 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Rating from '../UI/Rating/Rating';
+import UserEditProfile from '../UserEditProfile/UserEditProfile';
 import './Profile.css';
 
 function Profile() {
   const { data: user, hasUser } = useSelector((state) => state.authState);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <div className="profile-container">
@@ -54,6 +58,8 @@ function Profile() {
       </div>
       <div className="right-box">
         {hasUser && <div className="profile-img-box"><img className="user-img" src={user.photo} alt={user.login} /></div>}
+        <h4 type="button" className="editProfileTag" onClick={() => setModalShow(true)}>Edit Profile</h4>
+        {modalShow && <UserEditProfile onHide={() => setModalShow(false)} />}
       </div>
     </div>
   );
