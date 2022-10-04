@@ -48,6 +48,15 @@
 
 .navigation__item {
   color: #ffffff;
+  text-decoration: none;
+}
+.navigation__item:hover {
+  color: #BE1111;
+  text-decoration: none;
+}
+.active-class:hover {
+  color: #BE1111;
+  text-decoration: underline;
 }
 
 .active-class {
@@ -55,6 +64,7 @@
 }
 
 li {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 400;
+  text-decoration: none;
 }

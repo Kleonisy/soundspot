@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import StarsRating from 'react-star-rate';
 import { addRating } from '../../../storeAndSlices/Slices/userReducer';
+import './Rating.css';
 
 function Rating({ user }) {
   const [rating, setRating] = useState();
@@ -31,7 +32,6 @@ function Rating({ user }) {
 
   return (
     <StarsRating
-      style={{ color: 'black' }}
       count={7}
       value={rating}
       disabled={!!(user && user.id === sessionUser.id)}

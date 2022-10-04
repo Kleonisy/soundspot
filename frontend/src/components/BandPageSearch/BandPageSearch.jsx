@@ -70,8 +70,8 @@ function BandPageSearch() {
   useEffect(() => () => dispatch(loadAsyncBands()), [location]);
 
   return (
-    <div>
-      <InputGroup className="mb-3">
+    <div className="soundSpot__bandSearch-container">
+      <InputGroup className="mb-3 soundSpot__bandSearch_input">
         <Form.Control onChange={handleSearchInput} value={inputText} aria-label="Text input with dropdown button" placeholder="Search..." />
 
         <DropdownButton
@@ -94,24 +94,24 @@ function BandPageSearch() {
                     <div className="bandinfoTop">
                       {inputText
                     && (
-                    <pre>
+                    <p>
                       {' '}
                       {highLight(inputText, band.name)}
-                    </pre>
+                    </p>
                     )}
                       {!inputText && (
-                      <pre>
+                      <p>
                         {' '}
                         {band.name}
-                      </pre>
+                      </p>
                       )}
                     </div>
                     <div className="bandinfoBottom">
                       {band.extraStuff.hisGenres.length ? (
-                        <pre>
+                        <p>
                           {' '}
                           {band.extraStuff.hisGenres.join(', ')}
-                        </pre>
+                        </p>
                       ) : ' '}
                     </div>
                   </div>

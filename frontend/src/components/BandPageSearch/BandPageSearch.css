@@ -1,17 +1,30 @@
+.soundSpot__bandSearch-container {
+  min-height: 78vh;
+  margin: 0px 50px;
+}
+
+.soundSpot__bandSearch_input {
+  /* margin-top: 30px; */
+  height: 40px;
+}
+
 .searchImage {
-    width: 50px !important;
-    height: 50px !important;
+    width: 50px;
+    height: 50px;
 }
 
 .stringOnSearchPage {
+  padding: 0px 0px 2px 0px;
+  border-bottom: 1px solid black;
     display: flex;
     flex-direction: row;
 }
 
 .searchContainer {
+  padding: 0px 20px;
+  margin-top: 40px;
     display: flex;
     flex-direction: row;
-    height: 500px;
     justify-content: space-between;
 }
 
@@ -19,27 +32,37 @@
     background-color: yellow;
 }
 
-.genresTags {
-    width: 400px;
-    height: 300px;
+/* .soundSpot__btn_filter {
+  font-size: 20px;
+  background-color: #ffffff;
+  border: 2px solid #BE1111;
+  margin: 0px 10px 10px 0px;
+  padding: 4px 8px;
+  border-radius: 5px;
 }
+.soundSpot__btn_filter-chosen {
+  background-color: #BE1111;
+  color: #ffffff;
+} */
 
 .tagsContainer {
     margin-top: 70px;
     display: flex;
     flex-direction: column;
+    flex: 2;
 }
-
 .artistsList {
-   overflow: auto;
-   width: 600px;
+  margin: 0px 30px 20px 0px;
+  flex: 4;
 }
 
 .bandinfoOnSearchPage {
+  margin-left: 20px;
     display: flex;
     flex-direction: column;
 }
 
 .bandinfoTop {
-    width: 200px;
+  font-weight: 600;
+  width: 100%;
 }
