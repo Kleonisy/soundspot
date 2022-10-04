@@ -48,3 +48,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.back-button {
+  width: 200px;
+  height: 40px;
+}

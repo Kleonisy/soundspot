@@ -7,7 +7,7 @@ import './Rating.css';
 
 function Rating({ user }) {
   const [rating, setRating] = useState();
-  const { data: sessionUser } = useSelector((state) => state.authState);
+  const { data: sessionUser, hasUser } = useSelector((state) => state.authState);
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ function Rating({ user }) {
     <StarsRating
       count={7}
       value={rating}
-      disabled={!!(user && user.id === sessionUser.id)}
+      disabled={!!(user && user.id === sessionUser.id) || !hasUser}
       onChange={handleChange}
     />
   );
