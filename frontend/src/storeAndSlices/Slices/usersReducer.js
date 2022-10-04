@@ -35,6 +35,26 @@ export const updateAsyncUsersList = createAsyncThunk(
   }
 );
 
+export const updateAsyncUserProfile = createAsyncThunk(
+  'users/editUserProfile',
+  async ({ filters, filtersGenre, inputContact, inputTextArea, user }) => {
+    const response = await fetch(`/users/:${user.id}/userprofile`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({ filters, filtersGenre, inputContact, inputTextArea, })
+    });
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  }
+);
+
 const initialState = {
   user: null,
   users: [],
