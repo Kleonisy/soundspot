@@ -1,15 +1,17 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Rating from '../UI/Rating/Rating';
 import UserEditProfile from '../UserEditProfile/UserEditProfile';
+import { loadSessionUser } from '../../storeAndSlices/Slices/authReducer';
 import './Profile.css';
 
 function Profile() {
+  const dispatch = useDispatch();
   const { data: user, hasUser } = useSelector((state) => state.authState);
-  console.log(user);
+  const { users } = useSelector((state) => state.usersState);
   const [modalShow, setModalShow] = useState(false);
   const navigate = useNavigate();
 
@@ -18,6 +20,10 @@ function Profile() {
       navigate('/home');
     }
   }, [hasUser]);
+
+  useEffect(() => {
+    dispatch(loadSessionUser());
+  }, [users]);
 
   return (
     <div className="profile-container">
