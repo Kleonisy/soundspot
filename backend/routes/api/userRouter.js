@@ -1,8 +1,11 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 const express = require('express');
 
 const userRouter = express.Router();
 const {
-  User, UserInstrument, UserGenre, UserBand, Rating,
+  User, UserInstrument, UserGenre, UserBand, Rating, Instrument, Genre,
 } = require('../../db/models');
 
 userRouter.get('/:id', async (req, res) => {
@@ -97,6 +100,62 @@ userRouter.put('/:id/rating', async (req, res) => {
       });
       res.json(user);
     }
+  } catch (error) {
+    res.json(error.message);
+  }
+});
+
+userRouter.put('/:userid/userprofile', async (req, res) => {
+  const { userid } = req.params;
+  const {
+    filters, filtersGenre, inputContact, inputTextArea,
+  } = req.body;
+  try {
+    const thisUser = await User.findOne({ where: { id: userid } });
+    if (inputTextArea) {
+      await thisUser.update({ about: inputTextArea });
+    }
+    if (inputContact) {
+      await thisUser.update({ contact: inputContact });
+    }
+    const erasedInstruments = await UserInstrument.destroy({ where: { userId: userid } });
+    const erasedGenres = await UserGenre.destroy({ where: { userId: userid } });
+    const answer = await Promise.all(filters.map(async (instr, i) => {
+      if (instr) {
+        const created = await UserInstrument.create({ userId: userid, instrumentId: i + 1 });
+        return created;
+      }
+    }));
+    const answer1 = await Promise.all(filtersGenre.map(async (genre, i) => {
+      if (genre) {
+        const created = await UserGenre.create({ userId: userid, genreId: i + 1 });
+        return created;
+      }
+    }));
+    const users = await User.findAll({ raw: true });
+    const instruments = await Instrument.findAll({ raw: true });
+    const genres = await Genre.findAll({ raw: true });
+    const usersWithExtraStuff = await Promise.all(users.map(async (user) => {
+      let hisInstruments = await UserInstrument.findAll({ where: { userId: user.id } }, { raw: true });
+      hisInstruments = await Promise.all(hisInstruments.map(async (instrument) => {
+        const instr = await Instrument.findOne({ where: { id: instrument.dataValues.instrumentId } }, { raw: true });
+        return instr.dataValues.instrument;
+      }));
+      let hisGenres = await UserGenre.findAll({ where: { userId: user.id } }, { raw: true });
+      hisGenres = await Promise.all(hisGenres.map(async (genre) => {
+        const genr = await Genre.findOne({ where: { id: genre.dataValues.genreId } }, { raw: true });
+        return genr.dataValues.genre;
+      }));
+      const rating = await Rating.findAll({ where: { userTargetId: user.id } }, { raw: true });
+      const averageRating = rating.reduce((acc, el) => acc + el.dataValues.rating, 0) / rating.length;
+      return {
+        ...user,
+        extraStuff: {
+          hisInstruments, hisGenres, averageRating, numberOfVoters: rating.length,
+        },
+      };
+    }));
+    res.json({ usersWithExtraStuff });
   } catch (error) {
     res.json(error.message);
   }

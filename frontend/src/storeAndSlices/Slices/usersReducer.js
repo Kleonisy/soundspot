@@ -38,19 +38,19 @@ export const updateAsyncUsersList = createAsyncThunk(
 export const updateAsyncUserProfile = createAsyncThunk(
   'users/editUserProfile',
   async ({ filters, filtersGenre, inputContact, inputTextArea, user }) => {
-    const response = await fetch(`/users/:${user.id}/userprofile`, {
+    const response = await fetch(`/user/${user.id}/userprofile`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify({ filters, filtersGenre, inputContact, inputTextArea, })
+      body: JSON.stringify({ filters, filtersGenre, inputContact, inputTextArea })
     });
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
     } else {
       const data = await response.json();
-      return data;
+      return data.usersWithExtraStuff;
     }
   }
 );
@@ -87,6 +87,12 @@ const usersSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(updateAsyncUsersList.fulfilled, (state, action) => {
+        state.users = action.payload;
+      })
+      .addCase(updateAsyncUserProfile.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(updateAsyncUserProfile.fulfilled, (state, action) => {
         state.users = action.payload;
       });
   }
