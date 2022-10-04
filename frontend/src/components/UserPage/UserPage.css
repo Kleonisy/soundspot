@@ -1,42 +1,60 @@
-.user-container{
+.user-container {
   padding: 40px;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  height: 80vh;
+  min-height: 78vh;
 }
 
-.left-container{
-  display: grid;
-  grid-template-rows: 1fr 3fr 3fr;
-  /* background-color: antiquewhite; */
+.soundSpot__username-userPage {
+  margin-right: 20px;
+  font-size: 32px;
+  font-weight: 500;
+  height: 100%;
+  align-self: baseline;
 }
 
-.upper-inf-container{
+.rating-box {
   display: flex;
-  justify-content: space-between;
-}
-
-.lower-inf-container{
-  display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: baseline;
+  margin: 0px 0px 60px 0px;
 }
 
 .right-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upper-inf-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 0px 30px 0px;
+}
+.upper-inf-container h5 {
+  font-size: 26px;
+}
+.upper-inf-container p {
+  font-size: 20px;
+}
+
+.lower-inf-container {
+  width: 70%;
+}
+.lower-inf-container h5 {
+  font-size: 26px;
+}
+.lower-inf-container p {
+  font-size: 20px;
 }
 
 .user-inf {
   color: black;
 }
 
-.inf-box {
-
-}
 .user-img-container{
-  /* background-color:aqua; */
   border-radius: 50px;
-  /* background */
+  margin: 0px 0px 30px 0px;
 }
 .user-img {
   width: 200px;
@@ -47,4 +65,25 @@
 .rating-box {
   display: flex;
   justify-content: space-between;
+}
+
+.soundSpot__checkMyDemos {
+  font-size: 20px;
+  font-weight: 500;
+}
+.soundSpot__checkMyDemos {
+  font-size: 20px;
+  font-weight: 500;
+}
+.soundSpot__checkMyDemos_link {
+  color: #BE1111;
+  text-decoration: none;
+}
+.soundSpot__checkMyDemos_link:hover {
+  color: #BE1111;
+  text-decoration: none;
+}
+.soundSpot__checkMyDemos_link:active {
+  color: #BE1111;
+  text-decoration: none;
 }
