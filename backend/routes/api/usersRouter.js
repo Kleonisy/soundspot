@@ -122,7 +122,7 @@ usersRouter.post('/search', async (req, res) => {
   }
   if (orderByName) {
     usersWithExtraStuff = usersWithExtraStuff
-      .sort((user1, user2) => (user1.login > user2.login ? 1 : -1));
+      .sort((user1, user2) => (user2.login > user1.login ? 1 : -1));
   }
   res.json({ usersWithExtraStuff });
 });
