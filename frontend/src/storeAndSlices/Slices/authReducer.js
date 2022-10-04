@@ -16,8 +16,8 @@ const initialState = {
   error: null,
 };
 
-const loadUser = createAsyncThunk(
-  'user/loadUser',
+const loadSessionUser = createAsyncThunk(
+  'auth/loadSessionUser',
   () => fetch('/auth')
     .then((response) => response.json())
     .then((body) => {
@@ -29,7 +29,7 @@ const loadUser = createAsyncThunk(
 );
 
 const loginUser = createAsyncThunk(
-  'user/loginUser',
+  'auth/loginUser',
   (data) => fetch('/auth/login', {
     method: 'post',
     headers: {
@@ -47,7 +47,7 @@ const loginUser = createAsyncThunk(
 );
 
 const logoutUser = createAsyncThunk(
-  'user/logoutUser',
+  'auth/logoutUser',
   () => fetch('/auth/signout', {
     method: 'delete',
   })
@@ -61,7 +61,7 @@ const logoutUser = createAsyncThunk(
 );
 
 const regUser = createAsyncThunk(
-  'user/regUser',
+  'auth/regUser',
   (data) => fetch('/auth/reg', {
     method: 'post',
     headers: {
@@ -88,11 +88,11 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loadUser.rejected, (state, action) => {
+      .addCase(loadSessionUser.rejected, (state, action) => {
         state.error = action.error.message;
         state.hasUser = false;
       })
-      .addCase(loadUser.fulfilled, (state, action) => {
+      .addCase(loadSessionUser.fulfilled, (state, action) => {
         state.hasUser = true;
         state.data = action.payload;
       })
@@ -137,5 +137,5 @@ export const { disableHelpMessage } = authSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadUser, loginUser, logoutUser, regUser
+  loadSessionUser, loginUser, logoutUser, regUser
 };

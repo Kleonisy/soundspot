@@ -11,6 +11,7 @@ const authRouter = require('./routes/api/authRouter');
 const usersRouter = require('./routes/api/usersRouter');
 const bandsRouter = require('./routes/api/bandsRouter');
 const spotsRouter = require('./routes/api/spotsRouter');
+const userRouter = require('./routes/api/userRouter');
 
 const app = express();
 config(app);
@@ -22,6 +23,7 @@ app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/bands', bandsRouter);
 app.use('/spots', spotsRouter);
+app.use('/user', userRouter);
 
 app.listen(PORT, async () => {
   try {

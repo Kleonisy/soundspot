@@ -4,7 +4,7 @@ import './Navigation.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { FiSettings } from 'react-icons/fi';
 import SoundSpotLogo from '../UI/SoundSpotLogo/SoundSpotLogo';
-import { loadUser, logoutUser } from '../../storeAndSlices/Slices/authReducer';
+import { loadSessionUser, logoutUser } from '../../storeAndSlices/Slices/authReducer';
 
 function Navigation() {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function Navigation() {
   const { hasUser } = useSelector((state) => state.authState);
 
   useEffect(() => {
-    dispatch(loadUser());
+    dispatch(loadSessionUser());
   }, []);
 
   const handleClick = (e) => {
