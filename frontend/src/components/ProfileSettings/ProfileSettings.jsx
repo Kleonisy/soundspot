@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProfileSettings.css';
 
 function ProfileSettings() {
-  const { data: user } = useSelector((state) => state.authState);
+  const { data: user, helpMessage} = useSelector((state) => state.authState);
+
 
   const [form, setForm] = useState(false);
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ function ProfileSettings() {
           <button className="prof-settings-button" type="submit">Edit profile</button>
         </form>
         <div className="reg-message">
-          {/* {helpMessage && <div className="help-text">{helpMessage}</div>} */}
+          {helpMessage && <div className="help-text">{helpMessage}</div>}
         </div>
       </div>
 

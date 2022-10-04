@@ -36,9 +36,6 @@ const addRating = createAsyncThunk(
     }),
 );
 
-
-
-
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -57,12 +54,6 @@ const userSlice = createSlice({
       })
       .addCase(loadUser.fulfilled, (state, action) => {
         state.user = action.payload;
-      })
-      .addCase(changeProfile.rejected, (state, action) => {
-        state.helpMessage = action.error.message;
-      })
-      .addCase(changeProfile.fulfilled, (state, action) => {
-        state.data = action.payload;
       });
   },
 });
