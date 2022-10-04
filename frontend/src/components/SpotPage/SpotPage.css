@@ -2,7 +2,7 @@
     min-height: 78vh;
     display: flex;
     flex-direction: row;
-    margin: 0 2vh 0 2vh
+    margin: 0px 50px 20px 50px;
 }
 
 .spot-page-left{
@@ -11,6 +11,19 @@
     flex-direction: column;
     gap: 3vh;
     min-width: 40%;
+}
+
+.spot-name p {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.spot-description-header p {
+  font-size: 28px;
+  font-weight: 500;
+}
+.spot-description p {
+  font-size: 22px;
 }
 
 .spot-page-right{
@@ -32,27 +45,25 @@
 }
 
 .spot-checkout-contact{
-    font-size: 20px;
+    font-size: 22px;
     margin-top: 40px;
-    margin-left: 50px;
 }
 
 .spot-checkout-contact-link{
     color: red;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .spot-checkout-contact-link:hover{
     color: red;
     text-decoration: none;
-    font-size: 20px;
 }
 
 .button-move-back-spots{
     color: red;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 22px;
     text-align: left;
     margin-top: 40px;
 }
@@ -60,7 +71,6 @@
 .button-move-back-spots:hover{
     color: red;
     text-decoration: none;
-    font-size: 20px;
     text-align: left;
     margin-top: 40px;
 }

@@ -20,9 +20,14 @@ function SpotPage() {
   return (
     <div className="spot-page-gallery">
       <div className="spot-page-left">
-        <div className="spot-name"><h2>{spot && spot.name}</h2></div>
-        <div className="spot-description-header"><h4>Description</h4></div>
-        <div className="spot-description">{spot && spot.description}</div>
+        <div className="spot-name"><p>{spot && spot.name}</p></div>
+        <div className="spot-description-header"><p>Description</p></div>
+        <div className="spot-description"><p>{spot && spot.description}</p></div>
+        <div className="spot-checkout-contact">
+          Contact
+          {' '}
+          <a href={`https://${spot && spot.contact}`} target="_blank" rel="noreferrer" className="spot-checkout-contact-link">{spot && spot.contact}</a>
+        </div>
         <Link to="/spots" className="button-move-back-spots" onClick={() => navigate('/spots')}>Move Back</Link>
       </div>
       <div className="spot-page-right">
@@ -43,11 +48,6 @@ function SpotPage() {
                 </Spinner>
               )}
           </Carousel>
-        </div>
-        <div className="spot-checkout-contact">
-          Contact
-          {' '}
-          <a href={`https://${spot && spot.contact}`} target="_blank" rel="noreferrer" className="spot-checkout-contact-link">{spot && spot.contact}</a>
         </div>
       </div>
     </div>
