@@ -2,10 +2,10 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import 'filepond/dist/filepond.min.css';
-import UploadMusic from '../UploadMusic/UploadMusic';
+import { useSelector } from 'react-redux';
 
 function AddMusicModal({ show, setShow }) {
+  const { user } = useSelector((state) => state.authState);
   return (
     <Modal
       show={show}
@@ -16,31 +16,16 @@ function AddMusicModal({ show, setShow }) {
         <Modal.Title>Add music</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Song title</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="title..."
-              autoFocus
-            />
+        <form action={`/user/${user && user.id}/music`} onSubmit={() => {}} encType="multipart/form-data" method="POST">
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Label>Choose file for upload</Form.Label>
+            <Form.Control type="file" name="song" />
           </Form.Group>
-          <Form.Group
-            className="mb-3"
-            controlId="exampleForm.ControlTextarea1"
-          >
-            <UploadMusic />
-          </Form.Group>
-        </Form>
+          <Button variant="danger" style={{ backgroundColor: '#BE1111' }} type="submit">
+            Add demo
+          </Button>
+        </form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="dark" onClick={() => setShow(false)}>
-          Close
-        </Button>
-        <Button variant="danger">
-          Save Changes
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 }
