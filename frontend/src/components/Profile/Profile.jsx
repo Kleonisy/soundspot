@@ -56,8 +56,10 @@ function Profile() {
             </p>
           </div>
           <div className="inf-box">
-            <h5>My Bands</h5>
-            <img src={plus} onClick={() => setModalBand(true)} alt="1" />
+            <h5>
+              My Bands
+              <img src={plus} onClick={() => setModalBand(true)} alt="1" />
+            </h5>
             {modalBand && <CreateBand onHide={() => setModalBand(false)} />}
             <p className="profile-inf">
               {user.UserBands
