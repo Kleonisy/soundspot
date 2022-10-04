@@ -141,8 +141,8 @@ userRouter.put('/:id/rating', async (req, res) => {
 });
 
 userRouter.post('/:id/music', async (req, res) => {
-  //для музыки
-}
+  // для музыки
+})
 
 userRouter.put('/:userid/userprofile', async (req, res) => {
   const { userid } = req.params;
