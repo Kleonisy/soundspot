@@ -87,7 +87,7 @@ function ArtistPageSearch() {
   useEffect(() => () => dispatch(loadAsyncUsers()), [location]);
 
   return (
-    <div>
+    <div className="soundSpot__artistSearch-container">
       <InputGroup className="mb-3">
         <Form.Control onChange={handleSearchInput} value={inputText} aria-label="Text input with dropdown button" placeholder="Search..." />
 
