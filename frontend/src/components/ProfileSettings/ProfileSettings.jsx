@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import './ProfileSettings.css';
 
 function ProfileSettings() {
   const { data: user } = useSelector((state) => state.authState);
+
   const [form, setForm] = useState(false);
+  const dispatch = useDispatch();
   // const navigate = useNavigate();
+
+  function changeSubmit(event) {
+    event.preventDefault();
+    const changeData = {
+      id: user.id,
+      login: event.target.changeLogin.value,
+      email: event.target.changeEmail.value,
+      password: event.target.changePassword.value,
+    };
+   dispatch(changeProfile(changeData));
+  }
 
   //   useEffect(() => {
   //     if (!hasUser) {
@@ -14,15 +27,21 @@ function ProfileSettings() {
   //     }
   //   }, [hasUser, navigate]);
   return (
+
     <div className="profile-settings-gallery">
-      <form className="profile-settings">
-        <div className="prof-set-inputs">
-          <input className="prof-settings-input" type="text" name="regLogin" placeholder="login" autoComplete="off" />
-          <input className="prof-settings-input" type="email" name="regEmail" placeholder="email" autoComplete="off" />
-          <input className="prof-settings-input" type="password" name="regPassword" placeholder="password" autoComplete="off" />
+      <div className="profile-settings">
+        <form onSubmit={changeSubmit}>
+          <div className="prof-set-inputs">
+            <input className="prof-settings-input" type="text" name="changeLogin" placeholder="login" autoComplete="off" value={user.login} />
+            <input className="prof-settings-input" type="email" name="changeEmail" placeholder="email" autoComplete="off" value={user.email} />
+            <input className="prof-settings-input" type="password" name="changePassword" placeholder="change password" autoComplete="off" />
+          </div>
+          <button className="prof-settings-button" type="submit">Edit profile</button>
+        </form>
+        <div className="reg-message">
+          {/* {helpMessage && <div className="help-text">{helpMessage}</div>} */}
         </div>
-        <button className="prof-settings-button" type="submit">Edit profile</button>
-      </form>
+      </div>
 
       <div className="change-location">
         <img src="http://www.hellopiter.ru/image/ssdhhhsjasdq.jpg" alt="1" width={350} height={400} />

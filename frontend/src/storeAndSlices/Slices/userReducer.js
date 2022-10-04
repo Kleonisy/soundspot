@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
   user: null,
   error: null,
+  helpMessage: null,
 };
 
 const loadUser = createAsyncThunk(
@@ -35,6 +36,9 @@ const addRating = createAsyncThunk(
     }),
 );
 
+
+
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -53,6 +57,12 @@ const userSlice = createSlice({
       })
       .addCase(loadUser.fulfilled, (state, action) => {
         state.user = action.payload;
+      })
+      .addCase(changeProfile.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(changeProfile.fulfilled, (state, action) => {
+        state.data = action.payload;
       });
   },
 });
@@ -60,5 +70,5 @@ const userSlice = createSlice({
 export default userSlice.reducer;
 
 export {
-  addRating, loadUser,
+  addRating, loadUser, changeProfile
 };
