@@ -102,4 +102,7 @@ userRouter.put('/:id/rating', async (req, res) => {
   }
 });
 
+userRouter.post('/:id/music', async (req, res) => {
+});
+
 module.exports = userRouter;
