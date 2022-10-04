@@ -104,7 +104,7 @@ function UserEditProfile({ onHide }) {
         )}
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleUserEditSubmit}>Submit changes</Button>
+        <Button className="soundSpot__editProfile_submitButton" onClick={handleUserEditSubmit}>Submit changes</Button>
       </Modal.Footer>
     </Modal>
   );
