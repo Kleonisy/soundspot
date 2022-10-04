@@ -31,7 +31,7 @@ function BandPageSearch() {
   };
 
   const handleSearchInput = (e) => {
-    const input = e.target.value.trim();
+    const input = e.target.value;
     setInputText(input);
   };
 
@@ -87,37 +87,34 @@ function BandPageSearch() {
         <div className="artistsList">
           {bands
             ? bands.map((band) => (
-              <>
-                <div key={band.id} className="stringOnSearchPage" onClick={() => navigate(`/bands/${band.id}`)}>
-                  <Image roundedCircle className="d-block w-100 searchImage" src={band.photo} alt={band.name} />
-                  <div className="bandinfoOnSearchPage">
-                    <div className="bandinfoTop">
-                      {inputText
-                    && (
-                    <p>
-                      {' '}
-                      {highLight(inputText, band.name)}
-                    </p>
-                    )}
-                      {!inputText && (
+              <div key={band.id} className="stringOnSearchPage" onClick={() => navigate(`/bands/${band.id}`)}>
+                <Image roundedCircle className="d-block w-100 searchImage" src={band.photo} alt={band.name} />
+                <div className="bandinfoOnSearchPage">
+                  <div className="bandinfoTop">
+                    {inputText
+                      && (
+                        <p>
+                          {' '}
+                          {highLight(inputText, band.name)}
+                        </p>
+                      )}
+                    {!inputText && (
                       <p>
                         {' '}
                         {band.name}
                       </p>
-                      )}
-                    </div>
-                    <div className="bandinfoBottom">
-                      {band.extraStuff.hisGenres.length ? (
-                        <p>
-                          {' '}
-                          {band.extraStuff.hisGenres.join(', ')}
-                        </p>
-                      ) : ' '}
-                    </div>
+                    )}
+                  </div>
+                  <div className="bandinfoBottom">
+                    {band.extraStuff.hisGenres.length ? (
+                      <p>
+                        {' '}
+                        {band.extraStuff.hisGenres.join(', ')}
+                      </p>
+                    ) : ' '}
                   </div>
                 </div>
-                <br />
-              </>
+              </div>
             ))
             : (
               <Spinner animation="border" role="status">

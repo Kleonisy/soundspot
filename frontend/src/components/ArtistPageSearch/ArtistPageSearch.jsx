@@ -39,7 +39,7 @@ function ArtistPageSearch() {
   };
 
   const handleSearchInput = (e) => {
-    const input = e.target.value.trim();
+    const input = e.target.value;
     setInputText(input);
   };
 
@@ -105,51 +105,51 @@ function ArtistPageSearch() {
         <div className="artistsList">
           {users
             ? users.map((user) => (
-              <>
-                <div key={user.id} className="stringOnSearchPage" onClick={() => navigate(`/artists/${user.id}`)}>
-                  <Image roundedCircle className="d-block w-100 searchImage" src={user.photo} alt={user.email} />
-                  <div className="userinfoOnSearchPage">
-                    <div className="userinfoTop">
-                      {inputText
-                    && (
-                    <pre>
+              <div key={user.id} className="stringOnSearchPage" onClick={() => navigate(`/artists/${user.id}`)}>
+                <Image roundedCircle className="d-block w-100 searchImage" src={user.photo} alt={user.email} />
+                <div className="userinfoOnSearchPage">
+                  <div className="userinfoTop">
+                    {inputText
+                  && (
+                  <p className="soundSpot__username">
+                    {' '}
+                    {highLight(inputText, user.login)}
+                  </p>
+                  )}
+                    {!inputText && (
+                    <p className="soundSpot__username">
                       {' '}
-                      {highLight(inputText, user.login)}
-                    </pre>
+                      {user.login}
+                    </p>
                     )}
-                      {!inputText && (
-                      <pre>
-                        {' '}
-                        {user.login}
-                      </pre>
-                      )}
-                      {user.extraStuff.hisInstruments.length && (
-                      <pre>
-                        {' ('}
-                        {user.extraStuff.hisInstruments.join(', ')}
-                        {') '}
-                      </pre>
-                      )}
-                    </div>
-                    <div className="userinfoBottom">
-                      {user.extraStuff.hisGenres.length ? (
-                        <pre>
-                          {user.extraStuff.hisGenres.join(', ')}
-                        </pre>
-                      ) : ' '}
-                      {user.extraStuff.averageRating && (
-                      <pre>
-                        {'rating: '}
-                        {+(user.extraStuff.averageRating).toFixed(2)}
-                        {' / '}
-                        {user.extraStuff.numberOfVoters}
-                      </pre>
-                      )}
-                    </div>
+                    {user.extraStuff.hisInstruments.length && (
+                    <p>
+                      {' Instruments: '}
+                      {user.extraStuff.hisInstruments.join(', ')}
+                    </p>
+                    )}
+                  </div>
+                  <div className="userinfoBottom">
+                    {user.extraStuff.averageRating && (
+                    <p>
+                      {'Rating: '}
+                      {+(user.extraStuff.averageRating).toFixed(2)}
+                      {' ('}
+                      {user.extraStuff.numberOfVoters}
+                      {user.extraStuff.numberOfVoters > 1
+                        ? (<span>{' rates)'}</span>
+                        ) : (<span>{' rate)'}</span>)}
+                    </p>
+                    )}
+                    {user.extraStuff.hisGenres.length ? (
+                      <p>
+                        {'Genres: '}
+                        {user.extraStuff.hisGenres.join(', ')}
+                      </p>
+                    ) : ' '}
                   </div>
                 </div>
-                <br />
-              </>
+              </div>
             ))
             : (
               <Spinner animation="border" role="status">
@@ -157,7 +157,7 @@ function ArtistPageSearch() {
               </Spinner>
             )}
         </div>
-        <div className="tagsContainer">
+        <div className="soundSpot_tagsContainer">
           <div className="instrumentsTags">
             {instruments
               ? instruments.map((instrument) =>
