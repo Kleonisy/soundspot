@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import './ProfileSettings.css';
 import { changeProfile, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
+import ChangeUserPhoto from '../ChangeUserPhoto/ChangeUserPhoto';
 
 function ProfileSettings() {
   const { data: user, helpMessage, hasUser } = useSelector((state) => state.authState);
 
-  const [form, setForm] = useState(false);
+  const [show, setShow] = useState(false);
   const [login, setLogin] = useState('');
   const [email, setEmail] = useState('');
 
@@ -32,6 +33,7 @@ function ProfileSettings() {
       setEmail(user.email);
     }
   }, [hasUser]);
+
   //   useEffect(() => {
   //     if (!hasUser) {
   //       navigate('/home');
@@ -64,15 +66,8 @@ function ProfileSettings() {
             <img className="user-img-change" src={user.photo} alt={user.login} />
           </div>
         )}
-        <button className="edit-photo-button" type="button" onClick={() => setForm(!form)}>Edit photo</button>
-        {form && (
-          <div>
-            <form className="update-photo-form">
-              <input type="text" name="updatephoto" className="upd-photo-input" placeholder="add photo here" autoComplete="off" />
-              <button type="submit">Update photo</button>
-            </form>
-          </div>
-        )}
+        <button className="edit-photo-button" type="button" onClick={() => setShow(true)}>Edit photo</button>
+        {show && <ChangeUserPhoto show={show} setShow={setShow} />}
       </div>
     </div>
   );
