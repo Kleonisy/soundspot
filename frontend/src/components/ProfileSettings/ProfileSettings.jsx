@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import './ProfileSettings.css';
 import { changeProfile, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
 import ChangeUserPhoto from '../ChangeUserPhoto/ChangeUserPhoto';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Dragger from '../Dragger/Dragger';
 
 function ProfileSettings() {
@@ -14,7 +14,6 @@ function ProfileSettings() {
   const [email, setEmail] = useState('');
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   function changeSubmit(event) {
     event.preventDefault();
@@ -35,6 +34,10 @@ function ProfileSettings() {
     }
   }, [hasUser]);
 
+  if (!hasUser) {
+    return <NotFoundPage />;
+  }
+  
   return (
 
     <div className="profile-settings-gallery">
