@@ -234,4 +234,20 @@ userRouter.put('/:userid/userprofile', async (req, res) => {
   }
 });
 
+userRouter.delete('/:id/music', async (req, res) => {
+  const { demo } = req.body;
+  try {
+    const userDemo = await UserDemo.findOne({ where: { id: demo.id } });
+    // не удаляет !
+    await fs.unlink(path.resolve('mediastorage', userDemo.demoFile));
+    const deleteDemo = await UserDemo.destroy({ where: { id: demo.id } });
+
+    if (deleteDemo === 1) {
+      res.json({ success: true });
+    }
+  } catch (error) {
+    res.json(error.message);
+  }
+});
+
 module.exports = userRouter;
