@@ -78,6 +78,24 @@ const regUser = createAsyncThunk(
     }),
 );
 
+const changeProfile = createAsyncThunk(
+  'user/changeProfile',
+  (data) => fetch(`/user/${data.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body;
+    }),
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -125,6 +143,13 @@ const authSlice = createSlice({
       .addCase(regUser.fulfilled, (state, action) => {
         state.hasUser = true;
         state.data = action.payload;
+      })
+      .addCase(changeProfile.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(changeProfile.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.helpMessage = null;
       });
   },
 });
@@ -137,5 +162,5 @@ export const { disableHelpMessage } = authSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadSessionUser, loginUser, logoutUser, regUser
+  loadSessionUser, loginUser, logoutUser, regUser, changeProfile
 };

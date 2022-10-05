@@ -5,11 +5,11 @@ function Footer() {
   return (
     <div className="soundSpot__footer">
       <div className="soundSpot__footer left">
-        <li className="soundSpot__footer soundSpot__footer_ul">
+        <div className="soundSpot__footer soundSpot__footer_ul">
           <li className="soundSpot__footer soundSpot__footer_li">About Us</li>
           <li className="soundSpot__footer soundSpot__footer_li">Developers</li>
           <li className="soundSpot__footer soundSpot__footer_li">Contacts</li>
-        </li>
+        </div>
       </div>
       <div className="soundSpot__footer right">
         Saint-Petersburg, 2022 ©

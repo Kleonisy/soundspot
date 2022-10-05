@@ -40,6 +40,7 @@ function UserEditProfile({ onHide }) {
     setInputTextArea(user.about);
     setInputContact(user.contact);
     if (user) {
+      console.log(users);
       const thisUser = users.find((el) => el.id === user.id);
       let instrArr = Array.from({ length: instruments.length });
       let genreArr = Array.from({ length: genres.length });
@@ -48,7 +49,7 @@ function UserEditProfile({ onHide }) {
       setFiltersGenre(genreArr);
       setFilters(instrArr);
     }
-  }, [user]);
+  }, [users]);
 
   useEffect(() => {
     document.querySelectorAll('.instrumentFilter').forEach((btn, i) => filters[i]

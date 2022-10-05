@@ -3,6 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
   user: null,
   error: null,
+  helpMessage: null,
+  delMusicStatus: false,
 };
 
 const loadUser = createAsyncThunk(
@@ -35,6 +37,24 @@ const addRating = createAsyncThunk(
     }),
 );
 
+const deleteMusic = createAsyncThunk(
+  'user/deleteDemo',
+  (data) => fetch(`/user/${data.id}/music`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.success;
+    }),
+);
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -53,6 +73,12 @@ const userSlice = createSlice({
       })
       .addCase(loadUser.fulfilled, (state, action) => {
         state.user = action.payload;
+      })
+      .addCase(deleteMusic.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(deleteMusic.fulfilled, (state, action) => {
+        state.delMusicStatus = action.payload;
       });
   },
 });
@@ -60,5 +86,5 @@ const userSlice = createSlice({
 export default userSlice.reducer;
 
 export {
-  addRating, loadUser,
+  addRating, loadUser, deleteMusic,
 };

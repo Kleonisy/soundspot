@@ -15,7 +15,7 @@ import BandPageSearch from '../BandPageSearch/BandPageSearch';
 import { loadSessionUser } from '../../storeAndSlices/Slices/authReducer';
 import SpotsSearchPage from '../SpotsSearchPage/SpotsSearchPage';
 import BandPage from '../BandPage/BandPage';
-import UserDemo from '../UserDemo/UserDemo';
+import Demos from '../Demos/Demos';
 import Profile from '../Profile/Profile';
 import ProfileSettings from '../ProfileSettings/ProfileSettings';
 import Music from '../Music/Music';
@@ -46,7 +46,8 @@ function App() {
           <Route path="/profilesettings" element={<ProfileSettings />} />
           <Route path="/bands/:id/" element={<BandPage />} />
           <Route path="/artists/:id/" element={<UserPage />} />
-          <Route path="/artists/:id/music" element={<UserDemo />} />
+          <Route path="/artists/:id/music" element={<Demos />} />
+          <Route path="/bands/:id/music" element={<Demos />} />
           <Route path="/music" element={<Music />} />
           <Route path="/spots/:id/" element={<SpotPage />} />
         </Route>

@@ -13,7 +13,6 @@ function BandPage() {
   useEffect(() => {
     dispatch(loadAsyncBand(Number(id)));
   }, []);
-
   return (
     <div className="band-page-gallery">
       <div className="band-page-left">
@@ -29,6 +28,10 @@ function BandPage() {
           <div className="band-members">
             <p>Members:</p>
             { band && band.UserBands.map((el) => <p className="users-band" key={el.id}>{el.User.login}</p>)}
+          </div>
+          <div className="band-page-genres">
+            <h3>Genres:</h3>
+            {band && band.BandGenres.map((el) => <p className="users-band" key={el.id}>{el.Genre.genre}</p>)}
           </div>
           <div className="band-checkout-demos">
             Checkout our demos
