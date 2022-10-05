@@ -4,9 +4,29 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs').promises;
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, 'mediastorage/');
+  },
+
+  filename(req, file, cb) {
+    cb(
+      null,
+      `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`,
+    );
+  },
+});
+
+const upload = multer({ storage }).fields([{ name: 'song' }]);
+const uploadPhoto = multer({ storage }).fields([{ name: 'photo' }]);
+
 const userRouter = express.Router();
 const {
-  User, UserInstrument, UserGenre, UserBand, Rating, Instrument, Genre,
+  User, UserInstrument, UserGenre, UserBand, Rating, Instrument, Genre, UserDemo,
 } = require('../../db/models');
 
 userRouter.get('/:id', async (req, res) => {
@@ -140,9 +160,23 @@ userRouter.put('/:id/rating', async (req, res) => {
   }
 });
 
-userRouter.post('/:id/music', async (req, res) => {
-  // для музыки
-})
+userRouter.post('/:id/music', upload, async (req, res) => {
+  if (req.files) {
+    const { filename } = req.files.song[0];
+    await UserDemo.create({ userId: req.session.userId, demoFile: filename });
+  }
+  res.redirect('/music');
+});
+
+userRouter.post('/:id/photo', uploadPhoto, async (req, res) => {
+  if (req.files) {
+    const { filename } = req.files.photo[0];
+    const thisUser = await User.findOne({ where: { id: req.session.userId } });
+    await fs.unlink(path.resolve('mediastorage', thisUser.photo));
+    await thisUser.update({ photo: filename });
+  }
+  res.redirect('/profilesettings');
+});
 
 userRouter.put('/:userid/userprofile', async (req, res) => {
   const { userid } = req.params;
@@ -195,6 +229,22 @@ userRouter.put('/:userid/userprofile', async (req, res) => {
       };
     }));
     res.json({ usersWithExtraStuff });
+  } catch (error) {
+    res.json(error.message);
+  }
+});
+
+userRouter.delete('/:id/music', async (req, res) => {
+  const { demo } = req.body;
+  try {
+    const userDemo = await UserDemo.findOne({ where: { id: demo.id } });
+    // не удаляет !
+    await fs.unlink(path.resolve('mediastorage', userDemo.demoFile));
+    const deleteDemo = await UserDemo.destroy({ where: { id: demo.id } });
+
+    if (deleteDemo === 1) {
+      res.json({ success: true });
+    }
   } catch (error) {
     res.json(error.message);
   }

@@ -28,7 +28,7 @@ function UploadMusic() {
         });
       }}
       allowMultiple
-      maxFiles={10}
+      maxFiles={1}
       oninit={() => handleInit}
       server={`/user/${user && user.id}/music`}
       name="files"
