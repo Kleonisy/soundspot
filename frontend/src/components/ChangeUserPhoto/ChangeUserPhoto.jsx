@@ -1,9 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 
 function ChangeUserPhoto({ show, setShow }) {
-  // const { data: user } = useSelector((state) => state.authState);
+  const { data: user } = useSelector((state) => state.authState);
   return (
     <Modal
       show={show}
@@ -14,13 +16,16 @@ function ChangeUserPhoto({ show, setShow }) {
         <Modal.Title>Change photo</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* <input type="text" /> */}
+        <form action={`/user/${user.id}/photo`} onSubmit={() => {}} encType="multipart/form-data" method="POST">
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Label>Choose file for upload</Form.Label>
+            <Form.Control type="file" name="photo" />
+          </Form.Group>
+          <Button variant="danger" style={{ backgroundColor: '#BE1111' }} type="submit">
+            Change photo
+          </Button>
+        </form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="danger">
-          Save Changes
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 }

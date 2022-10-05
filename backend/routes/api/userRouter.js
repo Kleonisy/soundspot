@@ -22,6 +22,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage }).fields([{ name: 'song' }]);
+const uploadPhoto = multer({ storage }).fields([{ name: 'photo' }]);
 
 const userRouter = express.Router();
 const {
@@ -165,6 +166,16 @@ userRouter.post('/:id/music', upload, async (req, res) => {
     await UserDemo.create({ userId: req.session.userId, demoFile: filename });
   }
   res.redirect('/music');
+});
+
+userRouter.post('/:id/photo', uploadPhoto, async (req, res) => {
+  if (req.files) {
+    const { filename } = req.files.photo[0];
+    const thisUser = await User.findOne({ where: { id: req.session.userId } });
+    await fs.unlink(path.resolve('mediastorage', thisUser.photo));
+    await thisUser.update({ photo: filename });
+  }
+  res.redirect('/profilesettings');
 });
 
 userRouter.put('/:userid/userprofile', async (req, res) => {
