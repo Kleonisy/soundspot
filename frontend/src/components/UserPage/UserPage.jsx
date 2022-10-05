@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import { loadUser } from '../../storeAndSlices/Slices/userReducer';
 import Rating from '../UI/Rating/Rating';
 import './UserPage.css';
@@ -10,7 +12,7 @@ function UserPage() {
 
   const dispatch = useDispatch();
   const { id } = useParams();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // <button className="back-button" type="button" onClick={() => navigate(-1)}>Move Back</button>
 
   useEffect(() => {
@@ -27,6 +29,7 @@ function UserPage() {
           <div className="soundSpot_rating-container">
             <Rating user={user} />
           </div>
+          <div className="button-move-back-users" onClick={() => navigate(-1)}>Move Back</div>
         </div>
         <div className="soundSpot_userInfo-container">
           <div className="upper-inf-container">
@@ -57,7 +60,7 @@ function UserPage() {
             <div className="inf-box">
               <h5>Contact me:</h5>
               <p className="user-inf">
-                {user && user.contact}
+                <a href={`https://${user && user.contact}`} target="_blank" rel="noreferrer" className="user-checkout-contact-link">{user && user.contact}</a>
               </p>
             </div>
           </div>

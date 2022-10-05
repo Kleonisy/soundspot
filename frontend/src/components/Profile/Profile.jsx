@@ -60,7 +60,11 @@ function Profile() {
               </p>
             </div>
             <div className="inf-box">
-              <h5>My Bands</h5>
+              <h5>
+                My Bands
+                <img className="plus-button" src={plus} onClick={() => setModalBand(true)} alt="1" />
+              </h5>
+              {modalBand && <CreateBand onHide={() => setModalBand(false)} />}
               <p className="profile-inf">
                 {user.UserBands
                   && user.UserBands.length > 0
@@ -73,32 +77,6 @@ function Profile() {
                 <a href={`https://${hasUser && user.contact}`} target="_blank" rel="noreferrer" className="user-checkout-contact-link">{hasUser && user.contact}</a>
               </p>
             </div>
-          </div>
-          <div className="inf-box">
-            <h5>My Instruments</h5>
-            <p className="profile-inf">
-              {hasUser
-                && user.UserInstruments.length > 0
-                && user.UserInstruments.map((data) => <p className="profile-inf" key={data.id}>{data.Instrument.instrument}</p>)}
-            </p>
-          </div>
-          <div className="inf-box">
-            <h5>
-              My Bands
-              <img src={plus} onClick={() => setModalBand(true)} alt="1" />
-            </h5>
-            {modalBand && <CreateBand onHide={() => setModalBand(false)} />}
-            <p className="profile-inf">
-              {user.UserBands
-                && user.UserBands.length > 0
-                && user.UserBands.map((data) => <p className="profile-inf" key={data.id}>{data.Band.name}</p>)}
-            </p>
-          </div>
-          <div className="inf-box">
-            <h5>Contact me:</h5>
-            <p className="profile-inf">
-              {hasUser && user.contact}
-            </p>
           </div>
         </div>
         <div className="lower-inf-box">

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -25,13 +27,17 @@ function BandPage() {
           <div className="band-about">{band && band.about}</div>
         </div>
         <div className="additionalBandInfo_container">
+          <div className="band-page-genres">
+            <p>Genres:</p>
+            {band && band.BandGenres.map((el) => <p className="users-band" key={el.id}>{el.Genre.genre}</p>)}
+          </div>
           <div className="band-members">
             <p>Members:</p>
-            { band && band.UserBands.map((el) => <p className="users-band" key={el.id}>{el.User.login}</p>)}
-          </div>
-          <div className="band-page-genres">
-            <h3>Genres:</h3>
-            {band && band.BandGenres.map((el) => <p className="users-band" key={el.id}>{el.Genre.genre}</p>)}
+            {band && band.UserBands.map((el) => (
+              <p className="users-band" key={el.id} onClick={() => navigate(`/artists/${el.id}`)}>
+                {el.User.login}
+              </p>
+            ))}
           </div>
           <div className="band-checkout-demos">
             Checkout our demos

@@ -64,32 +64,38 @@
 }
 
 .band-checkout-demos-link{
-    color: red;
+    color: #BE1111;
     text-decoration: none;
     font-size: 22px;
 }
 
 .band-checkout-demos-link:hover{
-    color: red;
+    color: #BE1111;
     text-decoration: none;
 }
 
 .button-move-back{
-    color: red;
+    color: #BE1111;
     text-decoration: none;
     font-size: 22px;
     text-align: left;
 }
 
 .button-move-back:hover{
-    color: red;
+    color: #BE1111;
     text-decoration: none;
     text-align: left;
     margin-top: 40px;
 }
 
-.band-page-genres{
-    margin-bottom: 20px;
+.band-page-genres p{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.band-page-genres p.users-band {
+    font-size: 22px;
+    font-weight: 400;
 }
 
 
