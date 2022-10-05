@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import playerIkon from './player.svg';
+import stopIkon from './stop.svg';
 import delIkon from './delete-ikon.svg';
 import './Demo.css';
 import { deleteMusic } from '../../storeAndSlices/Slices/userReducer';
@@ -11,11 +12,17 @@ import ConfirmModal from '../ConfirmModal/ConfirmModal';
 
 function Demo({ demo, owner, setPlayer, setSong }) {
   const { data: user } = useSelector((state) => state.authState);
+  const [playable, setPlayable] = useState(playerIkon);
   const [show, setShow] = useState(false);
 
   const playSong = () => {
     setPlayer((prev) => !prev);
     setSong(demo.demoFile);
+    if (playable === playerIkon) {
+      setPlayable(stopIkon);
+    } else {
+      setPlayable(playerIkon);
+    }
   };
 
   const { pathname } = useLocation();
