@@ -37,7 +37,7 @@ function ProfileSettings() {
   if (!hasUser) {
     return <NotFoundPage />;
   }
-  
+
   return (
 
     <div className="profile-settings-gallery">
