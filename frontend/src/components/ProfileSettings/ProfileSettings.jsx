@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProfileSettings.css';
 import { changeProfile, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
 import ChangeUserPhoto from '../ChangeUserPhoto/ChangeUserPhoto';
+import Dragger from '../Dragger/Dragger';
 
 function ProfileSettings() {
   const { data: user, helpMessage, hasUser } = useSelector((state) => state.authState);
@@ -34,11 +35,6 @@ function ProfileSettings() {
     }
   }, [hasUser]);
 
-  //   useEffect(() => {
-  //     if (!hasUser) {
-  //       navigate('/home');
-  //     }
-  //   }, [hasUser, navigate]);
   return (
 
     <div className="profile-settings-gallery">
@@ -58,7 +54,8 @@ function ProfileSettings() {
       </div>
 
       <div className="change-location">
-        <img src="http://www.hellopiter.ru/image/ssdhhhsjasdq.jpg" alt="1" width={350} height={400} />
+        {/* <img src="http://www.hellopiter.ru/image/ssdhhhsjasdq.jpg" alt="1" width={350} height={400} /> */}
+        {user.id && <Dragger user={user} />}
       </div>
       <div className="editphoto">
         {user && (
