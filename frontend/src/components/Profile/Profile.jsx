@@ -70,7 +70,7 @@ function Profile() {
             <div className="inf-box">
               <h5>Contact me:</h5>
               <p className="profile-inf">
-                {hasUser && user.contact}
+                <a href={`https://${hasUser && user.contact}`} target="_blank" rel="noreferrer" className="user-checkout-contact-link">{hasUser && user.contact}</a>
               </p>
             </div>
           </div>
