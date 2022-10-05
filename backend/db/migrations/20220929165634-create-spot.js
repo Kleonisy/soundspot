@@ -24,6 +24,10 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      address: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       contact: {
         type: Sequelize.TEXT,
       },

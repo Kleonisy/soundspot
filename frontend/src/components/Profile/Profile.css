@@ -5,20 +5,80 @@
   min-height: 78vh;
 }
 
+.name-rating-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  margin: 0px 0px 60px 0px;
+}
+
+.soundSpot_rating-container {
+  display: flex;
+  flex: 4;
+}
+.soundSpot_rating-container ul {
+  display: flex;
+}
+.soundSpot_rating-container ul li {
+  align-items: center;
+}
+.soundSpot_profile-about {
+  width: 70%;
+}
+
 .left-prof-box{
-  display: grid;
-  grid-template-rows: 1fr 1fr 3fr;
+  display: flex;
+  flex-direction: column;
+}
+.left-prof-box .name-rating-box .soundSpot__username {
+  flex: 1;
+  font-size: 32px;
+  font-weight: 500;
+  height: 100%;
+  align-self: baseline;
+}
+.left-prof-box .name-rating-box .soundSpot_rating-container {
+  flex: 3;
+  font-size: 32px;
+  align-self: center;
+}
+.soundSpot__editProfileTag {
+  font-size: 20px;
+  color: #BE1111;
+  font-weight: 400;
+  align-self: baseline;
+}
+
+/* нужно различие для своего профиля и для профиля другого человека */
+/* .react-star-rate__star__first.go79043580 {
+  cursor: default;
+}
+.react-star-rate__star__second.go4038925149.go4038925149 {
+  cursor: default;
+} */
+
+.soundSpot_rating-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .upper-inf-box{
   display: flex;
   justify-content: space-between;
-  height: fit-content;
+  margin: 0px 0px 30px 0px;
+}
+.upper-inf-box h5{
+  font-size: 26px;
+}
+.upper-inf-box p{
+  font-size: 20px;
 }
 
-.lower-inf-box{
-  display: flex;
-  justify-content: space-between;
+.lower-inf-box h5{
+  font-size: 26px;
+}
+.lower-inf-box p{
+  font-size: 20px;
 }
 
 .right-box {
@@ -30,39 +90,11 @@
   color: black;
 }
 
-.profile-img-bo{
-  border-radius: 50px;
-}
 .user-img {
-  width: 200px;
-  height:200px;
+  width: 250px;
+  height:250px;
   object-fit: cover;
   border-radius: 150px;
-}
-
-.name-rating-box{
-  display: flex;
-  flex-direction: row;
-  margin: 0px 0px 30px 0px;
-}
-.name-rating-box h2{
-  flex: 1;
-  margin-bottom: 20px;
-}
-.soundSpot_rating-container {
-  display: flex;
-  flex: 4;
-}
-
-.soundSpot_rating-container ul {
-  display: flex;
-}
-.soundSpot_rating-container ul li {
-  align-items: center;
-}
-.soundSpot_progile-about {
-  width: 50%;
-}
 
 .modal-click-img{
   float: right;

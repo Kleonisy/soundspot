@@ -1,12 +1,14 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import './SpotsSearchPage.css';
 
 function SpotsSearchPage() {
   const { spots } = useSelector((store) => store.spotsState);
   const user = useSelector((store) => store.authState.data);
-  console.log(user, 'user');
-  console.log(spots, 'spots');
+  const navigate = useNavigate();
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const options = [
     {
@@ -26,14 +28,13 @@ function SpotsSearchPage() {
       // eslint-disable-next-line no-else-return
     } else if (filter.sort && filter.sort === 'distance') {
       const spotsWithCoords = [...spots].map((spot) => (
-        { ...spot,
+        {
+          ...spot,
           distance: (() =>
             Math.sqrt((user.latitude - spot.dataValues.latitude) ** 2
-            + (user.longitude - spot.dataValues.longitude) ** 2))(),
+              + (user.longitude - spot.dataValues.longitude) ** 2))(),
         }
       ));
-      console.log(spotsWithCoords, 'spots with coords');
-      console.log(filter.sort, 'filter sort');
       return [...spotsWithCoords]
         .sort((a, b) => a[filter.sort] - b[filter.sort]);
     }
@@ -99,30 +100,39 @@ function SpotsSearchPage() {
 
   return (
     <div className="soundSpot__spotsSearch-container">
-      <input value={filter.query} onChange={(event) => setFilter({ ...filter, query: event.target.value })} placeholder="Search..." />
-      <select
-        value={filter.sort}
-        onChange={(event) => setFilter({ ...filter, sort: event.target.value })}
-      >
-        <option
-          disabled
-          value=""
+      <div className="soundSpot_spotsSearch-input-sort-container">
+        <input value={filter.query} onChange={(event) => setFilter({ ...filter, query: event.target.value })} placeholder="Search..." />
+        <select
+          value={filter.sort}
+          onChange={(event) => setFilter({ ...filter, sort: event.target.value })}
         >
-          Sort
-        </option>
-        {
-          options.map((option) =>
-            (
-              <option key={option.value} value={option.value}>
-                {option.name}
-              </option>
-            ))
-        }
-      </select>
+          <option
+            disabled
+            value=""
+          >
+            Sort by...
+          </option>
+          {
+            options.map((option) =>
+              (
+                <option key={option.value} value={option.value}>
+                  {option.name}
+                </option>
+              ))
+          }
+        </select>
+      </div>
       <div className="soundSpot__spotsSearch_content-container">
         <div className="soundSpot__spotsSearch_results-container">
           {
-            sortedAndSearchedPosts.map((spot) => <div key={spot.id}>{spot.name}</div>)
+            sortedAndSearchedPosts.map((spot) => (
+              <div key={spot.id} onClick={() => navigate(`/spots/${spot.dataValues.id}`)} className="soundSpot__spotRow">
+                <div className="soundSpot__spotRow-title">{spot.name}</div>
+                <div className="soundSpot__spotRow-description">
+                  {spot.dataValues.address}
+                </div>
+              </div>
+            ))
           }
         </div>
         <div className="soundSpot__spotsSearch_yandex-container">
