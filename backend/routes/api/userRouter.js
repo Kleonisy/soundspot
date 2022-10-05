@@ -96,6 +96,18 @@ userRouter.put('/:id', async (req, res) => {
   }
 });
 
+userRouter.put('/:id/changeLocation', async (req, res) => {
+  try {
+    const { geolocation } = req.body;
+    const { userId } = req.session;
+    const user = await User.findOne({ where: { id: userId } });
+    await user.update({ latitude: geolocation[0], longitude: geolocation[1] });
+    res.json(user);
+  } catch (error) {
+    res.json(error.message);
+  }
+});
+
 userRouter.put('/:id/rating', async (req, res) => {
   const { id, rating } = req.body;
   const { userId } = req.session;
@@ -161,15 +173,16 @@ userRouter.put('/:id/rating', async (req, res) => {
 });
 
 userRouter.post('/:id/music', upload, async (req, res) => {
-  if (req.files) {
+  if (req.files?.song) {
     const { filename } = req.files.song[0];
-    await UserDemo.create({ userId: req.session.userId, demoFile: filename });
+    const title = req.body?.songname ? req.body.songname : filename;
+    await UserDemo.create({ userId: req.session.userId, demoFile: filename, demoTitle: title });
   }
   res.redirect('/music');
 });
 
 userRouter.post('/:id/photo', uploadPhoto, async (req, res) => {
-  if (req.files) {
+  if (req.files?.photo) {
     const { filename } = req.files.photo[0];
     const thisUser = await User.findOne({ where: { id: req.session.userId } });
     await fs.unlink(path.resolve('mediastorage', thisUser.photo));

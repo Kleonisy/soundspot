@@ -40,7 +40,6 @@ function UserEditProfile({ onHide }) {
     setInputTextArea(user.about);
     setInputContact(user.contact);
     if (user) {
-      console.log(users);
       const thisUser = users.find((el) => el.id === user.id);
       let instrArr = Array.from({ length: instruments.length });
       let genreArr = Array.from({ length: genres.length });
