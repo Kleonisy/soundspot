@@ -58,7 +58,7 @@ function UserPage() {
             </div>
             <div className="inf-box">
               <h5>My Bands</h5>
-              <p className="user-inf">
+              <p className="band-text">
                 {user
                   && user.UserBands
                   && user.UserBands.map((data) => <p className="user-inf" key={data.id} onClick={() => navigate(`/bands/${data.Band.id}`)}>{data.Band.name}</p>)}

@@ -57,7 +57,7 @@ function Profile() {
                 && user.UserInstruments.map((data) => <p className="profile-inf" key={data.id}>{data.Instrument.instrument}</p>)}
               </p>
             </div>
-            <div className="inf-box">
+            <div className="inf-box-bands">
               <h5>
                 My Bands
                 <img className="plus-button" src={plus} onClick={() => setModalBand(true)} alt="1" />
