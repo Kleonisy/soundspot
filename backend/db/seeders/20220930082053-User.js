@@ -61,7 +61,7 @@ module.exports = {
         about: 'American rapper, singer, and songwriter.',
         latitude: 59.9605,
         longitude: 30.28928,
-        contact: 'xxxtentacion@gmail.com',
+        contact: 't.me/xxxtentacion',
         photo: 'https://upload.wikimedia.org/wikipedia/commons/e/ee/Xxxtentacion_%28cropped%29.jpg',
       },
       {

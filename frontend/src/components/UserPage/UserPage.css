@@ -50,6 +50,7 @@
 
 .user-inf {
   color: black;
+  cursor: pointer;
 }
 
 .user-img-container{
@@ -86,4 +87,21 @@
 .soundSpot__checkMyDemos_link:active {
   color: #BE1111;
   text-decoration: none;
+}
+
+.button-move-back-users{
+  color: #BE1111;
+  text-decoration: none;
+  font-size: 22px;
+  text-align: left;
+  margin-top: 40px;
+}
+
+.button-move-back-users:hover{
+  color: #BE1111;
+  text-decoration: none;
+  font-size: 22px;
+  text-align: left;
+  margin-top: 40px;
+  cursor: pointer;
 }

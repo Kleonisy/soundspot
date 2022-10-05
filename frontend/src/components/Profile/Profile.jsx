@@ -21,6 +21,10 @@ function Profile() {
   useEffect(() => {
     dispatch(loadSessionUser());
   }, [users]);
+  
+  if (!hasUser) {
+    return <NotFoundPage />;
+  }
 
   return (
     <div>
@@ -106,7 +110,10 @@ function Profile() {
             {hasUser && <div className="profile-img-box"><img className="user-img" src={user.photo} alt={user.login} /></div>}
           </div>
         </div>
-      ) : <NotFoundPage /> }
+      </div>
+      <div className="right-box">
+        {hasUser && <div className="profile-img-box"><img className="user-img" src={user.photo} alt={user.login} /></div>}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,16 @@
+#map {
+    width: 500px;
+    height: 400px;
+}
+
+#marker {
+    background-image: url('./map_pin.svg');
+    width: 33px;
+    height: 36px;
+    position: absolute;
+}
+
+.soundSpot__dragger {
+    min-height: 78vh;
+    margin: 20px;
+}

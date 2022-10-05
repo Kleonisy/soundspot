@@ -42,7 +42,7 @@ function Music() {
             ? (
               user.UserDemos
                 && user.UserDemos
-                  .filter((demo) => demo.demoFile.toLowerCase().includes(value.toLowerCase()))
+                  .filter((demo) => demo.demoTitle.toLowerCase().includes(value.toLowerCase()))
                   .map((demo) => (
                     <Demo
                       key={demo.id}

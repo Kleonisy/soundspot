@@ -88,6 +88,7 @@
 
 .profile-inf {
   color: black;
+  cursor: pointer;
 }
 
 .user-img {
@@ -100,3 +101,17 @@
 .modal-click-img{
   float: right;
 }
+
+.user-checkout-contact-link{
+    color:#BE1111;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.plus-button{
+  width: 25px;
+  margin-left: 5px;
+  padding-bottom: 6px;
+  cursor: pointer;
+}
+

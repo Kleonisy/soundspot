@@ -12,7 +12,7 @@ module.exports = {
       { instrument: 'bass drum' },
       { instrument: 'electric guitar' },
       { instrument: 'snare drum' },
-      { instrument: 'ukulele' },
+      { instrument: 'voсals' },
       { instrument: 'flute' },
       { instrument: 'percussion' },
       { instrument: 'saxophone' },

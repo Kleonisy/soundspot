@@ -20,6 +20,9 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      demoTitle: {
+        type: Sequelize.TEXT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
