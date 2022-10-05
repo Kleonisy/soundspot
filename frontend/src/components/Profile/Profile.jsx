@@ -68,7 +68,7 @@ function Profile() {
               <p className="profile-inf">
                 {user.UserBands
                   && user.UserBands.length > 0
-                  && user.UserBands.map((data) => <p className="profile-inf" key={data.id}>{data.Band.name}</p>)}
+                  && user.UserBands.map((data) => <p className="profile-inf" key={data.id} onClick={() => navigate(`/bands/${data.Band.id}`)}>{data.Band.name}</p>)}
               </p>
             </div>
             <div className="inf-box">

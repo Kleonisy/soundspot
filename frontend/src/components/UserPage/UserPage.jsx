@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect } from 'react';
@@ -54,7 +55,7 @@ function UserPage() {
               <p className="user-inf">
                 {user
                   && user.UserBands
-                  && user.UserBands.map((data) => <p className="user-inf" key={data.id}>{data.Band.name}</p>)}
+                  && user.UserBands.map((data) => <p className="user-inf" key={data.id} onClick={() => navigate(`/bands/${data.Band.id}`)}>{data.Band.name}</p>)}
               </p>
             </div>
             <div className="inf-box">

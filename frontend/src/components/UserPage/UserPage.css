@@ -50,6 +50,7 @@
 
 .user-inf {
   color: black;
+  cursor: pointer;
 }
 
 .user-img-container{
@@ -102,4 +103,5 @@
   font-size: 22px;
   text-align: left;
   margin-top: 40px;
+  cursor: pointer;
 }
