@@ -23,7 +23,7 @@
 }
 
 .band-page-right{
-    padding-top: 25vh;
+    padding-top: 12vh;
     display: flex;
     flex-direction: column;
     min-width: 40%;
@@ -68,6 +68,10 @@
     font-size: 20px;
     text-align: left;
     margin-top: 40px;
+}
+
+.band-page-genres{
+    margin-bottom: 20px;
 }
 
 

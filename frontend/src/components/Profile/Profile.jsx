@@ -7,12 +7,16 @@ import Rating from '../UI/Rating/Rating';
 import UserEditProfile from '../UserEditProfile/UserEditProfile';
 import { loadSessionUser } from '../../storeAndSlices/Slices/authReducer';
 import './Profile.css';
+import plus from '../../icons/icons8-plus.svg';
+import CreateBand from '../CreateBand/CreateBand';
 
 function Profile() {
   const dispatch = useDispatch();
   const { data: user, hasUser } = useSelector((state) => state.authState);
   const { users } = useSelector((state) => state.usersState);
   const [modalShow, setModalShow] = useState(false);
+  const [modalBand, setModalBand] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -52,7 +56,11 @@ function Profile() {
             </p>
           </div>
           <div className="inf-box">
-            <h5>My Bands</h5>
+            <h5>
+              My Bands
+              <img src={plus} onClick={() => setModalBand(true)} alt="1" />
+            </h5>
+            {modalBand && <CreateBand onHide={() => setModalBand(false)} />}
             <p className="profile-inf">
               {user.UserBands
                 && user.UserBands.length > 0
