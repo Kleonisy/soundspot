@@ -3,11 +3,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import WarningModal from '../WarningModal/WarningModal';
 import './SpotsSearchPage.css';
 
 function SpotsSearchPage() {
+  const [show, setShow] = useState(false);
   const { spots } = useSelector((store) => store.spotsState);
-  const user = useSelector((store) => store.authState.data);
+  const { data: user, hasUser } = useSelector((store) => store.authState);
   const navigate = useNavigate();
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const options = [
@@ -20,6 +22,14 @@ function SpotsSearchPage() {
       value: 'distance',
     },
   ];
+
+  const handleClick = (spot) => {
+    if (hasUser) {
+      navigate(`/spots/${spot.id}`);
+    } else {
+      setShow(true);
+    }
+  };
 
   const sortedPosts = useMemo(() => {
     if (filter.sort && filter.sort === 'name') {
@@ -100,6 +110,7 @@ function SpotsSearchPage() {
 
   return (
     <div className="soundSpot__spotsSearch-container">
+      {show && <WarningModal show={show} setShow={setShow} />}
       <div className="soundSpot_spotsSearch-input-sort-container">
         <input value={filter.query} onChange={(event) => setFilter({ ...filter, query: event.target.value })} placeholder="Search..." />
         <select
@@ -126,7 +137,7 @@ function SpotsSearchPage() {
         <div className="soundSpot__spotsSearch_results-container">
           {
             sortedAndSearchedPosts.map((spot) => (
-              <div key={spot.id} onClick={() => navigate(`/spots/${spot.dataValues.id}`)} className="soundSpot__spotRow">
+              <div key={spot.dataValues.id} onClick={() => handleClick(spot.dataValues)} className="soundSpot__spotRow">
                 <div className="soundSpot__spotRow-title">{spot.name}</div>
                 <div className="soundSpot__spotRow-description">
                   {spot.dataValues.address}

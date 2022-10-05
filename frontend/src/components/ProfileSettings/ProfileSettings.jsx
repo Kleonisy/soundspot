@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import './ProfileSettings.css';
 import { changeProfile, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
 import ChangeUserPhoto from '../ChangeUserPhoto/ChangeUserPhoto';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import Dragger from '../Dragger/Dragger';
 
 function ProfileSettings() {
   const { data: user, helpMessage, hasUser } = useSelector((state) => state.authState);
@@ -13,7 +14,6 @@ function ProfileSettings() {
   const [email, setEmail] = useState('');
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   function changeSubmit(event) {
     event.preventDefault();
@@ -34,11 +34,10 @@ function ProfileSettings() {
     }
   }, [hasUser]);
 
-  //   useEffect(() => {
-  //     if (!hasUser) {
-  //       navigate('/home');
-  //     }
-  //   }, [hasUser, navigate]);
+  if (!hasUser) {
+    return <NotFoundPage />;
+  }
+
   return (
 
     <div className="profile-settings-gallery">
@@ -58,7 +57,8 @@ function ProfileSettings() {
       </div>
 
       <div className="change-location">
-        <img src="http://www.hellopiter.ru/image/ssdhhhsjasdq.jpg" alt="1" width={350} height={400} />
+        {/* <img src="http://www.hellopiter.ru/image/ssdhhhsjasdq.jpg" alt="1" width={350} height={400} /> */}
+        {user.id && <Dragger user={user} />}
       </div>
       <div className="editphoto">
         {user && (

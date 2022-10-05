@@ -14,9 +14,7 @@ function UploadMusic() {
   const { user } = useSelector((state) => state.authState);
 
   const handleInit = () => {
-    console.log('upload');
   };
-  console.log(files);
 
   return (
     <FilePond

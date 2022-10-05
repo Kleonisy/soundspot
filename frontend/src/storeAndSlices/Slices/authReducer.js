@@ -96,6 +96,24 @@ const changeProfile = createAsyncThunk(
     }),
 );
 
+const changeUserCoord = createAsyncThunk(
+  'user/changeLocation',
+  (data) => fetch(`/user/${data.id}/changeLocation`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body;
+    }),
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -150,6 +168,13 @@ const authSlice = createSlice({
       .addCase(changeProfile.fulfilled, (state, action) => {
         state.data = action.payload;
         state.helpMessage = null;
+      })
+      .addCase(changeUserCoord.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(changeUserCoord.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.helpMessage = null;
       });
   },
 });
@@ -162,5 +187,5 @@ export const { disableHelpMessage } = authSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadSessionUser, loginUser, logoutUser, regUser, changeProfile
+  loadSessionUser, loginUser, logoutUser, regUser, changeProfile, changeUserCoord,
 };

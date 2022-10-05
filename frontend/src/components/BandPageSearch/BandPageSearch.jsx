@@ -14,15 +14,18 @@ import Image from 'react-bootstrap/Image';
 import InputGroup from 'react-bootstrap/InputGroup';
 import './BandPageSearch.css';
 import { loadAsyncBands, updateAsyncBandsList } from '../../storeAndSlices/Slices/bandsReducer';
+import WarningModal from '../WarningModal/WarningModal';
 
 function BandPageSearch() {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const { bands, genres } = useSelector((store) => store.bandsState);
+  const { hasUser } = useSelector((store) => store.authState);
   const [filtersGenre, setFiltersGenre] = useState([]);
   const [orderByName, setOrderByName] = useState(false);
   const [inputText, setInputText] = useState('');
+  const [show, setShow] = useState(false);
 
   const handleGenreFilter = (e) => {
     const copy = [...filtersGenre];
@@ -60,6 +63,13 @@ function BandPageSearch() {
     return string;
   };
 
+  const handleClick = (band) => {
+    if (hasUser) {
+      navigate(`/bands/${band.id}`);
+    } else {
+      setShow(true);
+    }
+  };
   useEffect(() => {
     document.querySelectorAll('.genreFilter').forEach((btn, i) => filtersGenre[i]
       ? btn.className = 'btn btn-danger genreFilter'
@@ -71,6 +81,7 @@ function BandPageSearch() {
 
   return (
     <div className="soundSpot__bandSearch-container">
+      {show && <WarningModal show={show} setShow={setShow} />}
       <InputGroup className="mb-3 soundSpot__bandSearch_input">
         <Form.Control onChange={handleSearchInput} value={inputText} aria-label="Text input with dropdown button" placeholder="Search..." />
 
@@ -87,7 +98,7 @@ function BandPageSearch() {
         <div className="artistsList">
           {bands
             ? bands.map((band) => (
-              <div key={band.id} className="stringOnSearchPage" onClick={() => navigate(`/bands/${band.id}`)}>
+              <div key={band.id} className="stringOnSearchPage" onClick={() => handleClick(band)}>
                 <Image roundedCircle className="d-block w-100 searchImage" src={band.photo} alt={band.name} />
                 <div className="bandinfoOnSearchPage">
                   <div className="bandinfoTop">

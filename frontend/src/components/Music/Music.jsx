@@ -6,13 +6,14 @@ import Demo from '../Demo/Demo';
 import Player from '../Player/Player';
 import { loadSessionUser } from '../../storeAndSlices/Slices/authReducer';
 import './Music.css';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function Music() {
   const [value, setValue] = useState('');
   const [show, setShow] = useState(false);
   const [player, setPlayer] = useState(false);
   const [song, setSong] = useState('');
-  const { data: user, } = useSelector((state) => state.authState);
+  const { data: user, hasUser } = useSelector((state) => state.authState);
   const { delMusicStatus } = useSelector((state) => state.userState);
 
   const navigate = useNavigate();
@@ -22,11 +23,9 @@ function Music() {
     dispatch(loadSessionUser());
   }, [delMusicStatus]);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     dispatch(findUser(user.id));
-  //   }
-  // }, []);
+  if (!hasUser) {
+    return <NotFoundPage />;
+  }
 
   return (
     <div className="demo-cont">
@@ -43,7 +42,7 @@ function Music() {
             ? (
               user.UserDemos
                 && user.UserDemos
-                  .filter((demo) => demo.demoFile.toLowerCase().includes(value.toLowerCase()))
+                  .filter((demo) => demo.demoTitle.toLowerCase().includes(value.toLowerCase()))
                   .map((demo) => (
                     <Demo
                       key={demo.id}

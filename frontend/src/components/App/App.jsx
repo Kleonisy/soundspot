@@ -20,6 +20,7 @@ import Profile from '../Profile/Profile';
 import ProfileSettings from '../ProfileSettings/ProfileSettings';
 import Music from '../Music/Music';
 import SpotPage from '../SpotPage/SpotPage';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function App() {
           <Route path="/bands/:id/music" element={<Demos />} />
           <Route path="/music" element={<Music />} />
           <Route path="/spots/:id/" element={<SpotPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </div>

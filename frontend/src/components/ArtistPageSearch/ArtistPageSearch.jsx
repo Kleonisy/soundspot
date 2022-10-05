@@ -14,17 +14,20 @@ import Image from 'react-bootstrap/Image';
 import InputGroup from 'react-bootstrap/InputGroup';
 import './ArtistPageSearch.css';
 import { loadAsyncUsers, updateAsyncUsersList } from '../../storeAndSlices/Slices/usersReducer';
+import WarningModal from '../WarningModal/WarningModal';
 
 function ArtistPageSearch() {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const { users, instruments, genres } = useSelector((store) => store.usersState);
+  const { hasUser } = useSelector((store) => store.authState);
   const [filters, setFilters] = useState([]);
   const [filtersGenre, setFiltersGenre] = useState([]);
   const [orderByRating, setOrderByRating] = useState(false);
   const [orderByName, setOrderByName] = useState(false);
   const [inputText, setInputText] = useState('');
+  const [show, setShow] = useState(false);
 
   const handleInstrumentFilter = (e) => {
     const copy = [...filters];
@@ -74,6 +77,14 @@ function ArtistPageSearch() {
     return string;
   };
 
+  const handleClick = (user) => {
+    if (hasUser) {
+      navigate(`/artists/${user.id}`);
+    } else {
+      setShow(true);
+    }
+  };
+
   useEffect(() => {
     document.querySelectorAll('.instrumentFilter').forEach((btn, i) => filters[i]
       ? btn.className = 'btn btn-secondary instrumentFilter'
@@ -88,9 +99,9 @@ function ArtistPageSearch() {
 
   return (
     <div className="soundSpot__artistSearch-container">
+      {show && <WarningModal show={show} setShow={setShow} />}
       <InputGroup className="mb-3">
         <Form.Control onChange={handleSearchInput} value={inputText} aria-label="Text input with dropdown button" placeholder="Search..." />
-
         <DropdownButton
           variant="outline-secondary"
           title="Order by..."
@@ -105,7 +116,7 @@ function ArtistPageSearch() {
         <div className="artistsList">
           {users
             ? users.map((user) => (
-              <div key={user.id} className="stringOnSearchPage" onClick={() => navigate(`/artists/${user.id}`)}>
+              <div key={user.id} className="stringOnSearchPage" onClick={() => handleClick(user)}>
                 <Image roundedCircle className="d-block w-100 searchImage" src={user.photo} alt={user.email} />
                 <div className="userinfoOnSearchPage">
                   <div className="userinfoTop">

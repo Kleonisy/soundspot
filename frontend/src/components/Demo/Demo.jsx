@@ -8,10 +8,12 @@ import stopIkon from './stop.svg';
 import delIkon from './delete-ikon.svg';
 import './Demo.css';
 import { deleteMusic } from '../../storeAndSlices/Slices/userReducer';
+import ConfirmModal from '../ConfirmModal/ConfirmModal';
 
 function Demo({ demo, owner, setPlayer, setSong }) {
   const { data: user } = useSelector((state) => state.authState);
   const [playable, setPlayable] = useState(playerIkon);
+  const [show, setShow] = useState(false);
 
   const playSong = () => {
     setPlayer((prev) => !prev);
@@ -29,20 +31,24 @@ function Demo({ demo, owner, setPlayer, setSong }) {
 
   const deleteMusicFetch = () => {
     if (pathname === '/music') { dispatch(deleteMusic({ id: owner.id, demo })); }
+    setPlayer(false);
   };
 
   return (
-    <div className="demo-box">
-      <img className="player-ikon" src={playable} alt="player" onClick={() => playSong()} />
-      <div className="demo-inf">
-        <h5 className="demo-owner">{owner && (owner.login || owner.name)}</h5>
-        <p className="demo-name">{demo && (demo.songName || demo.demoFile)}</p>
+    <>
+      {show && <ConfirmModal show={show} setShow={setShow} deleteMusicFetch={deleteMusicFetch} /> }
+      <div className="demo-box">
+        <img className="player-ikon" src={playerIkon} alt="player" onClick={() => playSong()} />
+        <div className="demo-inf">
+          <h5 className="demo-owner">{owner && (owner.login || owner.name)}</h5>
+          <p className="demo-name">{demo && (demo.songName || demo.demoFile)}</p>
+        </div>
+        <div className="ikon-container">
+          {owner.email === user.email
+        && <img src={delIkon} alt="delete" className="delete-ikon" onClick={() => setShow(true)} />}
+        </div>
       </div>
-      <div className="ikon-container">
-        {owner.email === user.email
-        && <img src={delIkon} alt="delete" className="delete-ikon" onClick={() => deleteMusicFetch()} />}
-      </div>
-    </div>
+    </>
   );
 }
 

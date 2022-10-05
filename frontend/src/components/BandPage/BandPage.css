@@ -37,6 +37,8 @@
   flex: 2;
 }
 
+
+
 .band-members p {
   font-size: 28px;
   font-weight: 500;
@@ -44,6 +46,7 @@
 .band-members p.users-band {
     font-size: 22px;
     font-weight: 400;
+    cursor: pointer;
 }
 
 
@@ -52,10 +55,14 @@
     flex-direction: row;
 }
 
-.additionalBandInfo_container {
+.band-page-genres{
+  padding-left: 10vh;
   flex: 1;
 }
 
+.band-members{
+    flex: 1;
+}
 
 .band-checkout-demos{
     font-size: 22px;
@@ -64,32 +71,49 @@
 }
 
 .band-checkout-demos-link{
-    color: red;
+    color: #BE1111;
     text-decoration: none;
     font-size: 22px;
 }
 
 .band-checkout-demos-link:hover{
-    color: red;
+    color: #BE1111;
     text-decoration: none;
+    font-weight: 450;
 }
 
 .button-move-back{
-    color: red;
+    margin-top: 20px;
+    margin-right: 100px;
+    color: #BE1111;
     text-decoration: none;
     font-size: 22px;
     text-align: left;
+    cursor: pointer;
 }
 
 .button-move-back:hover{
-    color: red;
+    color: #BE1111;
+    margin-right: 100px;
     text-decoration: none;
     text-align: left;
-    margin-top: 40px;
+    font-weight: 450;
 }
 
-.band-page-genres{
-    margin-bottom: 20px;
+.band-page-genres p{
+    font-size: 28px;
+    font-weight: 500;
 }
 
+.band-page-genres p.users-genres {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.name-band-and-move-back{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 5vh;
+}
 

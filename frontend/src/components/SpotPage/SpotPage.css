@@ -50,18 +50,18 @@
 }
 
 .spot-checkout-contact-link{
-    color: red;
+    color: #BE1111;
     text-decoration: none;
     font-size: 22px;
 }
 
 .spot-checkout-contact-link:hover{
-    color: red;
+    color: #BE1111;
     text-decoration: none;
 }
 
 .button-move-back-spots{
-    color: red;
+    color: #BE1111;
     text-decoration: none;
     font-size: 22px;
     text-align: left;
@@ -69,7 +69,7 @@
 }
 
 .button-move-back-spots:hover{
-    color: red;
+    color: #BE1111;
     text-decoration: none;
     text-align: left;
     margin-top: 40px;
