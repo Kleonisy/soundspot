@@ -5,7 +5,7 @@
     margin-bottom: 0;
 }
 
-.modal-dialog {
+.soundSpot__userEditProfile_modal .modal-dialog {
   max-width: 100%;
   width: 80%;
 }

@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { loadUser } from '../../storeAndSlices/Slices/userReducer';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Rating from '../UI/Rating/Rating';
 import './UserPage.css';
 
 function UserPage() {
   const { user } = useSelector((state) => state.userState);
+  const { hasUser } = useSelector((state) => state.authState);
 
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -18,6 +20,10 @@ function UserPage() {
       dispatch(loadUser(Number(id)));
     }
   }, [id]);
+
+  if (!hasUser) {
+    return <NotFoundPage />;
+  }
 
   return (
     <div className="user-container">

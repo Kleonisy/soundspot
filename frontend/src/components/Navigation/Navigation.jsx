@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './Navigation.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { FiSettings } from 'react-icons/fi';
@@ -10,14 +10,16 @@ function Navigation() {
   const dispatch = useDispatch();
   const check = ({ isActive }) => isActive ? 'active-class' : 'navigation__item';
   const { hasUser } = useSelector((state) => state.authState);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadSessionUser());
-  }, []);
+  }, [hasUser]);
 
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(logoutUser());
+    navigate('/');
   };
 
   return (

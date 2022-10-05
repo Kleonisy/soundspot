@@ -27,7 +27,7 @@ function Authorization() {
     if (hasUser) {
       navigate('/home');
     }
-  }, [hasUser, navigate]);
+  }, [hasUser]);
 
   return (
     <div className="log-reg-div">

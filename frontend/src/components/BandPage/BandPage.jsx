@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { loadAsyncBand } from '../../storeAndSlices/Slices/bandsReducer';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import './BandPage.css';
 
 function BandPage() {
   const { band } = useSelector((state) => state.bandsState);
+  const { hasUser } = useSelector((state) => state.authState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -13,6 +15,11 @@ function BandPage() {
   useEffect(() => {
     dispatch(loadAsyncBand(Number(id)));
   }, []);
+
+  if (!hasUser) {
+    return <NotFoundPage />;
+  }
+
   return (
     <div className="band-page-gallery">
       <div className="band-page-left">

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProfileSettings.css';
 import { changeProfile, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
 import ChangeUserPhoto from '../ChangeUserPhoto/ChangeUserPhoto';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function ProfileSettings() {
   const { data: user, helpMessage, hasUser } = useSelector((state) => state.authState);
@@ -34,11 +35,10 @@ function ProfileSettings() {
     }
   }, [hasUser]);
 
-  //   useEffect(() => {
-  //     if (!hasUser) {
-  //       navigate('/home');
-  //     }
-  //   }, [hasUser, navigate]);
+  if (!hasUser) {
+    return <NotFoundPage />;
+  }
+
   return (
 
     <div className="profile-settings-gallery">
