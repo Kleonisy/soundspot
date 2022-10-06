@@ -6,14 +6,13 @@ import Demo from '../Demo/Demo';
 import Player from '../Player/Player';
 import { loadSessionUser } from '../../storeAndSlices/Slices/authReducer';
 import './Music.css';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function Music() {
   const [value, setValue] = useState('');
   const [show, setShow] = useState(false);
   const [player, setPlayer] = useState(false);
   const [song, setSong] = useState('');
-  const { data: user, hasUser } = useSelector((state) => state.authState);
+  const { data: user } = useSelector((state) => state.authState);
   const { delMusicStatus } = useSelector((state) => state.userState);
 
   const navigate = useNavigate();
@@ -23,10 +22,6 @@ function Music() {
     dispatch(loadSessionUser());
   }, [delMusicStatus]);
 
-  if (!hasUser) {
-    return <NotFoundPage />;
-  }
-
   return (
     <div className="demo-cont">
       {show && <AddMusicModal show={show} setShow={setShow} user={user} />}
@@ -34,7 +29,7 @@ function Music() {
       {player && <Player className="player" src={`http://localhost:3000/${song}`} onEndPlay={() => setPlayer(false)} />}
 
       <div className="demos-cont">
-        <input className="search-input" type="text" placeholder="Search..." onChange={(e) => setValue(e.target.value)} />
+        <input className="form-control" type="text" placeholder="Search..." onChange={(e) => setValue(e.target.value)} />
         <div className="demos-box">
           {user
             && user.UserDemos

@@ -10,7 +10,6 @@ import { loadSessionUser } from '../../storeAndSlices/Slices/authReducer';
 import './Profile.css';
 import plus from '../../icons/icons8-plus.svg';
 import CreateBand from '../CreateBand/CreateBand';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function Profile() {
   const dispatch = useDispatch();
@@ -23,10 +22,6 @@ function Profile() {
   useEffect(() => {
     dispatch(loadSessionUser());
   }, [users]);
-
-  if (!hasUser) {
-    return <NotFoundPage />;
-  }
 
   return (
     <div className="profile-container">

@@ -8,12 +8,11 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import './UserEditProfile.css';
 import { updateAsyncUserProfile } from '../../storeAndSlices/Slices/usersReducer';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function UserEditProfile({ onHide }) {
   const dispatch = useDispatch();
   const { instruments, genres, users } = useSelector((store) => store.usersState);
-  const { data: user, hasUser } = useSelector((state) => state.authState);
+  const { data: user } = useSelector((state) => state.authState);
   const [filters, setFilters] = useState([]);
   const [filtersGenre, setFiltersGenre] = useState([]);
 
@@ -59,10 +58,6 @@ function UserEditProfile({ onHide }) {
       ? btn.className = 'btn btn-danger genreFilter'
       : btn.className = 'btn btn-outline-danger genreFilter');
   }, [filters, filtersGenre]);
-
-  if (!hasUser) {
-    return <NotFoundPage />;
-  }
 
   return (
     <Modal

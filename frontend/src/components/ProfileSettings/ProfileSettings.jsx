@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProfileSettings.css';
 import { changeProfile, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
 import ChangeUserPhoto from '../ChangeUserPhoto/ChangeUserPhoto';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Dragger from '../Dragger/Dragger';
 
 function ProfileSettings() {
@@ -34,12 +33,7 @@ function ProfileSettings() {
     }
   }, [hasUser]);
 
-  if (!hasUser) {
-    return <NotFoundPage />;
-  }
-
   return (
-
     <div className="profile-settings-gallery">
       <div className="profile-settings">
         <form onSubmit={changeSubmit}>

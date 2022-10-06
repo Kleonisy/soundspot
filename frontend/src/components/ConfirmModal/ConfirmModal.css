@@ -1,7 +1,15 @@
-.delete-modal-body {
-  font-size: 18px;
+.delete-modal-title {
+  font-size: 1.5rem;
 }
 
-.delete-modal-title {
+
+.modal-button {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-button .btn {
+  margin: 2px;
   font-size: 22px;
 }

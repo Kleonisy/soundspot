@@ -4,7 +4,6 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { loadAsyncBand } from '../../storeAndSlices/Slices/bandsReducer';
 import { loadUser } from '../../storeAndSlices/Slices/userReducer';
 import Demo from '../Demo/Demo';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Player from '../Player/Player';
 import './Demos.css';
 
@@ -19,7 +18,6 @@ function Demos() {
   const { pathname } = useLocation();
   const { user } = useSelector((state) => state.userState);
   const { band } = useSelector((state) => state.bandsState);
-  const { hasUser } = useSelector((state) => state.authState);
 
   useEffect(() => {
     if (pathname.includes('bands')) {
@@ -28,10 +26,6 @@ function Demos() {
       dispatch(loadUser(id));
     }
   }, [pathname]);
-
-  if (!hasUser) {
-    return <NotFoundPage />;
-  }
 
   return (
     <div className="user-demo-cont">
