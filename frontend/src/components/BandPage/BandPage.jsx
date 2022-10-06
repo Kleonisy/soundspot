@@ -17,6 +17,10 @@ function BandPage() {
     dispatch(loadAsyncBand(Number(id)));
   }, []);
 
+  // const handleClick = (el) => {
+  //   console.log(el);
+  // };
+
   return (
     <div className="band-page-gallery">
       <div className="band-page-left">
@@ -39,7 +43,7 @@ function BandPage() {
         <div className="band-members">
           <p>Members:</p>
           {band && band.UserBands.map((el) => (
-            <p className="users-band" key={el.id} onClick={() => navigate(`/artists/${el.id}`)}>
+            <p className="users-band" key={el.id} onClick={() => navigate(`/artists/${el.userId}`)}>
               {el.User.login}
             </p>
           ))}
