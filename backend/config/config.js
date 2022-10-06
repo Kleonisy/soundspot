@@ -3,12 +3,14 @@ const morgan = require('morgan');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const path = require('path');
 const userTracking = require('../middlewares/userTracking');
 
 const sessionConfig = require('./sessionConfig');
 
 module.exports = function config(app) {
   app.disable('x-powered-by');
+  app.use(express.static(path.join(__dirname, '../../frontend/build')));
   app.use(express.static('mediastorage'));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
