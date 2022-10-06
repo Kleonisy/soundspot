@@ -14,10 +14,11 @@
 
 .search-input {
   font-size: 22px;
-  border: 1px solid;
+  border: 2px solid;
   border-radius: 5px;
   height: 50px;
-  width: 100%
+  width: 100%;
+  padding-left: 10px;
 }
 
 .demos-box {
@@ -25,14 +26,15 @@
 }
 
 .back-button{
-  /* position: relative; */
   flex: 1;
   background-color: white;
-  /* top: 20px; */
   font-size: 22px;
   height: 20px;
   cursor: pointer;
   color: rgb(0, 0, 0);
+}
+.soundSpot__addUser_backButton {
+  margin-top: 68px;
 }
 
 .player {

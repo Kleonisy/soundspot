@@ -38,7 +38,7 @@ function Demo({ demo, owner, setPlayer, setSong }) {
     <>
       {show && <ConfirmModal show={show} setShow={setShow} deleteMusicFetch={deleteMusicFetch} /> }
       <div className="demo-box">
-        <img className="player-ikon" src={playerIkon} alt="player" onClick={() => playSong()} />
+        <img className="player-ikon" src={playable} alt="player" onClick={() => playSong()} />
         <div className="demo-inf">
           <h5 className="demo-owner">{owner && (owner.login || owner.name)}</h5>
           <p className="demo-name">{demo && demo.demoTitle}</p>
