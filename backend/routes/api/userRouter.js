@@ -182,10 +182,19 @@ userRouter.post('/:id/music', upload, async (req, res) => {
 });
 
 userRouter.post('/:id/photo', uploadPhoto, async (req, res) => {
+  async function exists(mypath) {
+    try {
+      await fs.access(mypath);
+      return true;
+    } catch {
+      return false;
+    }
+  }
   if (req.files?.photo) {
     const { filename } = req.files.photo[0];
     const thisUser = await User.findOne({ where: { id: req.session.userId } });
-    await fs.unlink(path.resolve('mediastorage', thisUser.photo));
+    const isExists = await exists(path.resolve('mediastorage', thisUser.photo));
+    if (isExists) await fs.unlink(path.resolve('mediastorage', thisUser.photo));
     await thisUser.update({ photo: filename });
   }
   res.redirect('/profilesettings');
