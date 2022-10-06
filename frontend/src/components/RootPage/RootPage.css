@@ -3,10 +3,13 @@
   display: flex;
   flex: 1;
   flex-direction: row;
+  background-image: url('./14271843299_446dabcb03_b.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .soundSpot__rootPage_left {
-  font-size: 70px;
+  font-size: 72px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,6 +20,7 @@
   display: flex;
 }
 .soundSpot__begining-slogan {
+  color: #ffffff;
   margin: 0px 0px 20px 30px;
   display: flex;
   flex: 6;

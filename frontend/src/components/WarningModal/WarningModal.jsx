@@ -10,7 +10,7 @@ function WarningModal({ show, setShow }) {
     <Modal show={show} onHide={() => setShow(false)} className="soundSpot__warning-modal">
       <Modal.Header closeButton>
         <Modal.Title className="warn-modal-title">
-          hhh
+          Sign Up or Sign In to continue
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="warn-modal-body">
