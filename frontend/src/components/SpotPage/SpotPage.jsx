@@ -6,11 +6,9 @@ import Spinner from 'react-bootstrap/Spinner';
 import Image from 'react-bootstrap/Image';
 import { loadAsyncSpot } from '../../storeAndSlices/Slices/spotsReducer';
 import './SpotPage.css';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function SpotPage() {
   const { spot } = useSelector((state) => state.spotsState);
-  const { hasUser } = useSelector((state) => state.authState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -18,10 +16,6 @@ function SpotPage() {
   useEffect(() => {
     dispatch(loadAsyncSpot(Number(id)));
   }, []);
-
-  if (!hasUser) {
-    return <NotFoundPage />;
-  }
 
   return (
     <div className="spot-page-gallery">

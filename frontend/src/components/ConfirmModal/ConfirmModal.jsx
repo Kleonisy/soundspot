@@ -5,19 +5,20 @@ import './ConfirmModal.css';
 
 function ConfirmModal({ show, setShow, deleteMusicFetch }) {
   return (
-    <Modal show={show} onHide={() => setShow(false)} centered aria-labelledby="contained-modal-title-vcenter">
+    <Modal show={show} onHide={() => setShow(false)}>
       <Modal.Header closeButton>
-        <Modal.Title className="delete-modal-title">Delete music acception</Modal.Title>
+        <Modal.Title className="delete-modal-title">Are you sure?</Modal.Title>
       </Modal.Header>
-      <Modal.Body className="delete-modal-body">Are sure?</Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={() => setShow(false)}>
-          Close
-        </Button>
-        <Button variant="danger" style={{ backgroundColor: '#BE1111' }} onClick={() => deleteMusicFetch()}>
-          Delete
-        </Button>
-      </Modal.Footer>
+      <Modal.Body className="delete-modal-body">
+        <div className="modal-button">
+          <Button variant="outline-dark" onClick={() => setShow(false)}>
+            Close
+          </Button>
+          <Button variant="danger" style={{ backgroundColor: '#BE1111' }} onClick={() => deleteMusicFetch()}>
+            Delete
+          </Button>
+        </div>
+      </Modal.Body>
     </Modal>
   );
 }
