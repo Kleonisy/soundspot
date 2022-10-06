@@ -9,14 +9,11 @@
 .demo-cont{
   display: flex;
   min-height: 78vh;
-  margin-top: 40px;
 }
 
 .demos-cont{
   width: 60%;
-  height: 100%;
-  /* position: relative; */
-  /* left: 40px; */
+  min-height: 100%;
   flex: 2;
   margin: 0px 20px 20px 0px;
   display: flex;
@@ -24,22 +21,22 @@
 }
 
 .search-input {
-  font-size: 22px;
-  border: 1px solid;
+  margin-top: 40px;
+  font-size: 24px;
+  border: 2px solid;
   border-radius: 5px;
-  height: 50px;
+  min-height: 50px;
   width: 100%
 }
 
 .demos-box {
+  min-height: 90%;
   margin-top: 20px;
 }
 
 .back-button{
-  /* position: relative; */
   flex: 1;
   background-color: white;
-  /* top: 20px; */
   font-size: 22px;
   height: 20px;
   cursor: pointer;
@@ -50,6 +47,12 @@
 }
 .back-button:hover{
   color: red;
+}
+.soundSpot__myMusic_backButton {
+  margin-top: 45px;
+}
+.soundSpot__myMusic_addButton {
+  margin-top: 40px;
 }
 
 .player {
@@ -62,5 +65,8 @@
 }
 
 .no-musics-title {
-  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 40px;
+  text-align: center;
 }

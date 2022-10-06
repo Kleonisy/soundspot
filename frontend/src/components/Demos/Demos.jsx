@@ -35,7 +35,7 @@ function Demos() {
 
   return (
     <div className="user-demo-cont">
-      <button type="button" onClick={() => navigate(-1)} className="back-button">Move Back</button>
+      <button type="button" onClick={() => navigate(-1)} className="back-button soundSpot__addUser_backButton">Move Back</button>
       {player && <Player className="player" src={`http://localhost:3000/${song}`} onEndPlay={() => setPlayer(false)} />}
       <div className="demo-container">
         <input className="search-input" type="text" placeholder="Search..." onChange={(e) => setValue(e.target.value)} />
@@ -60,7 +60,7 @@ function Demos() {
                     ))
                 )
                 : (
-                  <h5 className="no-musics-title">No musics</h5>
+                  <div className="no-musics-title">No demos yet</div>
                 )
             ) : (
               user
@@ -81,7 +81,7 @@ function Demos() {
                     ))
                 )
                 : (
-                  <h5 className="no-musics-title">No musics</h5>
+                  <div className="no-musics-title">No demos yet</div>
                 )
             )}
         </div>
