@@ -8,6 +8,7 @@ import './MainPage.css';
 
 function MainPage() {
   const { users } = useSelector((store) => store.usersState);
+  const { hasUser } = useSelector((state) => state.authState);
   const { bands } = useSelector((store) => store.bandsState);
   const { spots } = useSelector((store) => store.spotsState);
 
@@ -28,7 +29,11 @@ function MainPage() {
           {' '}
           are on SoundSpot right now.
         </p>
-        <p>Register or login in to check them out and explore</p>
+        {hasUser ? (
+          <p>Check them out and explore</p>
+        ) : (
+          <p>Register or login in to check them out and explore</p>
+        )}
         <p>more!</p>
       </div>
       <div className="carouselContainer">
