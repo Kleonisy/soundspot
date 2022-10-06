@@ -43,33 +43,33 @@ function Profile() {
           <div className="upper-inf-box">
             <div className="inf-box">
               <h5>My genres</h5>
-              <p className="profile-inf">
+              <p className="profile-inf-genres">
                 {hasUser
                 && user.UserGenres.length > 0
-                && user.UserGenres.map((data) => <p className="profile-inf" key={data.id}>{data.Genre.genre}</p>)}
+                && user.UserGenres.map((data) => <p className="profile-inf-genres" key={data.id}>{data.Genre.genre}</p>)}
               </p>
             </div>
             <div className="inf-box">
               <h5>My Instruments</h5>
-              <p className="profile-inf">
+              <p className="profile-inf-instr">
                 {hasUser
                 && user.UserInstruments.length > 0
-                && user.UserInstruments.map((data) => <p className="profile-inf" key={data.id}>{data.Instrument.instrument}</p>)}
+                && user.UserInstruments.map((data) => <p className="profile-inf-instr" key={data.id}>{data.Instrument.instrument}</p>)}
               </p>
             </div>
-            <div className="inf-box">
+            <div className="inf-box-bands">
               <h5>
                 My Bands
                 <img className="plus-button" src={plus} onClick={() => setModalBand(true)} alt="1" />
               </h5>
               {modalBand && <CreateBand onHide={() => setModalBand(false)} />}
-              <p className="profile-inf">
+              <p className="profile-inf-band">
                 {user.UserBands
                 && user.UserBands.length > 0
-                && user.UserBands.map((data) => <p className="profile-inf" key={data.id} onClick={() => navigate(`/bands/${data.Band.id}`)}>{data.Band.name}</p>)}
+                && user.UserBands.map((data) => <p className="profile-inf-bands" key={data.id} onClick={() => navigate(`/bands/${data.Band.id}`)}>{data.Band.name}</p>)}
               </p>
             </div>
-            <div className="inf-box">
+            <div className="inf-box-tg">
               <h5>Contact me:</h5>
               <p className="profile-inf">
                 <a href={`https://${hasUser && user.contact}`} target="_blank" rel="noreferrer" className="user-checkout-contact-link">{hasUser && user.contact}</a>
@@ -80,7 +80,7 @@ function Profile() {
         <div className="lower-inf-box">
           <div className="soundSpot_profile-about">
             <h5>About</h5>
-            <p className="profile-inf">{hasUser && user.about}</p>
+            <p className="profile-inf-about">{hasUser && user.about}</p>
           </div>
         </div>
       </div>

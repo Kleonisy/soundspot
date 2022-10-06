@@ -49,6 +49,10 @@
   align-self: baseline;
 }
 
+.soundSpot__editProfileTag:hover {
+  font-weight: 450;
+}
+
 /* нужно различие для своего профиля и для профиля другого человека */
 /* .react-star-rate__star__first.go79043580 {
   cursor: default;
@@ -88,7 +92,10 @@
 
 .profile-inf {
   color: black;
-  cursor: pointer;
+}
+
+.profile-inf:hover {
+  font-weight: 450;
 }
 
 .user-img {
@@ -113,5 +120,13 @@
   margin-left: 5px;
   padding-bottom: 6px;
   cursor: pointer;
+}
+
+.profile-inf-bands{
+  cursor: pointer;
+}
+
+.profile-inf-bands:hover{
+  font-weight: 450;
 }
 

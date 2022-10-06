@@ -58,6 +58,7 @@
 .spot-checkout-contact-link:hover{
     color: #BE1111;
     text-decoration: none;
+    font-weight: 450;
 }
 
 .button-move-back-spots{
@@ -73,6 +74,7 @@
     text-decoration: none;
     text-align: left;
     margin-top: 40px;
+    font-weight: 450;
 }
 
 .spot-description{
