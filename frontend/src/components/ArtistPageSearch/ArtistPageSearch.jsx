@@ -100,7 +100,7 @@ function ArtistPageSearch() {
   return (
     <div className="soundSpot__artistSearch-container">
       {show && <WarningModal show={show} setShow={setShow} />}
-      <InputGroup className="mb-3">
+      <InputGroup className="mb-3 soundSpot__input-search">
         <Form.Control onChange={handleSearchInput} value={inputText} aria-label="Text input with dropdown button" placeholder="Search..." />
         <DropdownButton
           variant="outline-secondary"

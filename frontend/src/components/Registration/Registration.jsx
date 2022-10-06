@@ -20,6 +20,7 @@ function Registration() {
       login: event.target.regLogin.value,
       email: event.target.regEmail.value,
       password: event.target.regPassword.value,
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png'
     };
     dispatch(regUser(data));
   }

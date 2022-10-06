@@ -99,22 +99,14 @@
   text-decoration: none;
   font-size: 22px;
   text-align: left;
-  margin-top: 40px;
+  align-self: flex-end;
 }
 
 .button-move-back-users:hover{
-  color: #BE1111;
-  text-decoration: none;
-  font-size: 22px;
-  text-align: left;
-  margin-top: 40px;
   cursor: pointer;
   font-weight: 500;
 }
 
-/* .user-checkout-contact-link{
-  padding: 15px
-} */
 .inf-box-tg{
   width: 20%;
 }
