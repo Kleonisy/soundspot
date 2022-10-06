@@ -92,7 +92,6 @@ function UserEditProfile({ onHide }) {
         </div>
         {user && (
         <>
-          <Form.Label htmlFor="basic-url">Your contact:</Form.Label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon3">
               t.me/your_telegram

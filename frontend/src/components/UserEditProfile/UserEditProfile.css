@@ -18,3 +18,9 @@
   width: 30%;
   height: 60px;
 }
+.soundSpot__editProfile_submitButton.btn-primary:hover {
+  background-color: #BE1111;
+}
+.soundSpot__editProfile_submitButton.btn-primary:active {
+  background-color: #BE1111;
+}

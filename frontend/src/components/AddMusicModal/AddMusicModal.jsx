@@ -18,9 +18,9 @@ function AddMusicModal({ show, setShow }) {
       <Modal.Body>
         <form action={`/user/${user.id}/music`} onSubmit={() => {}} encType="multipart/form-data" method="POST">
           <Form.Group controlId="formFile" className="mb-3">
-            <Form.Label>Enter songtitle</Form.Label>
+            <Form.Label><h5>Enter song title</h5></Form.Label>
             <Form.Control type="text" name="songname" />
-            <Form.Label>Choose file for upload</Form.Label>
+            <Form.Label><h5>Choose file for upload</h5></Form.Label>
             <Form.Control type="file" name="song" />
           </Form.Group>
           <Button variant="danger" style={{ backgroundColor: '#BE1111' }} type="submit">

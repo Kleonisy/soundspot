@@ -29,7 +29,7 @@ function Music() {
       {player && <Player className="player" src={`http://localhost:3000/${song}`} onEndPlay={() => setPlayer(false)} />}
 
       <div className="demos-cont">
-        <input className="form-control" type="text" placeholder="Search..." onChange={(e) => setValue(e.target.value)} />
+        <input className="soundSpot__userDemos form-control" type="text" placeholder="Search..." onChange={(e) => setValue(e.target.value)} />
         <div className="demos-box">
           {user
             && user.UserDemos

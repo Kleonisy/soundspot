@@ -123,7 +123,9 @@ router.delete('/signout', (req, res) => {
 // registration
 
 router.post(('/reg'), async (req, res) => {
-  const { login, email, password } = req.body;
+  const {
+    login, email, password, photo,
+  } = req.body;
   try {
     const userWithEmail = await User.findOne({ where: { email } });
     const userWithLogin = await User.findOne({ where: { login } });
@@ -151,7 +153,7 @@ router.post(('/reg'), async (req, res) => {
           latitude: null,
           longitude: null,
           contact: null,
-          photo: null,
+          photo,
         },
       );
       req.session.userId = newUser.id;

@@ -11,10 +11,7 @@
 }
 
 .soundSpot__dragger {
-    min-height: 78vh;
-    margin: 20px;
-    /* display: flex;
-    flex-direction: column; */
+  margin-top: 40px;
 }
 .ymaps-2-1-79-inner-panes {
     border-radius: 15px;

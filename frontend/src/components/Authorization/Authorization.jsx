@@ -38,7 +38,7 @@ function Authorization() {
             <input className="log-reg-input" type="password" name="logPassword" placeholder="password" autoComplete="off" />
           </div>
           <div className="reg-message">
-            {helpMessage && <div className="helpText">{helpMessage}</div>}
+            {helpMessage && <div className="help-text">{helpMessage}</div>}
           </div>
           <button className="log-reg-button" type="submit">Sign In</button>
         </form>

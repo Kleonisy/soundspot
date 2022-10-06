@@ -11,6 +11,9 @@
   min-height: 78vh;
 }
 
+.soundSpot__userDemos {
+  margin-top: 40px;
+}
 .demos-cont{
   width: 60%;
   min-height: 100%;

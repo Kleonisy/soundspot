@@ -14,7 +14,6 @@ function UserPage() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
-  // <button className="back-button" type="button" onClick={() => navigate(-1)}>Move Back</button>
 
   useEffect(() => {
     if (id) {

@@ -21,7 +21,7 @@ function ArtistPageSearch() {
   const location = useLocation();
   const navigate = useNavigate();
   const { users, instruments, genres } = useSelector((store) => store.usersState);
-  const { hasUser } = useSelector((store) => store.authState);
+  const { hasUser, data } = useSelector((store) => store.authState);
   const [filters, setFilters] = useState([]);
   const [filtersGenre, setFiltersGenre] = useState([]);
   const [orderByRating, setOrderByRating] = useState(false);
@@ -78,8 +78,10 @@ function ArtistPageSearch() {
   };
 
   const handleClick = (user) => {
-    if (hasUser) {
+    if (hasUser && user.id !== data.id) {
       navigate(`/artists/${user.id}`);
+    } if (user.id === data.id) {
+      navigate('/profile');
     } else {
       setShow(true);
     }
@@ -100,7 +102,7 @@ function ArtistPageSearch() {
   return (
     <div className="soundSpot__artistSearch-container">
       {show && <WarningModal show={show} setShow={setShow} />}
-      <InputGroup className="mb-3">
+      <InputGroup className="mb-3 soundSpot__input-search">
         <Form.Control onChange={handleSearchInput} value={inputText} aria-label="Text input with dropdown button" placeholder="Search..." />
         <DropdownButton
           variant="outline-secondary"
@@ -117,7 +119,7 @@ function ArtistPageSearch() {
           {users
             ? users.map((user) => (
               <div key={user.id} className="stringOnSearchPage" onClick={() => handleClick(user)}>
-                <Image roundedCircle className="d-block w-100 searchImage" src={user.photo} alt={user.email} />
+                <Image roundedCircle className="d-block w-100 searchImage" src={user.photo} alt="photo" />
                 <div className="userinfoOnSearchPage">
                   <div className="userinfoTop">
                     {inputText

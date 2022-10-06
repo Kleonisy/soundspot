@@ -99,7 +99,7 @@ function BandPageSearch() {
           {bands
             ? bands.map((band) => (
               <div key={band.id} className="stringOnSearchPage" onClick={() => handleClick(band)}>
-                <Image roundedCircle className="d-block w-100 searchImage" src={band.photo} alt={band.name} />
+                <Image roundedCircle className="d-block w-100 searchImage" src={band.photo} alt="photo" />
                 <div className="bandinfoOnSearchPage">
                   <div className="bandinfoTop">
                     {inputText
