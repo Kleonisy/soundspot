@@ -12,6 +12,7 @@ function Dragger({ user }) {
   const [showModal, setShowModal] = useState(false);
   const [dropcase, setDropcase] = useState(false);
   const [rendered, setRendered] = useState(false);
+  const [draggerStart, setDraggerStart] = useState(true);
 
   useEffect(() => {
     if (dropcase) {
@@ -56,6 +57,7 @@ function Dragger({ user }) {
       .add('stop', onDraggerEnd);
 
     function onDraggerStart(event) {
+      setDraggerStart(false);
       const offset = markerElement.offset();
       const position = event.get('position');
       // Saving the offset of the marker relative to the drag starting point.
@@ -114,32 +116,31 @@ function Dragger({ user }) {
       const myDiv = document.querySelector('#map');
       const rect = myDiv.getBoundingClientRect();
       let margins = { left: markerPosition[0], top: markerPosition[1] };
+      if (markerPosition[0] > rect.left && markerPosition[1] > rect.top
+        && markerPosition[0] < (rect.right - 30) && markerPosition[1] < (rect.bottom - 40)) {
+        markerElement.css(margins);
+      }
       if (markerPosition[0] <= rect.left) {
         margins = {
           left: rect.left,
           top: markerPosition[1],
         };
-      }
-      if (markerPosition[1] <= rect.top) {
+      } else if (markerPosition[1] <= rect.top) {
         margins = {
           left: markerPosition[0],
           top: rect.top,
         };
-      }
-      if (markerPosition[0] >= rect.right - 30) {
+      } else if (markerPosition[0] >= rect.right - 30) {
         margins = {
           left: rect.right - 30,
           top: markerPosition[1],
         };
-      }
-      if (markerPosition[1] >= rect.bottom - 40) {
+      } else if (markerPosition[1] >= rect.bottom - 40) {
         margins = {
           left: markerPosition[0],
           top: rect.bottom - 40,
         };
       }
-
-      markerElement.css(margins);
     }
 
     function containsPoint(bounds, point) {
@@ -155,6 +156,7 @@ function Dragger({ user }) {
       <>
         <div id="map" />
         <div id="marker" />
+        {draggerStart && <span className="draggerText">Use dragger to set new location</span>}
       </>
       )}
       {showModal && <DraggerModal handleClose={() => setShowModal(false)} confirmCase={handleSettingCoord} />}

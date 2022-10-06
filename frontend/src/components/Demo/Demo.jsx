@@ -41,7 +41,7 @@ function Demo({ demo, owner, setPlayer, setSong }) {
         <img className="player-ikon" src={playerIkon} alt="player" onClick={() => playSong()} />
         <div className="demo-inf">
           <h5 className="demo-owner">{owner && (owner.login || owner.name)}</h5>
-          <p className="demo-name">{demo && (demo.songName || demo.demoFile)}</p>
+          <p className="demo-name">{demo && demo.demoTitle}</p>
         </div>
         <div className="ikon-container">
           {owner.email === user.email

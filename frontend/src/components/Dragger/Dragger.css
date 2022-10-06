@@ -13,4 +13,17 @@
 .soundSpot__dragger {
     min-height: 78vh;
     margin: 20px;
+    /* display: flex;
+    flex-direction: column; */
+}
+.ymaps-2-1-79-inner-panes {
+    border-radius: 15px;
+}
+.ymaps-2-1-79-map .ymaps-2-1-79-i-ua_js_yes .ymaps-2-1-79-map-bg .ymaps-2-1-79-islets_map-lang-en {
+    border-radius: 15px;
+}
+
+.draggerText {
+    margin-left: 40px;
+    font-size: 20px;
 }
