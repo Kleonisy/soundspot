@@ -27,9 +27,9 @@ function Profile() {
     <div className="profile-container">
       <div className="left-prof-box">
         <div className="name-rating-box">
-          <div className="soundSpot__username">{hasUser && user.login}</div>
+          <div className="soundSpot__username">{hasUser && user?.login}</div>
           <div className="soundSpot_rating-container">
-            <Rating user={user && user} />
+            <Rating user={user} />
           </div>
           <div type="button" className="soundSpot__editProfileTag" onClick={() => setModalShow(true)}>Edit Profile</div>
           {modalShow && <UserEditProfile onHide={() => setModalShow(false)} />}
@@ -39,7 +39,7 @@ function Profile() {
             <div className="inf-box">
               <h5>My genres</h5>
               <p className="profile-inf-genres">
-                {hasUser
+                {hasUser && user?.UserGenres
                 && user.UserGenres.length > 0
                 && user.UserGenres.map((data) => <p className="profile-inf-genres" key={data.id}>{data.Genre.genre}</p>)}
               </p>
@@ -47,7 +47,7 @@ function Profile() {
             <div className="inf-box">
               <h5>My Instruments</h5>
               <p className="profile-inf-instr">
-                {hasUser
+                {hasUser && user?.UserInstruments
                 && user.UserInstruments.length > 0
                 && user.UserInstruments.map((data) => <p className="profile-inf-instr" key={data.id}>{data.Instrument.instrument}</p>)}
               </p>
@@ -59,7 +59,7 @@ function Profile() {
               </h5>
               {modalBand && <CreateBand onHide={() => setModalBand(false)} />}
               <p className="profile-inf-band">
-                {user.UserBands
+                {user?.UserBands
                 && user.UserBands.length > 0
                 && user.UserBands.map((data) => <p className="profile-inf-bands" key={data.id} onClick={() => navigate(`/bands/${data.Band.id}`)}>{data.Band.name}</p>)}
               </p>
@@ -67,7 +67,7 @@ function Profile() {
             <div className="inf-box-tg">
               <h5>Contact me:</h5>
               <p className="profile-inf">
-                <a href={`https://${hasUser && user.contact}`} target="_blank" rel="noreferrer" className="user-checkout-contact-link">{hasUser && user.contact}</a>
+                <a href={`https://${hasUser && user?.contact}`} target="_blank" rel="noreferrer" className="user-checkout-contact-link">{hasUser && user?.contact}</a>
               </p>
             </div>
           </div>
@@ -75,12 +75,12 @@ function Profile() {
         <div className="lower-inf-box">
           <div className="soundSpot_profile-about">
             <h5>About</h5>
-            <p className="profile-inf-about">{hasUser && user.about}</p>
+            <p className="profile-inf-about">{hasUser && user?.about}</p>
           </div>
         </div>
       </div>
       <div className="right-box">
-        {hasUser && <div className="profile-img-box"><img className="user-img" src={user.photo} alt={user.login} /></div>}
+        {hasUser && <div className="profile-img-box"><img className="user-img" src={user?.photo} alt={user?.login} /></div>}
       </div>
     </div>
   );

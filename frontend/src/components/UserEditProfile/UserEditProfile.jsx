@@ -11,7 +11,7 @@ import { updateAsyncUserProfile } from '../../storeAndSlices/Slices/usersReducer
 
 function UserEditProfile({ onHide }) {
   const dispatch = useDispatch();
-  const { instruments, genres, users } = useSelector((store) => store.usersState);
+  const { instruments, genres, users, hasUser } = useSelector((store) => store.usersState);
   const { data: user } = useSelector((state) => state.authState);
   const [filters, setFilters] = useState([]);
   const [filtersGenre, setFiltersGenre] = useState([]);
@@ -39,12 +39,12 @@ function UserEditProfile({ onHide }) {
   useEffect(() => {
     setInputTextArea(user.about);
     setInputContact(user.contact);
-    if (user) {
+    if (hasUser) {
       const thisUser = users.find((el) => el.id === user.id);
       let instrArr = Array.from({ length: instruments.length });
       let genreArr = Array.from({ length: genres.length });
-      instrArr = instrArr.map((el, i) => thisUser.extraStuff.hisInstruments.includes(instruments[i].instrument));
-      genreArr = genreArr.map((el, i) => thisUser.extraStuff.hisGenres.includes(genres[i].genre));
+      instrArr = instrArr.map((el, i) => thisUser?.extraStuff.hisInstruments.includes(instruments[i].instrument));
+      genreArr = genreArr.map((el, i) => thisUser?.extraStuff.hisGenres.includes(genres[i].genre));
       setFiltersGenre(genreArr);
       setFilters(instrArr);
     }
