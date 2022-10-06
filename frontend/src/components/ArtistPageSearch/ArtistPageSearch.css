@@ -13,6 +13,10 @@
     flex-direction: row;
 }
 
+.stringOnSearchPage:hover{
+    background-color: rgba(85, 85, 82, 0.1);  
+}
+
 .searchContainer {
     display: flex;
     flex-direction: row;
@@ -84,6 +88,10 @@
   font-size: 24px;
   font-weight: 600;
 }
+/* .soundSpot__username:hover {
+  color: red;
+} */
+
 
 .userinfoTop {
     width: 300px;

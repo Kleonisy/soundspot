@@ -61,10 +61,10 @@ function UserPage() {
               <p className="band-text">
                 {user
                   && user.UserBands
-                  && user.UserBands.map((data) => <p className="user-inf" key={data.id} onClick={() => navigate(`/bands/${data.Band.id}`)}>{data.Band.name}</p>)}
+                  && user.UserBands.map((data) => <p className="user-inf-myband" key={data.id} onClick={() => navigate(`/bands/${data.Band.id}`)}>{data.Band.name}</p>)}
               </p>
             </div>
-            <div className="inf-box">
+            <div className="inf-box-tg">
               <h5>Contact me:</h5>
               <p className="user-inf">
                 <a href={`https://${user && user.contact}`} target="_blank" rel="noreferrer" className="user-checkout-contact-link">{user && user.contact}</a>

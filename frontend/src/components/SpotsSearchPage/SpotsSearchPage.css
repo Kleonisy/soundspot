@@ -45,6 +45,11 @@
   cursor: pointer;
   margin: 0px 20px 10px 0px;
 }
+
+.soundSpot__spotRow:hover{
+  background-color: rgba(85, 85, 82, 0.1);
+}
+
 .soundSpot__spotRow-title {
   font-size: 24px;
   font-weight: 600;

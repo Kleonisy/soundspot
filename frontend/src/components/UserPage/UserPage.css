@@ -52,6 +52,10 @@
   color: black;
 }
 
+.user-inf-myband:hover{
+  font-weight: 500;
+}
+
 .band-text{
   cursor: pointer;
 }
@@ -72,13 +76,10 @@
 }
 
 .soundSpot__checkMyDemos {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
 }
-.soundSpot__checkMyDemos {
-  font-size: 20px;
-  font-weight: 500;
-}
+
 .soundSpot__checkMyDemos_link {
   color: #BE1111;
   text-decoration: none;
@@ -86,6 +87,7 @@
 .soundSpot__checkMyDemos_link:hover {
   color: #BE1111;
   text-decoration: none;
+  font-weight: 600;
 }
 .soundSpot__checkMyDemos_link:active {
   color: #BE1111;
@@ -107,4 +109,16 @@
   text-align: left;
   margin-top: 40px;
   cursor: pointer;
+  font-weight: 500;
+}
+
+/* .user-checkout-contact-link{
+  padding: 15px
+} */
+.inf-box-tg{
+  width: 20%;
+}
+
+.user-inf:hover{
+  font-weight: 500;
 }
