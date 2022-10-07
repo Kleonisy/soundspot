@@ -14,6 +14,7 @@ function Demo({ demo, owner, setPlayer, setSong }) {
   const { data: user } = useSelector((state) => state.authState);
   const [playable, setPlayable] = useState(playerIkon);
   const [show, setShow] = useState(false);
+  console.log(demo, '================');
 
   const playSong = () => {
     setPlayer((prev) => !prev);
@@ -41,7 +42,7 @@ function Demo({ demo, owner, setPlayer, setSong }) {
         <img className="player-ikon" src={playable} alt="player" onClick={() => playSong()} />
         <div className="demo-inf">
           <h5 className="demo-owner">{owner && (owner.login || owner.name)}</h5>
-          <p className="demo-name">{demo && demo.demoTitle}</p>
+          <p className="demo-name">{demo && (demo.demoTitle || demo.songTitle)}</p>
         </div>
         <div className="ikon-container">
           {owner.email === user.email

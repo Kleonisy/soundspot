@@ -18,6 +18,7 @@ function Demos() {
   const { pathname } = useLocation();
   const { user } = useSelector((state) => state.userState);
   const { band } = useSelector((state) => state.bandsState);
+  console.log(band);
 
   useEffect(() => {
     if (pathname.includes('bands')) {
@@ -37,12 +38,12 @@ function Demos() {
           {pathname.includes('bands')
             ? (
               band
-              && band.bandDemos
-              && band.bandDemos.length
+              && band.BandDemos
+              && band.BandDemos.length
                 ? (
                   band.BandDemos
                   && band.BandDemos
-                    .filter((demo) => demo.demoTitle.toLowerCase().includes(value.toLowerCase()))
+                    .filter((demo) => demo.songTitle.toLowerCase().includes(value.toLowerCase()))
                     .map((demo) => (
                       <Demo
                         key={demo.id}
