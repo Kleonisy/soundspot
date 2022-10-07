@@ -32,6 +32,12 @@ module.exports = {
         about: 'American band composed of siblings Kimberly Perry (lead vocals, guitar), Reid Perry (bass guitar, background vocals), and Neil Perry (mandolin, bouzouki, background vocals).',
         photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM_b8THUBjrjyO8nnih522EriXT77HCWE-BCSuODQ0UtxV1Ky50AbyXal6Nq2nZr30xSU&usqp=CAU',
       },
+      {
+        createrId: 19,
+        name: 'JavaScript Mentors Band',
+        about: 'Created in St. Petersburg in 1703. The total iq of the participants tends to infinity.',
+        photo: '2022-10-07 14.19.47.jpg',
+      },
     ];
     const bands = bandsData.map((band) => ({
       ...band,

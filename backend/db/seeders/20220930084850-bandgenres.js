@@ -15,6 +15,10 @@ module.exports = {
       { bandId: 5, genreId: 4 },
       { bandId: 5, genreId: 1 },
       { bandId: 5, genreId: 8 },
+      { bandId: 5, genreId: 8 },
+      { bandId: 6, genreId: 22 },
+      { bandId: 6, genreId: 5 },
+      { bandId: 6, genreId: 10 },
     ];
     const bandGenres = bandGenresData.map((bandGenre) => ({
       ...bandGenre,

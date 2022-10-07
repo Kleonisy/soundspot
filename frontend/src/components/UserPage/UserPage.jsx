@@ -73,7 +73,7 @@ function UserPage() {
         </div>
       </div>
       <div className="right-container">
-        {user && <div className="user-img-container"><img className="user-img" src={user.photo} alt={user.login} /></div>}
+        {user && <div className="user-img-container"><img className="user-img" src={`/${user.photo}`} alt={user.login} /></div>}
         <div className="soundSpot__checkMyDemos">
           Check out my demos
           {' '}
