@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { loginUser, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
 import './Authorization.css';
 
 function Authorization() {
   const dispatch = useDispatch();
   const { hasUser, helpMessage } = useSelector((state) => state.authState);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // удаление helpMessage при размонтировании компонента
   useEffect(() => () => {
@@ -25,7 +25,7 @@ function Authorization() {
 
   useEffect(() => {
     if (hasUser) {
-      navigate('/home');
+      document.location.assign('/home');
     }
   }, [hasUser]);
 
