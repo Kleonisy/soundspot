@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { regUser, disableHelpMessage } from '../../storeAndSlices/Slices/authReducer';
 import './Registration.css';
 
@@ -50,7 +50,7 @@ function Registration() {
         <p className="have-account">
           Already have an account?
           {' '}
-          <a href="/signin">Sign In</a>
+          <NavLink className="soundSpot__navlinktoSignIn" to="/signin">Sign In</NavLink>
         </p>
       </div>
 
