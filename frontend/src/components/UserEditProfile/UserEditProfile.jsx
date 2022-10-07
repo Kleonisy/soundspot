@@ -1,3 +1,5 @@
+/* eslint-disable no-promise-executor-return */
+/* eslint-disable arrow-parens */
 /* eslint-disable max-len */
 /* eslint-disable no-return-assign */
 import React, { useState, useEffect } from 'react';
@@ -39,7 +41,7 @@ function UserEditProfile({ onHide }) {
   useEffect(() => {
     setInputTextArea(user.about);
     setInputContact(user.contact);
-    if (user) {
+    if (user && users.some((el) => el.id === user.id)) {
       const thisUser = users.find((el) => el.id === user.id);
       let instrArr = Array.from({ length: instruments.length });
       let genreArr = Array.from({ length: genres.length });
@@ -47,6 +49,8 @@ function UserEditProfile({ onHide }) {
       genreArr = genreArr.map((el, i) => thisUser.extraStuff.hisGenres.includes(genres[i].genre));
       setFiltersGenre(genreArr);
       setFilters(instrArr);
+    } else {
+      document.location.assign('/profile');
     }
   }, [users]);
 

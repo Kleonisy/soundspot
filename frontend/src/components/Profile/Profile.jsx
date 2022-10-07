@@ -29,7 +29,7 @@ function Profile() {
         <div className="name-rating-box">
           <div className="soundSpot__username">{hasUser && user.login}</div>
           <div className="soundSpot_rating-container">
-            <Rating user={user && user} />
+            <Rating user={user} />
           </div>
           <div type="button" className="soundSpot__editProfileTag" onClick={() => setModalShow(true)}>Edit Profile</div>
           {modalShow && <UserEditProfile onHide={() => setModalShow(false)} />}

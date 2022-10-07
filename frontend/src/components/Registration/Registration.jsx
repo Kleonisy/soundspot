@@ -26,7 +26,7 @@ function Registration() {
 
   useEffect(() => {
     if (hasUser) {
-      navigate('/home');
+      document.location.assign('/home');
     }
   }, [hasUser, navigate]);
 
