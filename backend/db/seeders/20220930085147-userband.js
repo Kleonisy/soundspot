@@ -15,6 +15,12 @@ module.exports = {
       { userId: 14, bandId: 3, status: true },
       { userId: 15, bandId: 3, status: true },
       { userId: 16, bandId: 3, status: true },
+      { userId: 18, bandId: 6, status: true },
+      { userId: 19, bandId: 6, status: true },
+      { userId: 20, bandId: 6, status: true },
+      { userId: 21, bandId: 6, status: true },
+      { userId: 22, bandId: 6, status: true },
+      { userId: 23, bandId: 6, status: true },
     ];
 
     const userBands = userBandsData.map((userBand) => ({
