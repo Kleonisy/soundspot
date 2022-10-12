@@ -26,7 +26,7 @@ function Music() {
     <div className="demo-cont">
       {show && <AddMusicModal show={show} setShow={setShow} user={user} />}
       <button type="button" onClick={() => navigate(-1)} className="back-button soundSpot__myMusic_backButton">Move Back</button>
-      {player && <Player className="player" src={`http://localhost:3000/${song}`} onEndPlay={() => setPlayer(false)} />}
+      {player && <Player className="player" src={`https://soundspotter.herokuapp.com/${song}`} onEndPlay={() => setPlayer(false)} />}
 
       <div className="demos-cont">
         <input className="soundSpot__userDemos form-control" type="text" placeholder="Search..." onChange={(e) => setValue(e.target.value)} />
